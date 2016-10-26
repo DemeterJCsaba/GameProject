@@ -13,16 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\asd">
-      <UniqueIdentifier>{e271b5cc-3a05-4350-941c-c22fb86d4de5}</UniqueIdentifier>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{48ff91bd-ede1-4ba1-811e-14c0d048521c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Window">
+      <UniqueIdentifier>{53eb3613-1a87-4de9-80cf-aecb49054a0e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files\asd</Filter>
-    </ClCompile>
-    <ClCompile Include="bela.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Window.h">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

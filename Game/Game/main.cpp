@@ -2,5 +2,5 @@
 
 void main() {
 	int szam = 0;
-	printf("Heureka!(%d)\n",szam);
+	printf("Heureka!(%d) Balazs\n",szam);
 }

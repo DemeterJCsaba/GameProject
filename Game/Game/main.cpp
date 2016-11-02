@@ -9,7 +9,9 @@
 
 using namespace std;
 void main() {
-	//FreeConsole();
+#if !DEBUG_MODE
+	FreeConsole();
+#endif
 
 	Window window(960, 540, "Game");
 	FPSManager fps(60);

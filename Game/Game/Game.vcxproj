@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="FPSManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -129,6 +130,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="FPSManager.h" />
     <ClInclude Include="IState.h" />
+    <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

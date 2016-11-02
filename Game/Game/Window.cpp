@@ -68,7 +68,6 @@ void Window::update() {
 	getError();
 
 	glfwPollEvents();
-	//glfwGetFramebufferSize(m_Window, &m_Width, &m_Height);
 	glfwSwapBuffers(m_Window);
 }
 

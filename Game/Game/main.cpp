@@ -1,18 +1,25 @@
+#include <Windows.h>
 #include <stdio.h>
 
 #include "Window.h"
+#include "FPSManager.h"
 
 void main() {
-	Window window(800, 600, "Game");
+	//FreeConsole();
+
+	Window window(960, 540, "Game");
+	FPSManager fps(60);
 	
 	double tmp1, tmp2;
 
 	while (!window.isClosed()) {
+		fps.begin();
 		window.clear();
 		window.update();
-		window.getMousePos(&tmp1, &tmp2);
-		printf("mouse: %lf %lf\n", tmp1, tmp2);
+		fps.end();
+		//window.getMousePos(&tmp1, &tmp2);
+		//printf("mouse: %.0lf %.0lf\n", tmp1, tmp2);
 	}
 
-	system("pause");
+	//system("pause");
 }

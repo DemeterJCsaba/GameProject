@@ -27,9 +27,15 @@
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\Graphics\Window</Filter>
     </ClCompile>
+    <ClCompile Include="FPSManager.cpp">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSManager.h">
       <Filter>Source Files\Graphics\Window</Filter>
     </ClInclude>
   </ItemGroup>

@@ -28,11 +28,6 @@ void FPSManager::end()
 		m_DeltaTime -= CLOCKS_PER_SEC;
 	}
 
-	if (m_EnableLength)
-	{
-		printf("Frame length: %.3f ms\n", (m_EndFrame - m_BeginFrame) / 1000.0);
-	}
-
 	if (m_EnableDelay && m_DeltaTime < m_Temp) {
 		m_Sleep = m_Temp - m_DeltaTime;
 		this_thread::sleep_for(chrono::milliseconds((int)m_Sleep));

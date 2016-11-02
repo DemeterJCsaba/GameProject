@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Windows.h>
 #include <chrono>
 #include <thread>
 
@@ -12,13 +11,11 @@ class FPSManager {
 private:
 	int m_FPS;
 
-	// Counter
 	clock_t m_BeginFrame;
 	clock_t m_EndFrame;
 	clock_t m_DeltaTime;
 	unsigned int m_FrameCount;
 
-	// Delay
 	bool m_EnableDelay;
 	float m_AverageFrameTimeMilliseconds;
 	float m_Temp;

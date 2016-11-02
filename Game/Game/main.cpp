@@ -1,9 +1,6 @@
-#include <stdio.h>
-
 #include "Debug.h"
 #include "Window.h"
 #include "FPSManager.h"
-#include <string>
 #include "StateManager.h"
 #include "MainMenuState.h"
 

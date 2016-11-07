@@ -6,7 +6,7 @@ MainMenuState::MainMenuState():
 	// Temporal
 	m_RenderEngine2D.begin();
 	GUI g(-0.5, -0.5);
-	GUI g2(0,0,new Texture("Resources\\Images\\kep2.jpg"));
+	GUI g2(0,0,new Texture("Resources\\Images\\MainMenu_BG.png"));
 	//m_RenderEngine2D.submit(g);
 	m_RenderEngine2D.submit(g2);
 	m_RenderEngine2D.end();

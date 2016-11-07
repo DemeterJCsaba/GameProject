@@ -22,6 +22,15 @@
     <Filter Include="Source Files\Graphics\States">
       <UniqueIdentifier>{9e245194-4d9b-430d-abc9-2f64e22eede7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\RenderEngine">
+      <UniqueIdentifier>{7955aefa-2796-497c-b3e8-0dc619e8bf50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Maths">
+      <UniqueIdentifier>{6b41104b-8fe5-4b1c-af11-601bafdd791a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Entity">
+      <UniqueIdentifier>{3aee40bd-6d6e-49d0-bd7b-09719f599571}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,6 +47,24 @@
     </ClCompile>
     <ClCompile Include="MainMenuState.cpp">
       <Filter>Source Files\Graphics\States</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine2D.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="mat4.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vec2.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vec3.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vec4.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +85,30 @@
     </ClInclude>
     <ClInclude Include="MainMenuState.h">
       <Filter>Source Files\Graphics\States</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine2D.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexData.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="mat4.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vec2.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vec3.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vec4.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

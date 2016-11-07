@@ -121,17 +121,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FPSManager.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="mat4.cpp" />
+    <ClCompile Include="RenderEngine2D.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="vec2.cpp" />
+    <ClCompile Include="vec3.cpp" />
+    <ClCompile Include="vec4.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h" />
     <ClInclude Include="FPSManager.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="IState.h" />
     <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="mat4.h" />
+    <ClInclude Include="Maths.h" />
+    <ClInclude Include="RenderEngine2D.h" />
     <ClInclude Include="StateManager.h" />
+    <ClInclude Include="vec2.h" />
+    <ClInclude Include="vec3.h" />
+    <ClInclude Include="vec4.h" />
+    <ClInclude Include="VertexData.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

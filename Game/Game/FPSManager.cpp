@@ -1,12 +1,15 @@
 #include "FPSManager.h"
 
-FPSManager::FPSManager(int FPS, bool enableDelay, bool enableLength)
-	: m_FPS(FPS-1), m_EnableDelay(enableDelay), m_EnableLength(enableLength)
+FPSManager::FPSManager(int FPS, bool enableDelay, bool enableLength):
+	m_FPS(FPS-1), 
+	m_EnableDelay(enableDelay), 
+	m_EnableLength(enableLength),
+	SEC((chrono::duration_cast<chrono::milliseconds>(chrono::seconds(1))).count())
 {
 	m_DeltaTime = 0;
 	m_FrameCount = 0;
 
-	m_AverageFrameTimeMilliseconds = SEC_TO_MILISEC / m_FPS;
+	m_AverageFrameTimeMilliseconds = SEC*1.0 / m_FPS;
 	m_Temp = 0;
 }
 
@@ -21,8 +24,10 @@ void FPSManager::end()
 	m_DeltaTime += (m_EndFrame - m_BeginFrame);
 	++m_FrameCount;
 	m_Temp += m_AverageFrameTimeMilliseconds;
-	if (m_DeltaTime >= SEC_TO_MILISEC) {
+	if (m_DeltaTime >= SEC) {
+#if DEBUG_MODE
 		printf("FPS: %d\n", m_FrameCount);
+#endif
 		m_FrameCount = 0;
 		m_Temp = 0.0;
 		m_DeltaTime -= CLOCKS_PER_SEC;

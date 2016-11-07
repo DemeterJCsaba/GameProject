@@ -2,6 +2,9 @@
 
 #include <chrono>
 #include <thread>
+#include <iostream>
+
+#include "Debug.h"
 
 #define SEC_TO_MILISEC 1000.0
 
@@ -10,6 +13,7 @@ using namespace std;
 class FPSManager {
 private:
 	int m_FPS;
+	const int SEC;
 
 	clock_t m_BeginFrame;
 	clock_t m_EndFrame;

@@ -126,6 +126,7 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="mat4.cpp" />
     <ClCompile Include="RenderEngine2D.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
@@ -141,12 +142,17 @@
     <ClInclude Include="mat4.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="RenderEngine2D.h" />
+    <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />
     <ClInclude Include="VertexData.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.frag" />
+    <None Include="test.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

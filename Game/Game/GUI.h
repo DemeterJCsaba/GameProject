@@ -6,7 +6,7 @@
 using namespace std;
 
 class GUI {
-private:
+protected:
 	vector<VertexData2D> m_Vertices;
 	vector<unsigned int> m_Indices;
 public:

@@ -23,6 +23,9 @@ void StateManager::pushState(IState* state) {
 }
 
 void StateManager::popState() {
-	if(m_Stack.size() > 0)
+	if (m_Stack.size() > 0) {
+		IState* tmp = m_Stack[m_Stack.size() - 1];
 		m_Stack.pop_back();
+		delete tmp;
+	}
 }

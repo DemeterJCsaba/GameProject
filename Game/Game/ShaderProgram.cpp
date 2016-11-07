@@ -8,6 +8,7 @@ ShaderProgram::ShaderProgram(string name):
 	GLuint geometry = glCreateShader(GL_GEOMETRY_SHADER);
 	GLuint fragment = glCreateShader(GL_FRAGMENT_SHADER);
 
+	// Load and compile Vertex Shader Program
 	ifstream vertexFile(name + ".vert");
 	if (vertexFile.good()) {
 		string vertSourceString((istreambuf_iterator<char>(vertexFile)), istreambuf_iterator<char>());
@@ -31,6 +32,7 @@ ShaderProgram::ShaderProgram(string name):
 		glAttachShader(m_ShaderID, vertex);
 	}
 
+	// Load and compile Geometry Shader Program
 	ifstream geometryFile(name + ".geom");
 	if (geometryFile.good()) {
 		string geomSourceString((istreambuf_iterator<char>(geometryFile)), istreambuf_iterator<char>());
@@ -54,6 +56,7 @@ ShaderProgram::ShaderProgram(string name):
 		glAttachShader(m_ShaderID, geometry);
 	}
 
+	// Load and compile Fragment Shader Program
 	ifstream fragmentFile(name + ".frag");
 	if(fragmentFile.good()) {
 		string fragSourceString((istreambuf_iterator<char>(fragmentFile)), istreambuf_iterator<char>());
@@ -97,6 +100,7 @@ void ShaderProgram::disable() const {
 	glUseProgram(0);
 }
 
+// Uniforms - Load data to Shader Program
 GLuint ShaderProgram::getUniformLocation(const GLchar* name) {
 	if (m_Uniforms.find(name) == m_Uniforms.end()) {
 		m_Uniforms[name] = glGetUniformLocation(m_ShaderID, name);

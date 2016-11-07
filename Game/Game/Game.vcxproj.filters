@@ -34,6 +34,9 @@
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{9e245194-4d9b-430d-abc9-2f64e22eede7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Terture">
+      <UniqueIdentifier>{ae6edbaf-b28a-45e0-9bc7-d1f35af378a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -71,6 +74,12 @@
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Source Files\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Graphics\Terture</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageLoader.cpp">
+      <Filter>Source Files\Graphics\Terture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +127,12 @@
     </ClInclude>
     <ClInclude Include="ShaderProgram.h">
       <Filter>Source Files\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\Graphics\Terture</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLoader.h">
+      <Filter>Source Files\Graphics\Terture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

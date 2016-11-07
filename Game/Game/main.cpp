@@ -9,20 +9,19 @@ void main() {
 #if !DEBUG_MODE
 	FreeConsole();
 #endif
-
-	Window window(960, 540, "Game");
+	Window::getInstance();
 	FPSManager fps(60);
 
 	StateManager::getInstance().pushState(new MainMenuState());
 
-	while (!window.isClosed()) {
+	while (!Window::getInstance().isClosed()) {
 		fps.begin();
-		window.clear();
+		Window::getInstance().clear();
 
 		StateManager::getInstance().getCurrentState()->update();
 		StateManager::getInstance().getCurrentState()->render();
 
-		window.update();
+		Window::getInstance().update();
 		fps.end();
 	}
 }

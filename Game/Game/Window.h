@@ -11,6 +11,15 @@ using namespace std;
 
 class Window {
 private:
+	static Window s_Instance;
+public:
+	static int s_Width;
+	static int s_Height;
+	static char* s_Title;
+	static bool s_FullScreen;
+	static Window& getInstance();
+
+private:
 	int m_Width;
 	int m_Height;
 	char* m_Title;
@@ -24,8 +33,9 @@ private:
 	double m_MouseX;
 	double m_MouseY;
 	double m_MouseWheelOffset;
-public:
+private:
 	Window(int width, int height, char* title,bool fullScreen = false);
+public:
 	~Window();
 
 	void clear() const;

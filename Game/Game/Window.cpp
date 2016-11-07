@@ -1,5 +1,15 @@
 #include "Window.h"
 
+int Window::s_Width = 960;
+int Window::s_Height = 540;
+char* Window::s_Title = "Game";
+bool Window::s_FullScreen = false;
+
+Window& Window::getInstance() {
+	static Window s_Instance(s_Width,s_Height,s_Title,s_FullScreen);
+	return s_Instance;
+}
+
 Window::Window(int width, int height, char* title, bool fullScreen):
 	m_Width(width),m_Height(height),m_Title(title),m_FullScreen(fullScreen)
 {

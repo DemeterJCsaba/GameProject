@@ -25,7 +25,9 @@ MainMenuState::~MainMenuState() {
 }
 
 void MainMenuState::update() {
-
+	if (Window::getInstance().keyPressed(GLFW_KEY_E)) {
+		StateManager::getInstance().pushState(new SinglePlayerState());
+	}
 }
 
 void MainMenuState::render() {

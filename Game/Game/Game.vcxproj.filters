@@ -81,6 +81,9 @@
     <ClCompile Include="ImageLoader.cpp">
       <Filter>Source Files\Graphics\Terture</Filter>
     </ClCompile>
+    <ClCompile Include="SinglePlayerState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="ImageLoader.h">
       <Filter>Source Files\Graphics\Terture</Filter>
+    </ClInclude>
+    <ClInclude Include="SinglePlayerState.h">
+      <Filter>Source Files\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

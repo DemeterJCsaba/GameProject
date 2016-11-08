@@ -9,8 +9,7 @@ class RawModel
 private://adatatg
 
 public:
-	Texture m_Texture;
-	vec3
+	
 private://metodus
 
 public:

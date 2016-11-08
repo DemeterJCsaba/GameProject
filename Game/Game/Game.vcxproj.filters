@@ -39,6 +39,9 @@
     <Filter Include="Source Files\Graphics\Entity\Entity">
       <UniqueIdentifier>{0797435a-cfb8-4d48-b967-f5b55e700bda}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Entity\Animation">
+      <UniqueIdentifier>{2fe6e6cc-cf08-49da-b908-a62016dc1cc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,14 +89,17 @@
     <ClCompile Include="SinglePlayerState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="SettingsManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RawModel.cpp">
       <Filter>Source Files\Graphics\Entity\RawModel</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files\Graphics\Entity\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\Graphics\Entity\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,8 +163,9 @@
     <ClInclude Include="Entity.h">
       <Filter>Source Files\Graphics\Entity\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="SettingsManager.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="SettingsManager.h" />
+    <ClInclude Include="Animation.h">
+      <Filter>Source Files\Graphics\Entity\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

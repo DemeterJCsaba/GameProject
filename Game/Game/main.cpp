@@ -1,18 +1,27 @@
-#include <stdio.h>
-
+#include "Debug.h"
 #include "Window.h"
+#include "FPSManager.h"
+#include "StateManager.h"
+#include "MainMenuState.h"
 
+using namespace std;
 void main() {
-	Window window(800, 600, "Game");
-	
-	double tmp1, tmp2;
+#if !DEBUG_MODE
+	FreeConsole();
+#endif
+	Window::getInstance();
+	FPSManager fps(60);
 
-	while (!window.isClosed()) {
-		window.clear();
-		window.update();
-		window.getMousePos(&tmp1, &tmp2);
-		printf("mouse: %lf %lf\n", tmp1, tmp2);
+	StateManager::getInstance().pushState(new MainMenuState());
+
+	while (!Window::getInstance().isClosed()) {
+		fps.begin();
+		Window::getInstance().clear();
+
+		StateManager::getInstance().getCurrentState()->update();
+		StateManager::getInstance().getCurrentState()->render();
+
+		Window::getInstance().update();
+		fps.end();
 	}
-
-	//system("pause");
 }

@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -19,6 +15,30 @@
     <Filter Include="Source Files\Graphics\Window">
       <UniqueIdentifier>{53eb3613-1a87-4de9-80cf-aecb49054a0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\RenderEngine">
+      <UniqueIdentifier>{7955aefa-2796-497c-b3e8-0dc619e8bf50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Maths">
+      <UniqueIdentifier>{6b41104b-8fe5-4b1c-af11-601bafdd791a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Entity">
+      <UniqueIdentifier>{3aee40bd-6d6e-49d0-bd7b-09719f599571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Shader">
+      <UniqueIdentifier>{fca5c77a-ed65-4ea6-8897-33fd8ce57947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{9e245194-4d9b-430d-abc9-2f64e22eede7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Terture">
+      <UniqueIdentifier>{ae6edbaf-b28a-45e0-9bc7-d1f35af378a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Entity\RawModel">
+      <UniqueIdentifier>{ad638f6e-17c7-46eb-9146-cbda381d7365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Entity\Entity">
+      <UniqueIdentifier>{0797435a-cfb8-4d48-b967-f5b55e700bda}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,10 +47,120 @@
     <ClCompile Include="Window.cpp">
       <Filter>Source Files\Graphics\Window</Filter>
     </ClCompile>
+    <ClCompile Include="FPSManager.cpp">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine2D.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="mat4.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vec2.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vec3.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="vec4.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files\Graphics\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Graphics\Terture</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageLoader.cpp">
+      <Filter>Source Files\Graphics\Terture</Filter>
+    </ClCompile>
+    <ClCompile Include="SinglePlayerState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="RawModel.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Graphics\Entity\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
       <Filter>Source Files\Graphics\Window</Filter>
     </ClInclude>
+    <ClInclude Include="FPSManager.h">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>Source Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Source Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuState.h">
+      <Filter>Source Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine2D.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexData.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="mat4.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vec2.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vec3.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="vec4.h">
+      <Filter>Source Files\Maths</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Source Files\Graphics\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\Graphics\Terture</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLoader.h">
+      <Filter>Source Files\Graphics\Terture</Filter>
+    </ClInclude>
+    <ClInclude Include="SinglePlayerState.h">
+      <Filter>Source Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="RawModel.h">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Source Files\Graphics\Entity\Entity</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.vert">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="test.frag">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

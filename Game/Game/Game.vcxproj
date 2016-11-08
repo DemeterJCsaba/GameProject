@@ -89,8 +89,8 @@
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
     <Link>
-      <AdditionalLibraryDirectories>$(ProjectDir)\..\res\lib\GLEW;$(ProjectDir)\..\res\lib\GLFW;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\..\res\lib\GLEW;$(ProjectDir)\..\res\lib\FImg;$(ProjectDir)\..\res\lib\GLFW;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,11 +120,49 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FPSManager.cpp" />
+    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="mat4.cpp" />
+    <ClCompile Include="RawModel.cpp" />
+    <ClCompile Include="RenderEngine2D.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="SinglePlayerState.cpp" />
+    <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="vec2.cpp" />
+    <ClCompile Include="vec3.cpp" />
+    <ClCompile Include="vec4.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="FPSManager.h" />
+    <ClInclude Include="GUI.h" />
+    <ClInclude Include="ImageLoader.h" />
+    <ClInclude Include="IState.h" />
+    <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="mat4.h" />
+    <ClInclude Include="Maths.h" />
+    <ClInclude Include="RawModel.h" />
+    <ClInclude Include="RenderEngine2D.h" />
+    <ClInclude Include="ShaderProgram.h" />
+    <ClInclude Include="SinglePlayerState.h" />
+    <ClInclude Include="StateManager.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="vec2.h" />
+    <ClInclude Include="vec3.h" />
+    <ClInclude Include="vec4.h" />
+    <ClInclude Include="VertexData.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.frag" />
+    <None Include="test.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,6 +9,7 @@ void main() {
 #if !DEBUG_MODE
 	FreeConsole();
 #endif
+	SettingsManager::LoadSettings();
 	Window::getInstance();
 	FPSManager fps(60);
 
@@ -24,4 +25,6 @@ void main() {
 		Window::getInstance().update();
 		fps.end();
 	}
+
+	SettingsManager::SaveSettings();
 }

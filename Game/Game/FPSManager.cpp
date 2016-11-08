@@ -26,7 +26,7 @@ void FPSManager::end()
 	m_Temp += m_AverageFrameTimeMilliseconds;
 	if (m_DeltaTime >= SEC) {
 #if DEBUG_MODE
-		printf("FPS: %d\n", m_FrameCount);
+		//printf("FPS: %d\n", m_FrameCount);
 #endif
 		m_FrameCount = 0;
 		m_Temp = 0.0;

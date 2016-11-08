@@ -4,6 +4,8 @@
 #include <GLEW\glew.h>
 #include <GLFW\glfw3.h>
 
+#include "SettingsManager.h"
+
 #define MAX_KEYS	512
 #define MAX_BUTTONS 8
 
@@ -13,16 +15,12 @@ class Window {
 private:
 	static Window s_Instance;
 public:
-	static int s_Width;
-	static int s_Height;
-	static char* s_Title;
-	static bool s_FullScreen;
 	static Window& getInstance();
 
 private:
 	int m_Width;
 	int m_Height;
-	char* m_Title;
+	string m_Title;
 	bool m_FullScreen;
 
 	GLFWwindow* m_Window;
@@ -34,7 +32,7 @@ private:
 	double m_MouseY;
 	double m_MouseWheelOffset;
 private:
-	Window(int width, int height, char* title,bool fullScreen = false);
+	Window(unsigned int width, unsigned int height, string title,bool fullScreen = false);
 public:
 	~Window();
 

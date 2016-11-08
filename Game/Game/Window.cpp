@@ -1,16 +1,14 @@
 #include "Window.h"
 
-int Window::s_Width = 960;
-int Window::s_Height = 540;
-char* Window::s_Title = "Game";
-bool Window::s_FullScreen = false;
-
 Window& Window::getInstance() {
-	static Window s_Instance(s_Width,s_Height,s_Title,s_FullScreen);
+	static Window s_Instance(SettingsManager::getWindowWidth(), 
+							 SettingsManager::getWindowHeight(),
+							 SettingsManager::getWindowTitle(),
+							 SettingsManager::getWindowFullScreen());
 	return s_Instance;
 }
 
-Window::Window(int width, int height, char* title, bool fullScreen):
+Window::Window(unsigned int width,unsigned int height,string title, bool fullScreen):
 	m_Width(width),m_Height(height),m_Title(title),m_FullScreen(fullScreen)
 {
 	if (!init()) {
@@ -41,7 +39,7 @@ bool Window::init() {
 		return false;
 	}
 
-	m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, m_FullScreen?glfwGetPrimaryMonitor():NULL, NULL);
+	m_Window = glfwCreateWindow(m_Width, m_Height, m_Title.c_str(), m_FullScreen?glfwGetPrimaryMonitor():NULL, NULL);
 	if (!m_Window) {
 		glfwTerminate();
 		cout << "Faild to initalize window!" << endl;

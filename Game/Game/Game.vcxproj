@@ -129,6 +129,7 @@
     <ClCompile Include="mat4.cpp" />
     <ClCompile Include="RawModel.cpp" />
     <ClCompile Include="RenderEngine2D.cpp" />
+    <ClCompile Include="SettingsManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="SinglePlayerState.cpp" />
     <ClCompile Include="StateManager.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Maths.h" />
     <ClInclude Include="RawModel.h" />
     <ClInclude Include="RenderEngine2D.h" />
+    <ClInclude Include="SettingsManager.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="SinglePlayerState.h" />
     <ClInclude Include="StateManager.h" />

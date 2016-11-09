@@ -107,6 +107,9 @@
     <ClCompile Include="SkyBox.cpp">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="SkyBoxRenderEngine.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -181,12 +184,21 @@
     <ClInclude Include="SkyBox.h">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="SkyBoxRenderEngine.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="test.vert">
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
     <None Include="test.frag">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="sky.vert">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="sky.frag">
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
   </ItemGroup>

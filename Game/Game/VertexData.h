@@ -8,3 +8,9 @@ struct VertexData2D {
 	vec2 texture;
 	float textureId;
 };
+
+struct SkyBoxVertexData {
+	vec3 vertex;
+	vec2 teture;
+	float textureId;
+};

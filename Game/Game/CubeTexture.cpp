@@ -3,12 +3,12 @@
 CubeTexture::CubeTexture(const char* filename) {
 	string dir = "Resources\\Images\\CubeTextures\\";
 	string ext = ".png";
-	m_FileName[0] = string(filename) + "Right" + ext;
-	m_FileName[1] = string(filename) + "Left" + ext;
-	m_FileName[2] = string(filename) + "Top" + ext;
-	m_FileName[3] = string(filename) + "Bottom" + ext;
-	m_FileName[4] = string(filename) + "Back" + ext;
-	m_FileName[5] = string(filename) + "Front" + ext;
+	m_FileName[0] = dir + string(filename) + "Right" + ext;
+	m_FileName[1] = dir + string(filename) + "Left" + ext;
+	m_FileName[2] = dir + string(filename) + "Top" + ext;
+	m_FileName[3] = dir + string(filename) + "Bottom" + ext;
+	m_FileName[4] = dir + string(filename) + "Back" + ext;
+	m_FileName[5] = dir + string(filename) + "Front" + ext;
 
 	unsigned int bits;
 	BYTE* pixels1 = LoadImage(m_FileName[0].c_str(), &m_Width, &m_Height, &bits);

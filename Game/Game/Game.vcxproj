@@ -121,6 +121,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="CubeTexture.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FPSManager.cpp" />
     <ClCompile Include="GUI.cpp" />
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="CubeTexture.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FPSManager.h" />

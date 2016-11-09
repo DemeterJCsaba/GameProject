@@ -134,6 +134,7 @@
     <ClCompile Include="SettingsManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="SinglePlayerState.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="vec2.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="SettingsManager.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="SinglePlayerState.h" />
+    <ClInclude Include="SkyBox.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="vec2.h" />

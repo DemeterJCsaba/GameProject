@@ -30,9 +30,6 @@
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{9e245194-4d9b-430d-abc9-2f64e22eede7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Graphics\Terture">
-      <UniqueIdentifier>{ae6edbaf-b28a-45e0-9bc7-d1f35af378a0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Graphics\Entity\RawModel">
       <UniqueIdentifier>{ad638f6e-17c7-46eb-9146-cbda381d7365}</UniqueIdentifier>
     </Filter>
@@ -41,6 +38,9 @@
     </Filter>
     <Filter Include="Source Files\Graphics\Entity\Animation">
       <UniqueIdentifier>{2fe6e6cc-cf08-49da-b908-a62016dc1cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Texture">
+      <UniqueIdentifier>{ae6edbaf-b28a-45e0-9bc7-d1f35af378a0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,10 +81,10 @@
       <Filter>Source Files\Graphics\Shader</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>Source Files\Graphics\Terture</Filter>
+      <Filter>Source Files\Graphics\Texture</Filter>
     </ClCompile>
     <ClCompile Include="ImageLoader.cpp">
-      <Filter>Source Files\Graphics\Terture</Filter>
+      <Filter>Source Files\Graphics\Texture</Filter>
     </ClCompile>
     <ClCompile Include="SinglePlayerState.cpp">
       <Filter>Source Files\States</Filter>
@@ -102,7 +102,10 @@
       <Filter>Source Files\Graphics\Entity\Animation</Filter>
     </ClCompile>
     <ClCompile Include="CubeTexture.cpp">
-      <Filter>Source Files\Graphics\Terture</Filter>
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,10 +155,10 @@
       <Filter>Source Files\Graphics\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>Source Files\Graphics\Terture</Filter>
+      <Filter>Source Files\Graphics\Texture</Filter>
     </ClInclude>
     <ClInclude Include="ImageLoader.h">
-      <Filter>Source Files\Graphics\Terture</Filter>
+      <Filter>Source Files\Graphics\Texture</Filter>
     </ClInclude>
     <ClInclude Include="SinglePlayerState.h">
       <Filter>Source Files\States</Filter>
@@ -173,7 +176,10 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="CubeTexture.h">
-      <Filter>Source Files\Graphics\Terture</Filter>
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

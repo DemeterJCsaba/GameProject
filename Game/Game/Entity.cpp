@@ -45,7 +45,6 @@ void Entity::loadMesh(const int version, const string fileMesh) {
 		return;
 		//trow exeption
 	}
-	int version = -1;
 	bool oneMesh = false;
 	string line, key, value;
 	while (getline(mesh, line)) {
@@ -58,7 +57,7 @@ void Entity::loadMesh(const int version, const string fileMesh) {
 			}
 		}
 		else if (key == "joints") {
-			Joint *joint;
+			Joint *joint = new Joint();
 			while(getline(mesh, line)){
 				if (line.find("}") == string::npos) {
 					break;
@@ -78,7 +77,7 @@ void Entity::loadMesh(const int version, const string fileMesh) {
 }
 
 void Entity::setJoint(Joint *j, string line) {
-	
+	line = line.substr(0,line.find("//"));
 }
 
 void Entity::loadAnim(const int version, const string name, const string fileAnim) {

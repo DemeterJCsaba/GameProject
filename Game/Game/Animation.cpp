@@ -2,7 +2,7 @@
 
 
 
-Animation::Animation()
+Animation::Animation(const int version, const string name, const string file)
 {
 }
 

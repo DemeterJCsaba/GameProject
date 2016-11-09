@@ -24,7 +24,7 @@ public:
 	SkyBox();
 	~SkyBox();
 
-	vector<VertexData2D>& getVertices() { return m_Vertices; }
+	vector<SkyBoxVertexData>& getVertices() { return m_Vertices; }
 	vector<unsigned int>& getIndices() { return m_Indices; }
 
 	CubeTexture* getTextureNightSky() { return m_TextureNightSky; }

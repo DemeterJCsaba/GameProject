@@ -23,33 +23,34 @@ private://adatatg
 	};
 	vector<Joint*> m_Joints;
 	struct Vertex {
-		int m_Id;
+		float m_Index;
 		vec2 m_TextureCord;
-		int m_StartWeight;
-		int m_CountWeight;
+		float m_StartWeight;
+		float m_CountWeight;
 	};
 	struct Tri {
-		int m_Index;
+		float m_Index;
 		vec3 m_Pos;
 	};
 	struct Weight {
-		int m_Index;
-		int m_Joint;
+		float m_Index;
+		float m_Joint;
 		float m_Bias;
 		vec3 m_Pos;
 	};
 	struct Mesh
 	{
 		Texture* m_Texture;
-		vector<Vertex> m_Vertexes;
-		vector<Tri> m_Tris;
-		vector<Weight> m_Weights;
+		vector<Vertex*> m_Vertexes;
+		vector<Tri*> m_Tris;
+		vector<Weight*> m_Weights;
 	};
 	vector<Mesh*> m_Mesh;
 protected:
 	vector<Animation*> m_Animations;
 public:
 private://metodusok
+	void write();
 	void removeQuotes(string& str);
 	void setJoint(Joint *j, string line);
 	void loadMesh(const int version, const string fileMesh, const string folder);

@@ -76,6 +76,11 @@ void Entity::loadMesh(const int version, const string fileMesh) {
 	}
 	mesh.close();
 }
+
+void Entity::setJoint(Joint *j, string line) {
+	
+}
+
 void Entity::loadAnim(const int version, const string name, const string fileAnim) {
 	m_Animations.push_back(new Animation(version,name, fileAnim));
 }

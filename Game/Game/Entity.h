@@ -23,7 +23,8 @@ private://adatatg
 
 	struct Mesh
 	{
-		std::string     m_Texture;
+		std::string m_TextureName;
+
 		//TODO
 	};
 	vector<Mesh*> m_Mesh;
@@ -31,6 +32,7 @@ protected:
 	vector<Animation*> m_Animations;
 public:
 private://metodusok
+	void setJoint(Joint *j, string line);
 	void loadMesh(const int version, const string fileMesh);
 	void loadAnim(const int version, const string name, const string fileAnim);
 protected:

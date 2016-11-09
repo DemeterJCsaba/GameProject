@@ -1,9 +1,9 @@
 #include "Texture.h"
 
-Texture::Texture(const char* filename):
+Texture::Texture(const string filename):
 	m_Name(filename)
 {
-	m_Pixels = LoadImage(filename, &m_Width, &m_Height, &m_Bits);
+	m_Pixels = LoadImage(filename.c_str(), &m_Width, &m_Height, &m_Bits);
 
 	glGenTextures(1, &m_TextureID);
 	glBindTexture(GL_TEXTURE_2D, m_TextureID);

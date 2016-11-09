@@ -135,6 +135,7 @@
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="SinglePlayerState.cpp" />
     <ClCompile Include="SkyBox.cpp" />
+    <ClCompile Include="SkyBoxRenderEngine.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="vec2.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="SinglePlayerState.h" />
     <ClInclude Include="SkyBox.h" />
+    <ClInclude Include="SkyBoxRenderEngine.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="vec2.h" />
@@ -169,6 +171,8 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="sky.frag" />
+    <None Include="sky.vert" />
     <None Include="test.frag" />
     <None Include="test.vert" />
   </ItemGroup>

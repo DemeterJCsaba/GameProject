@@ -81,7 +81,7 @@ void SkyBox::init() {
 	m_Indices.push_back(1);
 
 	m_TextureNightSky = new CubeTexture("galaxy");
-
+	
 	// Sun
 	SkyBoxVertexData s0;
 	s0.vertex = vec3(m_SunSize, -m_SunSize, m_SkySize);

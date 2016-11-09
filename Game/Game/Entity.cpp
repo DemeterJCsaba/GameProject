@@ -61,7 +61,22 @@ void Entity::write() {
 }
 
 Entity::~Entity(){
-
+	for (Joint *j : m_Joints) {
+		delete j;
+	}
+	for (Mesh *m : m_Mesh) {
+		delete m->m_Texture;
+		for (Vertex *v : m->m_Vertexes) {
+			delete v;
+		}
+		for (Tri *t : m->m_Tris) {
+			delete t;
+		}
+		for (Weight *w : m->m_Weights) {
+			delete w;
+		}
+		delete m;
+	}
 }
 
 void Entity::loadMesh(const int version, const string fileMesh, const string folder) {
@@ -183,6 +198,13 @@ void Entity::setJoint(Joint *j, string line) {
 	j->m_Rot.y = stoi(word);
 	ln >> word >> junk;
 	j->m_Rot.z = stoi(word);
+}
+
+void Entity::setPos(vec3 pos) {
+	m_Pos = pos;
+}
+void Entity::addPos(vec3 pos) {
+	m_Pos += pos;
 }
 
 void Entity::loadAnim(const int version, const string name, const string fileAnim, const string folder) {

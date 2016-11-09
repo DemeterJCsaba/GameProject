@@ -18,7 +18,7 @@ private:
 
 	BYTE* m_Pixels;
 public:
-	Texture(const char* filename);
+	Texture(const string filename);
 	~Texture();
 	void bind() const;
 	void unbind() const;

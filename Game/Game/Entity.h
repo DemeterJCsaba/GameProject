@@ -46,8 +46,9 @@ private://adatatg
 		vector<Weight*> m_Weights;
 	};
 	vector<Mesh*> m_Mesh;
-protected:
 	vector<Animation*> m_Animations;
+	vec3 m_Pos;
+protected:
 public:
 private://metodusok
 	void write();
@@ -57,6 +58,8 @@ private://metodusok
 	void loadAnim(const int version, const string name, const string fileAnim, const string folder);
 protected:
 public:
+	void setPos(vec3 pos);
+	void addPos(vec3 pos);
 	Entity(const string fileName);
 	~Entity();
 };

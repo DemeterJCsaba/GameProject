@@ -13,5 +13,6 @@ public:
 	Camera();
 	mat4 getMatrix();
 	void setCurrentCamera();
-	void tmp();
+
+	void tmp(vec3 moove,vec3 rotate);
 };

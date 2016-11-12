@@ -28,7 +28,13 @@ void main(void){
 		float dayNightFactor = clamp(((sunPosition.y+0.05)*(-4)),0.0,1.0);
 
 		vec3 nor = normalize(fs_in.tex);
-		vec4 day = texture(SkyGradient,vec2(0.024414,nor.y));
+		vec4 day;
+		float tmp = time/360.0;
+		if(nor.y>0.001){
+			day = texture(SkyGradient,vec2(tmp,nor.y*0.99));
+		}else{
+			day = texture(SkyGradient,vec2(tmp,0.02));
+		}
 		vec4 night = texture(SkyBoxTexture,-fs_in.tex2);
 
 		color = mix(day,night,dayNightFactor);

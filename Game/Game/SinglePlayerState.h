@@ -20,6 +20,8 @@ private:
 
 	double m_Time;
 	vec3 m_SunPosition;
+
+	double tmpx, tmpy;
 public:
 	SinglePlayerState();
 	~SinglePlayerState();

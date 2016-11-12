@@ -18,6 +18,7 @@ void Camera::setCurrentCamera() {
 	current = this;
 }
 
-void Camera::tmp() {
-	m_Rotation.y += 0.2;
+void Camera::tmp(vec3 moove, vec3 rotate) {
+	m_Position += moove;
+	m_Rotation += rotate;
 }

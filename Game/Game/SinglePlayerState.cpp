@@ -27,11 +27,11 @@ void SinglePlayerState::update() {
 		StateManager::getInstance().popState();
 	}
 
-	double x, y; 
+	/*double x, y; 
 	Window::getInstance().getMousePos(&x, &y);
 	Camera::current->tmp(vec3(0,0,0),vec3((-tmpy+y),(tmpx-x),0));
 	tmpx = x;
-	tmpy = y;
+	tmpy = y;*/
 	
 	m_SunPosition = vec3(0,sin(toRadian(m_Time)), cos(toRadian(m_Time)));
 	m_Time = m_Time + 0.2;

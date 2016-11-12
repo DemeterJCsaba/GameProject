@@ -1,11 +1,14 @@
 #pragma once
 
+#include <math.h>
+
 #include "IState.h"
 #include "StateManager.h"
 #include "Window.h"
 
 #include "SkyBoxRenderEngine.h"
 #include "ShaderProgram.h"
+#include "Camera.h"
 
 class SinglePlayerState : public IState {
 private:
@@ -13,8 +16,10 @@ private:
 	SkyBox m_SkyBox;
 	ShaderProgram m_SkyShader;
 
-	float tmp1 = 0;
-	float tmp2 = 0;
+	Camera m_Camera;
+
+	double m_Time;
+	vec3 m_SunPosition;
 public:
 	SinglePlayerState();
 	~SinglePlayerState();

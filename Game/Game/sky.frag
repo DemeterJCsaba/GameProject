@@ -1,9 +1,12 @@
 #version 420 core
 
-uniform sampler2D SkyColors;
+uniform sampler2D SkyGradient;
 uniform samplerCube SkyBoxTexture;
 uniform sampler2D sunTexture;
 uniform sampler2D moonTexture;
+
+uniform vec3 sunPosition = vec3(1,0,0);
+uniform float time = 0.0;
 
 in DATA{
 	vec2 PlanetTexture;
@@ -22,7 +25,12 @@ void main(void){
 			color = texture(moonTexture,fs_in.PlanetTexture);
 
 	}else{ // Sky
-		//vec3 nor = normalize(fs_in.tex);
-		color = texture(SkyBoxTexture,-fs_in.tex2);
+		float dayNightFactor = clamp(((sunPosition.y+0.05)*(-4)),0.0,1.0);
+
+		vec3 nor = normalize(fs_in.tex);
+		vec4 day = texture(SkyGradient,vec2(0.024414,nor.y));
+		vec4 night = texture(SkyBoxTexture,-fs_in.tex2);
+
+		color = mix(day,night,dayNightFactor);
 	}
 }

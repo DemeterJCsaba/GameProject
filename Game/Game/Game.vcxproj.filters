@@ -110,6 +110,9 @@
     <ClCompile Include="SkyBoxRenderEngine.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Graphics\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -186,6 +189,9 @@
     </ClInclude>
     <ClInclude Include="SkyBoxRenderEngine.h">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

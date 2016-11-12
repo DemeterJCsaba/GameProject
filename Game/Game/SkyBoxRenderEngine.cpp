@@ -43,6 +43,7 @@ void SkyBoxRenderEngine::submit(SkyBox& skyBox) {
 
 	vector<SkyBoxVertexData>& vertices = skyBox.getVertices();
 	vector<unsigned int>& indices = skyBox.getIndices();
+	Texture* skyGraident = skyBox.getTextureSkyGradient();
 	CubeTexture* nightSky = skyBox.getTextureNightSky();
 	Texture* sun = skyBox.getTextureSun();
 	Texture*moon = skyBox.getTextureMoon();
@@ -59,7 +60,7 @@ void SkyBoxRenderEngine::submit(SkyBox& skyBox) {
 
 	m_IndexCount = indices.size();
 
-	m_Texture1ID = sun->getTextureID();
+	m_TextureSkyGradientID = skyGraident->getTextureID();
 	m_TextureCubeNightSkyID = nightSky->getTextureID();
 	m_TextureSunID = sun->getTextureID();
 	m_TextureMoonID = moon->getTextureID();
@@ -72,7 +73,7 @@ void SkyBoxRenderEngine::submit(SkyBox& skyBox) {
 
 void SkyBoxRenderEngine::flush() {
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_Texture1ID);
+	glBindTexture(GL_TEXTURE_2D, m_TextureSkyGradientID);
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, m_TextureCubeNightSkyID);
 	glActiveTexture(GL_TEXTURE2);

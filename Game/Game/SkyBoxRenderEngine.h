@@ -22,7 +22,7 @@ private:
 
 	GLuint m_IndexCount;
 
-	GLuint m_Texture1ID;
+	GLuint m_TextureSkyGradientID;
 	GLuint m_TextureCubeNightSkyID;
 	GLuint m_TextureSunID;
 	GLuint m_TextureMoonID;

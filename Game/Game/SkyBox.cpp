@@ -81,6 +81,7 @@ void SkyBox::init() {
 	m_Indices.push_back(1);
 
 	m_TextureNightSky = new CubeTexture("galaxy");
+	m_SkyGradient = new Texture("Resources\\Images\\SkyGradient.png");
 	
 	// Sun
 	SkyBoxVertexData s0;

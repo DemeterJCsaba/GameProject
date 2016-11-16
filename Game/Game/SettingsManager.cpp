@@ -2,6 +2,7 @@
 
 const string SettingsManager::SettingsFileName = "Settings.txt";
 
+// Window settings - Default
 unsigned int SettingsManager::Window_Width = 960;
 unsigned int SettingsManager::Window_Height = 540;
 const string SettingsManager::Window_Title = "Game";

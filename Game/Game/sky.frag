@@ -35,7 +35,7 @@ void main(void){
 		}else{
 			day = texture(SkyGradient,vec2(tmp,0.02));
 		}
-		vec4 night = texture(SkyBoxTexture,-fs_in.tex2);
+		vec4 night = texture(SkyBoxTexture,-fs_in.tex2) + day;
 
 		color = mix(day,night,dayNightFactor);
 	}

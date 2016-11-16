@@ -1,7 +1,10 @@
 #include "SinglePlayerState.h"
 
 SinglePlayerState::SinglePlayerState():
-	m_SkyShader(ShaderProgram("sky"))
+	m_SkyShader(ShaderProgram("sky")),
+	m_Terrain(Terrain(1)),
+	m_TerrainRenderer(TerrainRenderEngine(32)),
+	m_Shader(ShaderProgram("simple"))
 {
 	m_SkyRender.submit(m_SkyBox);
 
@@ -16,6 +19,12 @@ SinglePlayerState::SinglePlayerState():
 	m_Camera.setCurrentCamera();
 
 	m_Time = 0;
+
+	m_TerrainRenderer.submit(&m_Terrain,vec2(0,0));
+
+	m_Shader.enable();
+	m_Shader.setUniformMat4("pr_matrix", mat4::perspective(70, 960.0 / 540.0, 0.1f, 1000));
+	m_Shader.disable();
 }
 
 SinglePlayerState::~SinglePlayerState() {
@@ -23,12 +32,21 @@ SinglePlayerState::~SinglePlayerState() {
 }
 
 void SinglePlayerState::update() {
-	if (Window::getInstance().keyPressed(GLFW_KEY_ESCAPE)) {
+	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_ESCAPE)) {
 		StateManager::getInstance().popState();
 	}
 
-	/*double x, y; 
-	Window::getInstance().getMousePos(&x, &y);
+	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_Z)) {
+		Window::getInstance().setMouseVisibility(false);
+	}
+	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_X)) {
+		Window::getInstance().setMouseVisibility(true);
+	}
+	Camera::current->tmp(vec3(0, 0, 0), vec3(Window::getInstance().getMouseOffsetY(), Window::getInstance().getMouseOffsetX(), 0));
+	//if(Window::getInstance().getMouseOffsetX()!=0 || Window::getInstance().getMouseOffsetY()!=0)
+	//	cout << Window::getInstance().getMouseOffsetX() << " - " << Window::getInstance().getMouseOffsetY() << endl;
+	/*double x = Window::getInstance().getMousePosX();
+	double y = Window::getInstance().getMousePosY();
 	Camera::current->tmp(vec3(0,0,0),vec3((-tmpy+y),(tmpx-x),0));
 	tmpx = x;
 	tmpy = y;*/
@@ -43,9 +61,16 @@ void SinglePlayerState::render() {
 	if (Camera::current != nullptr) {
 		m_SkyShader.setUniformMat4("vw_matrix", Camera::current->getMatrix());
 	}
-	m_SkyShader.setUniform3f("sunPosition", m_SunPosition);
 	m_SkyShader.setUniformMat4("rot_matrix", mat4::rotation(m_Time,-1,0,0));
+	m_SkyShader.setUniform3f("sunPosition", m_SunPosition);
 	m_SkyShader.setUniform1f("time", m_Time);
 	m_SkyRender.flush();
 	m_SkyShader.disable();
+
+	m_Shader.enable();
+	if (Camera::current != nullptr) {
+		m_Shader.setUniformMat4("vw_matrix", Camera::current->getMatrix());
+	}
+	m_TerrainRenderer.flush(vec2(0, 0));
+	m_Shader.disable();
 }

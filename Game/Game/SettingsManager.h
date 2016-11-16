@@ -10,12 +10,21 @@ class SettingsManager {
 private:
 	static const string SettingsFileName;
 
+	// Window Settings
 	static unsigned int Window_Width;
 	static unsigned int Window_Height;
 	static const string Window_Title;
 	static bool Window_FullScreen;
+
+	SettingsManager() {}
 public:
+	/**
+	* Load settings from file.
+	**/
 	static void LoadSettings();
+	/**
+	* Save settings to file.
+	**/
 	static void SaveSettings();
 
 	// Getters

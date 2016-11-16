@@ -25,7 +25,10 @@ MainMenuState::~MainMenuState() {
 }
 
 void MainMenuState::update() {
-	if (Window::getInstance().keyPressed(GLFW_KEY_E)) {
+	Window::getInstance().setMouseVisibility(true);
+
+	// Temporal
+	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_E)) {
 		StateManager::getInstance().pushState(new SinglePlayerState());
 	}
 }

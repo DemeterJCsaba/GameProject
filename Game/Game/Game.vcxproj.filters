@@ -113,6 +113,12 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="TerrainRenderEngine.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files\Graphics\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -193,6 +199,12 @@
     <ClInclude Include="Camera.h">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="TerrainRenderEngine.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Source Files\Graphics\Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="test.vert">
@@ -205,6 +217,12 @@
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
     <None Include="sky.frag">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="simple.vert">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="simple.frag">
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
   </ItemGroup>

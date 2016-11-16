@@ -17,20 +17,17 @@ Window::Window(unsigned int width,unsigned int height,string title, bool fullScr
 	}
 	
 	for (int i = 0; i < MAX_KEYS; ++i) {
-		m_Keys[i] = false;
+		m_KeyboardButtons[i] = false;
 	}
 	for (int i = 0; i < MAX_BUTTONS; ++i) {
-		m_Buttons[i] = false;
+		m_MouseButtons[i] = false;
 	}
-	m_MouseX = m_MouseY = m_MouseWheelOffset = 0;
+	m_MouseX = m_MouseY = m_MouseOffsetX = m_MouseOffsetY = m_MouseWheelOffset = 0;
+	m_MouseVisible = true;
 }
 
 Window::~Window() {
-	if (m_Window != nullptr) {
-		glfwDestroyWindow(m_Window);
-		glfwTerminate();
-		m_Window = nullptr;
-	}
+	Close();
 }
 
 bool Window::init() {
@@ -54,7 +51,7 @@ bool Window::init() {
 	glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 	glfwSetScrollCallback(m_Window, scroll_callback);
 
-	glfwSwapInterval(0.0);
+	glfwSwapInterval(0);
 	if (glewInit() != GLEW_OK) {
 		cout << "Faild to initalize GLEW!" << endl;
 		return false;
@@ -68,31 +65,66 @@ bool Window::init() {
 	return true;
 }
 
-void Window::clear() const {
+void Window::Clear() const {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Window::update() {
-	getError();
+void Window::Update() {
+	if (m_MouseVisible) {
+		m_MouseOffsetX = 0;
+		m_MouseOffsetY = 0;
+	}
+	else {
+		cout << m_MouseX << " - " << (m_Width / 2) << " | " << m_MouseY << " - " << (m_Height / 2) << endl;
+		m_MouseOffsetX = m_MouseX - (m_Width / 2);
+		m_MouseOffsetY = m_MouseY - (m_Height / 2);
+		if(m_MouseX!=(m_Width / 2) || m_MouseY!=(m_Height / 2))
+			glfwSetCursorPos(m_Window, m_Width / 2, m_Height / 2);
+		/*else if (m_MouseX != (m_Width / 2) && m_MouseY == (m_Height / 2))
+			glfwSetCursorPos(m_Window, m_Width / 2, m_MouseX);
+		else if (m_MouseX == (m_Width / 2) && m_MouseY != (m_Height / 2))
+			glfwSetCursorPos(m_Window, m_MouseY, m_Height / 2);*/
+	}
+}
+
+void Window::Draw() {
+	GetError();
 
 	glfwPollEvents();
 	glfwSwapBuffers(m_Window);
 }
 
-void Window::close() {
-	this->~Window();
+void Window::Close() {
+	if (m_Window != nullptr) {
+		glfwDestroyWindow(m_Window);
+		glfwTerminate();
+		m_Window = nullptr;
+	}
 }
 
-bool Window::isClosed() const {
+bool Window::IsClosed() const {
 	return glfwWindowShouldClose(m_Window) == 1;
 }
 
-void Window::getError()
-{
+void Window::GetError(){
 	m_Error = glGetError();
 	if (m_Error != GL_NO_ERROR) {
 		printf("OpenGl Error: %d\n", m_Error);
 	}
+}
+
+void Window::setMouseVisibility(bool mod) {
+	if (m_MouseVisible && !mod) { // Hide cursor
+		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+		m_OldMouseX = getMousePosX();
+		m_OldMouseY = getMousePosY();
+		glfwSetCursorPos(m_Window, m_Width / 2, m_Height / 2);
+	}
+	else if (!m_MouseVisible && mod) { //Show cursor
+		glfwSetInputMode(m_Window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		glfwSetCursorPos(m_Window, m_OldMouseX, m_OldMouseY);
+	}
+	m_MouseVisible = mod;
 }
 
 // Event Handlers
@@ -106,12 +138,12 @@ void window_resize(GLFWwindow *window, int width, int height) {
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
-	win->m_Keys[key] = (action != GLFW_RELEASE);
+	win->m_KeyboardButtons[key] = (action != GLFW_RELEASE);
 }
 
 void mouse_callback(GLFWwindow* window, int button, int action, int mods) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
-	win->m_Buttons[button] = (action != GLFW_RELEASE);
+	win->m_MouseButtons[button] = (action != GLFW_RELEASE);
 }
 
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {

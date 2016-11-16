@@ -10,6 +10,8 @@
 #include "ShaderProgram.h"
 #include "Camera.h"
 
+#include "TerrainRenderEngine.h"
+
 class SinglePlayerState : public IState {
 private:
 	SkyBoxRenderEngine m_SkyRender;
@@ -22,6 +24,10 @@ private:
 	vec3 m_SunPosition;
 
 	double tmpx, tmpy;
+
+	TerrainRenderEngine m_TerrainRenderer;
+	Terrain m_Terrain;
+	ShaderProgram m_Shader;
 public:
 	SinglePlayerState();
 	~SinglePlayerState();

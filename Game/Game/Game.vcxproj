@@ -138,6 +138,8 @@
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="SkyBoxRenderEngine.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="TerrainRenderEngine.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
@@ -165,6 +167,8 @@
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SkyBoxRenderEngine.h" />
     <ClInclude Include="StateManager.h" />
+    <ClInclude Include="Terrain.h" />
+    <ClInclude Include="TerrainRenderEngine.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
@@ -175,6 +179,8 @@
   <ItemGroup>
     <None Include="sky.frag" />
     <None Include="sky.vert" />
+    <None Include="simple.frag" />
+    <None Include="simple.vert" />
     <None Include="test.frag" />
     <None Include="test.vert" />
   </ItemGroup>

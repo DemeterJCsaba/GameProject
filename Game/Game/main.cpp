@@ -15,14 +15,15 @@ void main() {
 
 	StateManager::getInstance().pushState(new MainMenuState());
 
-	while (!Window::getInstance().isClosed()) {
+	while (!Window::getInstance().IsClosed()) {
 		fps.begin();
-		Window::getInstance().clear();
+		Window::getInstance().Clear();
+		Window::getInstance().Update();
 
 		StateManager::getInstance().getCurrentState()->update();
 		StateManager::getInstance().getCurrentState()->render();
 
-		Window::getInstance().update();
+		Window::getInstance().Draw();
 		fps.end();
 	}
 

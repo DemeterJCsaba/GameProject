@@ -26,29 +26,43 @@ private:
 	GLFWwindow* m_Window;
 	GLenum m_Error;
 
-	bool m_Keys[MAX_KEYS];
-	bool m_Buttons[MAX_BUTTONS];
+	double m_OldMouseX;
+	double m_OldMouseY;
+	bool m_MouseVisible;
+
+	bool m_KeyboardButtons[MAX_KEYS];
+	bool m_MouseButtons[MAX_BUTTONS];
 	double m_MouseX;
 	double m_MouseY;
 	double m_MouseWheelOffset;
-private:
+	double m_MouseOffsetX;
+	double m_MouseOffsetY;
+
 	Window(unsigned int width, unsigned int height, string title,bool fullScreen = false);
 public:
 	~Window();
 
-	void clear() const;
-	void update();
-	void close();
-	bool isClosed() const;
-	void getError();
+	void Clear() const;
+	void Update();
+	void Draw();
+	void Close();
+	bool IsClosed() const;
+	void GetError();
 
-	bool keyPressed(unsigned int keycode) const { return m_Keys[keycode]; }
-	bool buttonPressed(unsigned int buttoncode) const { return m_Buttons[buttoncode]; }
-	void getMousePos(double* x, double* y) const { *x = m_MouseX; *y = m_MouseY; }
-	double getMouseWheel() { return m_MouseWheelOffset; }
+	// Getters
+	bool getKeyboarPressed(unsigned int keycode) const { return m_KeyboardButtons[keycode]; }
+	bool getMousePressed(unsigned int buttoncode) const { return m_MouseButtons[buttoncode]; }
+	double getMousePosX() const { return m_MouseX; }
+	double getMousePosY() const { return m_MouseY; }
+	double getMouseWheelOffset() const{ return m_MouseWheelOffset; }
+	double getMouseOffsetX() const { return m_MouseOffsetX; }
+	double getMouseOffsetY() const { return m_MouseOffsetY; }
+
+	void setMouseVisibility(bool mod = true);
 private:
 	bool init();
 
+	// Event handlers
 	friend static void window_resize(GLFWwindow *window, int width, int height);
 	friend static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	friend static void mouse_callback(GLFWwindow* window, int button, int action, int mods);

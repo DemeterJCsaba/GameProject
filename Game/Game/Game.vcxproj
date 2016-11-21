@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="mat4.cpp" />
+    <ClCompile Include="Maths.cpp" />
     <ClCompile Include="RawModel.cpp" />
     <ClCompile Include="RenderEngine2D.cpp" />
     <ClCompile Include="SettingsManager.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="simple.geom" />
     <None Include="sky.frag" />
     <None Include="sky.vert" />
     <None Include="simple.frag" />

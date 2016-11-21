@@ -9,3 +9,5 @@
 #include "vec4.h"
 
 #include "mat4.h"
+
+vec3 norm(vec3 a, vec3 b, vec3 c);

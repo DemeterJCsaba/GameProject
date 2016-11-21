@@ -119,6 +119,9 @@
     <ClCompile Include="Terrain.cpp">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="Maths.cpp">
+      <Filter>Source Files\Maths</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -223,6 +226,9 @@
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
     <None Include="simple.frag">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="simple.geom">
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
   </ItemGroup>

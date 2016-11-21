@@ -75,7 +75,7 @@ void Window::Update() {
 		m_MouseOffsetY = 0;
 	}
 	else {
-		cout << m_MouseX << " - " << (m_Width / 2) << " | " << m_MouseY << " - " << (m_Height / 2) << endl;
+		//cout << m_MouseX << " - " << (m_Width / 2) << " | " << m_MouseY << " - " << (m_Height / 2) << endl;
 		m_MouseOffsetX = m_MouseX - (m_Width / 2);
 		m_MouseOffsetY = m_MouseY - (m_Height / 2);
 		if(m_MouseX!=(m_Width / 2) || m_MouseY!=(m_Height / 2))

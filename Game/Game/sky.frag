@@ -29,13 +29,14 @@ void main(void){
 
 		vec3 nor = normalize(fs_in.tex);
 		vec4 day;
-		float tmp = time/360.0;
+		float t = time/360.0;
 		if(nor.y>0.001){
-			day = texture(SkyGradient,vec2(tmp,nor.y*0.99));
+			day = texture(SkyGradient,vec2(t,nor.y*0.99));
 		}else{
-			day = texture(SkyGradient,vec2(tmp,0.02));
+			day = texture(SkyGradient,vec2(t,0.02));
 		}
-		vec4 night = texture(SkyBoxTexture,-fs_in.tex2) + day;
+		//vec4 night = texture(SkyBoxTexture,-fs_in.tex2) + day;
+		vec4 night = mix(day,texture(SkyBoxTexture,-fs_in.tex2), clamp(nor.y,0.0,1.0));
 
 		color = mix(day,night,dayNightFactor);
 	}

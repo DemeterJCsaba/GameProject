@@ -12,6 +12,8 @@
 
 #include "TerrainRenderEngine.h"
 
+#include"Entity.h"
+
 class SinglePlayerState : public IState {
 private:
 	SkyBoxRenderEngine m_SkyRender;

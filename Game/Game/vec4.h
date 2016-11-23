@@ -1,4 +1,5 @@
 #pragma once
+#include<math.h>
 
 struct vec4
 {
@@ -18,4 +19,9 @@ struct vec4
 
 	bool operator==(const vec4& other);
 	bool operator!=(const vec4& other);
+
+	static void ComputeQuatW(vec4& element);
+	static vec4& multiplicate(const vec4& left, const vec4& right);
+	static vec4& mix(const vec4& left, const vec4& right, const float& interpolate);
+	void normalize();
 };

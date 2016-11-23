@@ -5,9 +5,10 @@
 #include<vector>
 
 #include"Animation.h"
-#include"vec3.h"
-#include"vec2.h"
+#include"Maths.h"
 #include"Texture.h"
+#include"Utility.h"
+#include"RawModel.h"
 
 using namespace std;
 
@@ -16,17 +17,20 @@ class Entity
 private://adatatg
 	struct Joint
 	{
-		std::string m_Name;
+		string m_Name;
 		int m_ParentID;
 		vec3 m_Pos;
-		vec3 m_Rot;
+		vec4 m_Rot;
 	};
-	vector<Joint*> m_Joints;
+	vector<Joint> m_Joints;
 	struct Vertex {
 		float m_Index;
 		vec2 m_TextureCord;
 		float m_StartWeight;
 		float m_CountWeight;
+
+		vec3 m_Pos;
+		vec3 m_Normal;
 	};
 	struct Tri {
 		float m_Index;
@@ -41,26 +45,66 @@ private://adatatg
 	struct Mesh
 	{
 		Texture* m_Texture;
-		vector<Vertex*> m_Vertexes;
-		vector<Tri*> m_Tris;
-		vector<Weight*> m_Weights;
+		vector<Vertex> m_Vertexes;
+		vector<Tri> m_Tris;
+		vector<Weight> m_Weights;
+
+		vector<vec3> m_PositionBuffer;
+		vector<vec3> m_NormalBuffer;
+		vector<vec2> m_Tex2DBuffer;
+		vector<GLuint> m_IndexBuffer;
 	};
-	vector<Mesh*> m_Mesh;
+	vector<Mesh> m_Mesh;
 	vector<Animation*> m_Animations;
+	Animation *m_Active;
+
 	vec3 m_Pos;
+
+	RawModel rawModel;
 protected:
 public:
 private://metodusok
 	void write();
-	void removeQuotes(string& str);
-	void setJoint(Joint *j, string line);
+	void setJoint(Joint& j, string line);
 	void loadMesh(const int version, const string fileMesh, const string folder);
 	void loadAnim(const int version, const string name, const string fileAnim, const string folder);
 protected:
 public:
 	void setPos(vec3 pos);
 	void addPos(vec3 pos);
-	Entity(const string fileName);
+	Entity(const string fileName, int type = 0);
 	~Entity();
+
+	//////////////////////////////////////////
+	void Update(float fDeltaTime);
+	void Render();
+	bool PrepareMesh(Mesh& mesh);
+	bool PrepareMesh(Mesh& mesh, 
+		const Animation::FrameSkeleton& skel);
+	bool PrepareNormals(Mesh& mesh);
+
+	// Render a single mesh of the model
+	void RenderMesh(const Mesh& mesh);
+	void RenderNormals(const Mesh& mesh);
+
+	// Draw the skeleton of the mesh for debugging purposes.
+	void RenderSkeleton(const vector<Joint>& joints);
+
+	bool CheckAnimation(const Animation& animation) const;
+	RawModel loadObj(const char* fileName);
 };
 
+//TODO:
+/*
+struct VertexData3D {
+vec3 vertex;
+vec3 normal;
+vec3 color;
+};
+vector<VertexData3D> m_Vertices;
+vector<unsigned int> m_Indices; faces(1,2,3)
+
+vertex (x =3.5 y=3.6 z=3.8);
+normal = ;
+color = red;
+*/

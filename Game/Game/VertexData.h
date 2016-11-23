@@ -1,5 +1,7 @@
 #pragma once
 
+#include<vector>
+
 #include "Maths.h"
 
 struct VertexData2D {

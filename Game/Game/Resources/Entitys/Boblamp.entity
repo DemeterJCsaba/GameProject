@@ -1,9 +1,6 @@
 MD5Version 10
-Folder Boblamp
+Folder Resources\Entitys\Boblamp
 Mesh boblampclean.md5mesh
 Anim {
-	normal boblampclean.md5anim
-	walk boblampclean.md5anim
-	run boblampclean.md5anim
-	jump boblampclean.md5anim
+	anim normal boblampclean.md5anim
 }

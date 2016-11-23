@@ -7,7 +7,7 @@
 #include"vec3.h"
 
 
-class RawModel
+class RawModel//change
 {
 private://adatatg
 

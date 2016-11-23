@@ -130,7 +130,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="mat4.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Maths.cpp" />
     <ClCompile Include="RawModel.cpp" />
     <ClCompile Include="RenderEngine2D.cpp" />
     <ClCompile Include="SettingsManager.cpp" />
@@ -142,7 +142,6 @@
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TerrainRenderEngine.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Utility.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="vec4.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="mat4.h" />
     <ClInclude Include="Maths.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="RawModel.h" />
     <ClInclude Include="RenderEngine2D.h" />
     <ClInclude Include="SettingsManager.h" />
@@ -173,7 +171,6 @@
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="TerrainRenderEngine.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="Utility.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />
@@ -181,6 +178,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="simple.geom" />
     <None Include="sky.frag" />
     <None Include="sky.vert" />
     <None Include="simple.frag" />

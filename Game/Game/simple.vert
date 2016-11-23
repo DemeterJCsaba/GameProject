@@ -7,16 +7,24 @@ layout (location = 2) in vec3 color;
 uniform mat4 pr_matrix = mat4(1.0);
 uniform mat4 vw_matrix = mat4(1.0);
 
+uniform float dentity = 0.003; //0.002;
+uniform float gradient = 5.5; //1.5;
+
 out DATA{
-	vec3 position;
 	vec3 normal;
 	vec3 color;
+
+	float visibility;
 } vs_out;
 
 void main(void){
 	gl_Position = pr_matrix * vw_matrix * vec4(position,1.0);
 
-	vs_out.position = position;
+	float distance = length((vw_matrix * vec4(position,1.0)).xyz);
+	vs_out.visibility = exp(-pow((distance*dentity),gradient));
+	vs_out.visibility = clamp(vs_out.visibility,0.0,1.0);
+
+	//vs_out.position = position;
 	vs_out.normal = normal;
 	vs_out.color = color;
 }

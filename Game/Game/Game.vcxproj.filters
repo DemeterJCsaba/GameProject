@@ -42,12 +42,6 @@
     <Filter Include="Source Files\Graphics\Texture">
       <UniqueIdentifier>{ae6edbaf-b28a-45e0-9bc7-d1f35af378a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Graphics\Entity\Player">
-      <UniqueIdentifier>{22008c7b-7d8a-4cf6-8e35-050b09e1cc65}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utility">
-      <UniqueIdentifier>{df5b1e84-e0e7-4827-870b-b1ef7413b24b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -125,11 +119,8 @@
     <ClCompile Include="Terrain.cpp">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Graphics\Entity\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Utility.cpp">
-      <Filter>Source Files\Utility</Filter>
+    <ClCompile Include="Maths.cpp">
+      <Filter>Source Files\Maths</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,12 +208,6 @@
     <ClInclude Include="Terrain.h">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Source Files\Graphics\Entity\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility.h">
-      <Filter>Source Files\Utility</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="test.vert">
@@ -241,6 +226,9 @@
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
     <None Include="simple.frag">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="simple.geom">
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
   </ItemGroup>

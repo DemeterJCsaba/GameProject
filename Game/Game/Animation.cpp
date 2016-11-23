@@ -75,9 +75,9 @@ Animation::Animation(const int& version, const string& name, const string& filen
 				JointInfo joint;
 				//file >> joint.m_Name >> joint.m_ParentID >> joint.m_Flags >> joint.m_StartIndex;
 				fscanf(f, "%s%d%d%d", &joint.m_Name,&joint.m_ParentID,&joint.m_Flags,&joint.m_StartIndex);
-				Utility::removeQuotes(joint.m_Name);
+				//Utility::removeQuotes(joint.m_Name);
 
-				fscanf(f,"%[^\n]", &junk);
+				//fscanf(f,"%[^\n]", &junk);
 				//getline(file,junk);
 
 				m_JointInfos.push_back(joint);

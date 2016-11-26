@@ -425,8 +425,11 @@ void Entity::Update(float fDeltaTime)
 	printf("size=%d\n", m_Animations.size());
 	if (m_Animations.size() > 0)
 	{
-		if (m_Active == nullptr) {
+		if (m_Active == nullptr && m_Animations.size() > 0) {
 			m_Active = m_Animations[0];
+		}
+		else {
+			return;
 		}
 		m_Active->Update(fDeltaTime);
 		const Animation::FrameSkeleton& skeleton = m_Active->GetSkeleton();

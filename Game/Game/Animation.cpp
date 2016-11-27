@@ -16,8 +16,9 @@ Animation::Animation(const int& version, const string& name, const string& filen
 	printf("filesize(f):%d\n",ftell(f));//*/
 	
 
-	std::string param;
-	std::string junk;   // Read junk from the file
+	char* param = new char[100];
+	char* junk = new char[100];
+	string paramS;
 
 	/*ifstream file(filename);
 
@@ -32,12 +33,12 @@ Animation::Animation(const int& version, const string& name, const string& filen
 
 	//fscanf(f, "%s", &param);
 
-	while (fscanf(f, "%s", &param) != EOF)
+	while (fscanf(f, "%s", param) != EOF)
 	{
 		if (param == "MD5Version")
 		{
 			//file >> m_iMD5Version;
-			fscanf(f,"%d",&m_iMD5Version);
+			fscanf(f,"%d", &m_iMD5Version);
 			if (m_iMD5Version != version) {
 				string str("Faild load animation: bad version name!(" + m_iMD5Version);
 				str.append(" != " + version);
@@ -69,64 +70,71 @@ Animation::Animation(const int& version, const string& name, const string& filen
 		else if (param == "hierarchy")
 		{
 			//file >> junk; // read in the '{' character
-			fscanf(f, "%s", &junk);
+			fscanf(f, "%s", junk);
 			for (int i = 0; i < m_iNumJoints; ++i)
 			{
 				JointInfo joint;
 				//file >> joint.m_Name >> joint.m_ParentID >> joint.m_Flags >> joint.m_StartIndex;
-				fscanf(f, "%s%d%d%d", &joint.m_Name,&joint.m_ParentID,&joint.m_Flags,&joint.m_StartIndex);
+				fscanf(f, "%s%d%d%d", param, &joint.m_ParentID, &joint.m_Flags, &joint.m_StartIndex);
+				joint.m_Name = param;
 				Utility::removeQuotes(joint.m_Name);
-
-				fscanf(f,"%[^\n]", &junk);
+				
+				fscanf(f,"%[^\n]", junk);
 				//getline(file,junk);
 
 				m_JointInfos.push_back(joint);
 			}
 			//file >> junk; // read in the '}' character
-			fscanf(f, "%s", &junk);
+			fscanf(f, "%s", junk);
 		}
-		/*else if (param == "bounds")
+		else if (param == "bounds")
 		{
-			file >> junk; // read in the '{' character
+			fscanf(f, "%s", junk);
 			for (int i = 0; i < m_iNumFrames; ++i)
 			{
 				Bound bound;
-				file >> junk; // read in the '(' character
-				file >> bound.m_Min.x >> bound.m_Min.y >> bound.m_Min.z;
-				file >> junk >> junk; // read in the ')' and '(' characters.
-				file >> bound.m_Max.x >> bound.m_Max.y >> bound.m_Max.z;
+				fscanf(f, "%s", junk);
+				//file >> bound.m_Min.x >> bound.m_Min.y >> bound.m_Min.z;
+				fscanf(f, "%f%f%f", &bound.m_Min.x, &bound.m_Min.y, &bound.m_Min.z);
+				fscanf(f, "%s%s", junk, junk);
+				//file >> bound.m_Max.x >> bound.m_Max.y >> bound.m_Max.z;
+				fscanf(f, "%f%f%f", &bound.m_Max.x, &bound.m_Max.y, &bound.m_Max.z);
 
 				m_Bounds.push_back(bound);
 				//printf("int i = %d\n",i);
 			}
 			//printf("kilep\n");
-			file >> junk; // read in the '}' character
+			fscanf(f, "%s", junk);
 		}
 		else if (param == "baseframe")
 		{
-			file >> junk; // read in the '{' character
+			fscanf(f, "%s", junk);
 
 			for (int i = 0; i < m_iNumJoints; ++i)
 			{
 				BaseFrame baseFrame;
-				file >> junk;
-				file >> baseFrame.m_Pos.x >> baseFrame.m_Pos.y >> baseFrame.m_Pos.z;
-				file >> junk >> junk;
-				file >> baseFrame.m_Orient.x >> baseFrame.m_Orient.y >> baseFrame.m_Orient.z;
+				fscanf(f, "%s", junk);
+				//file >> baseFrame.m_Pos.x >> baseFrame.m_Pos.y >> baseFrame.m_Pos.z;
+				fscanf(f, "%f%f%f", &baseFrame.m_Pos.x, &baseFrame.m_Pos.y, &baseFrame.m_Pos.z);
+				fscanf(f, "%s%s", junk,junk);
+				//file >> baseFrame.m_Orient.x >> baseFrame.m_Orient.y >> baseFrame.m_Orient.z;
+				fscanf(f, "%f%f%f", &baseFrame.m_Orient.x, &baseFrame.m_Orient.y, &baseFrame.m_Orient.z);
 
 				m_BaseFrames.push_back(baseFrame);
 			}
-			file >> junk; // read in the '}' character
+			fscanf(f, "%s", junk);
 		}
 		else if (param == "frame")
 		{
 			FrameData frame;
-			file >> frame.m_iFrameID >> junk; // Read in the '{' character
+			//file >> frame.m_iFrameID;
+			fscanf(f, "%d%s", &frame.m_iFrameID, junk);
 
 			for (int i = 0; i < m_iNumAnimatedComponents; ++i)
 			{
-				float frameData;
-				file >> frameData;
+				float frameData = 0;
+				//file >> frameData;
+				fscanf(f, "%f", &frameData);
 				frame.m_FrameData.push_back(frameData);
 			}
 
@@ -135,8 +143,8 @@ Animation::Animation(const int& version, const string& name, const string& filen
 			// Build a skeleton for this frame
 			BuildFrameSkeleton(m_Skeletons, m_JointInfos, m_BaseFrames, frame);
 
-			file >> junk; // Read in the '}' character
-		}*/
+			fscanf(f, "%s", junk);
+		}//*/
 	} // while ( !file.eof )
 
 	  // Make sure there are enough joints for the animated skeleton.

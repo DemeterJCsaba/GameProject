@@ -38,7 +38,6 @@ SinglePlayerState::SinglePlayerState():
 }
 
 SinglePlayerState::~SinglePlayerState() {
-
 }
 
 void SinglePlayerState::update() {
@@ -67,8 +66,6 @@ void SinglePlayerState::update() {
 	Camera::current->tmp(vec3(0,0,0),vec3((-tmpy+y),(tmpx-x),0));
 	tmpx = x;
 	tmpy = y;*/
-	
-	
 }
 
 void SinglePlayerState::render() {

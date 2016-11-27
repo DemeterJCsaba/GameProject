@@ -3,6 +3,8 @@
 #include<vector>
 #include<fstream>
 #include<sstream>
+#include<stdlib.h>
+#include<stdio.h>
 
 #include"Maths.h"
 #include"Texture.h"

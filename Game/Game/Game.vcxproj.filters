@@ -42,6 +42,9 @@
     <Filter Include="Source Files\Graphics\Texture">
       <UniqueIdentifier>{ae6edbaf-b28a-45e0-9bc7-d1f35af378a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{e9a5fd93-6f29-4f5b-bcdb-6ea34c1fade3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -122,11 +125,8 @@
     <ClCompile Include="Maths.cpp">
       <Filter>Source Files\Maths</Filter>
     </ClCompile>
-    <ClCompile Include="RenderEngine.cpp">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderEngine3DDynamic.cpp">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Source Files\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +138,9 @@
     </ClInclude>
     <ClInclude Include="IState.h">
       <Filter>Source Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="StateManager.h">
       <Filter>Source Files\States</Filter>
@@ -211,11 +214,8 @@
     <ClInclude Include="Terrain.h">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="RenderEngine.h">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine3DDynamic.h">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    <ClInclude Include="Utility.h">
+      <Filter>Source Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,8 +4,6 @@
 #include <thread>
 #include <iostream>
 
-#include "Debug.h"
-
 #define SEC_TO_MILISEC 1000.0
 
 using namespace std;

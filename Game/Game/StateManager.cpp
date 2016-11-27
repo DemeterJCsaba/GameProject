@@ -5,24 +5,24 @@ StateManager& StateManager::getInstance() {
 	return s_Instance;
 }
 
-StateManager::StateManager() {
+StateManager::StateManager() {}
 
-}
-
+// Returns the current state 
 IState* StateManager::getCurrentState() {
 	if (m_Stack.size() > 0)
 		return m_Stack[m_Stack.size() - 1];
 	else
 		return nullptr;
-	// Todo: Exception
 }
 
-void StateManager::pushState(IState* state) {
+// Add a new state
+void StateManager::addState(IState* state) {
 	if (state != nullptr)
 		m_Stack.push_back(state);
 }
 
-void StateManager::popState() {
+// Close the curret state
+void StateManager::closeCurrentState() {
 	if (m_Stack.size() > 0) {
 		IState* tmp = m_Stack[m_Stack.size() - 1];
 		m_Stack.pop_back();

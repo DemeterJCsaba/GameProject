@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstddef>
-#include <GLEW\glew.h>
 
+#include "RenderEngine.h"
 #include "VertexData.h"
 #include "SkyBox.h"
 
@@ -14,18 +14,17 @@
 #define SHADER_TEXTURE_INDEX   1
 #define SHADER_TEXTUREID_INDEX 2
 
-class SkyBoxRenderEngine {
+class SkyBoxRenderEngine: private RenderEngine {
 private:
-	GLuint m_VAO;
-	GLuint m_VBO;
-	GLuint m_IBO;
-
 	GLuint m_IndexCount;
 
 	GLuint m_TextureSkyGradientID;
 	GLuint m_TextureCubeNightSkyID;
 	GLuint m_TextureSunID;
 	GLuint m_TextureMoonID;
+
+	SkyBoxVertexData* m_Buffer;
+	unsigned int* m_IndexBuffer;
 public:
 	SkyBoxRenderEngine();
 	~SkyBoxRenderEngine();
@@ -33,5 +32,6 @@ public:
 	void submit(SkyBox& skyBox);
 	void flush();
 private:
-	void init();
+	void begin();
+	void end();
 };

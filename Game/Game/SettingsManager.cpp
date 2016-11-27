@@ -1,13 +1,15 @@
 #include "SettingsManager.h"
 
+// Settings file name
 const string SettingsManager::SettingsFileName = "Settings.txt";
 
-// Window settings - Default
+// Window settings - Default values
 unsigned int SettingsManager::Window_Width = 960;
 unsigned int SettingsManager::Window_Height = 540;
 const string SettingsManager::Window_Title = "Game";
 bool SettingsManager::Window_FullScreen = false;
 
+// Load setting from file
 void SettingsManager::LoadSettings() {
 	ifstream SettingsFile(SettingsFileName);
 	if(!SettingsFile.good()) {
@@ -29,6 +31,7 @@ void SettingsManager::LoadSettings() {
 	}
 }
 
+// Save setting to file
 void SettingsManager::SaveSettings() {
 	ofstream SettingsFile(SettingsFileName);
 	SettingsFile << "Window_Width: " << Window_Width << endl;

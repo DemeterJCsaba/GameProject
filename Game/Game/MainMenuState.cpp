@@ -1,7 +1,8 @@
 #include "MainMenuState.h"
 
 MainMenuState::MainMenuState():
-	m_Shader(ShaderProgram("test"))
+	m_ShaderGUI(ShaderProgram("test")),
+	m_Shader3D(ShaderProgram("simple"))
 {
 	// Temporal
 	m_RenderEngine2D.begin();
@@ -11,13 +12,16 @@ MainMenuState::MainMenuState():
 	m_RenderEngine2D.submit(g2);
 	m_RenderEngine2D.end();
 
-	m_Shader.enable();
+	m_ShaderGUI.enable();
 	GLint textures[32];
 	for (int i = 0; i < 32; ++i) {
 		textures[i] = i;
 	}
-	m_Shader.setUniformiv("textures", textures, 32);
-	m_Shader.disable();
+	m_ShaderGUI.setUniformiv("textures", textures, 32);
+	m_ShaderGUI.disable();
+
+	//Entity* player = new Entity("");
+	//m_RenderEngine3DD.submit(player);
 }
 
 MainMenuState::~MainMenuState() {
@@ -29,12 +33,16 @@ void MainMenuState::update() {
 
 	// Temporal
 	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_E)) {
-		StateManager::getInstance().pushState(new SinglePlayerState());
+		StateManager::getInstance().addState(new SinglePlayerState());
 	}
 }
 
 void MainMenuState::render() {
-	m_Shader.enable();
+	m_ShaderGUI.enable();
 	m_RenderEngine2D.flush();
-	m_Shader.disable();
+	m_ShaderGUI.disable();
+
+	m_Shader3D.enable();
+	m_RenderEngine3DD.flush();
+	m_Shader3D.disable();
 }

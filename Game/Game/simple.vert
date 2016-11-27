@@ -7,8 +7,8 @@ layout (location = 2) in vec3 color;
 uniform mat4 pr_matrix = mat4(1.0);
 uniform mat4 vw_matrix = mat4(1.0);
 
-uniform float dentity = 0.003; //0.002;
-uniform float gradient = 5.5; //1.5;
+uniform float dentity = 0.001; //0.002;
+uniform float gradient = 3.0; //1.5;
 
 out DATA{
 	vec3 normal;

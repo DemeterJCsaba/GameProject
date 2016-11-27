@@ -1,4 +1,3 @@
-#include "Debug.h"
 #include "Window.h"
 #include "FPSManager.h"
 #include "StateManager.h"
@@ -6,14 +5,12 @@
 
 using namespace std;
 void main() {
-#if !DEBUG_MODE
-	FreeConsole();
-#endif
+	//FreeConsole();
 	SettingsManager::LoadSettings();
 	Window::getInstance();
 	FPSManager fps(60);
 
-	StateManager::getInstance().pushState(new MainMenuState());
+	StateManager::getInstance().addState(new MainMenuState());
 
 	while (!Window::getInstance().IsClosed()) {
 		fps.begin();

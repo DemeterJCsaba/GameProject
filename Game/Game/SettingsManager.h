@@ -18,13 +18,7 @@ private:
 
 	SettingsManager() {}
 public:
-	/**
-	* Load settings from file.
-	**/
 	static void LoadSettings();
-	/**
-	* Save settings to file.
-	**/
 	static void SaveSettings();
 
 	// Getters

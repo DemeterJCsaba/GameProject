@@ -2,7 +2,8 @@
 
 #include <cstddef>
 #include <vector>
-#include <GLEW\glew.h>
+
+#include "RenderEngine.h"
 
 #include "GUI.h"
 
@@ -12,17 +13,13 @@
 #define RENDERER_BUFFER_SIZE  RENDERER_SPRITE_SIZE*RENDERER_MAX_SPRITES
 #define RENDERER_INDICES_SIZE RENDERER_MAX_SPRITES*3
 
-#define SHADER_VERTEX_INDEX 0
-#define SHADER_COLOR_INDEX  1
-#define SHADER_TEXTURE_INDEX  2
-#define SHADER_TEXTUREID_INDEX  3
+#define GUI_VERTEX_INDEX 0
+#define GUI_COLOR_INDEX  1
+#define GUI_TEXTURE_INDEX  2
+#define GUI_TEXTUREID_INDEX  3
 
-class RenderEngine2D {
+class RenderEngine2D: private RenderEngine {
 private:
-	GLuint m_VAO;
-	GLuint m_VBO;
-	GLuint m_IBO;
-
 	VertexData2D* m_VertexBuffer;
 	int* m_IndexBuffer;
 	GLuint m_IndexCount;
@@ -35,6 +32,4 @@ public:
 	void submit(GUI& entity);
 	void end();
 	void flush();
-private:
-	void init();
 };

@@ -3,7 +3,7 @@
 SinglePlayerState::SinglePlayerState():
 	m_SkyShader(ShaderProgram("sky")),
 	m_Terrain(Terrain(12345,5)),
-	m_TerrainRenderer(TerrainRenderEngine(64)),
+	m_TerrainRenderer(TerrainRenderEngine(100)),
 	m_Shader(ShaderProgram("simple"))
 {
 	m_SkyRender.submit(m_SkyBox);
@@ -47,7 +47,7 @@ void SinglePlayerState::update() {
 	m_Time = m_Time > 360 ? m_Time - 360 : m_Time;
 
 	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_ESCAPE)) {
-		StateManager::getInstance().popState();
+		StateManager::getInstance().closeCurrentState();
 	}
 
 	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_Z)) {

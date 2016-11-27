@@ -14,9 +14,9 @@ Terrain::~Terrain() {
 float Terrain::getHeight(float x, float z) {
 	x = x < 0 ? -x : x;
 	z = z < 0 ? -z : z;
-	float l1 = getInterpolatedNoise(x / 16.0f, z / 16.0f)*256.0f;
-	float l2 = getInterpolatedNoise(x / 4.0f, z / 4.0f)*32.0f;
-	float l3 = getInterpolatedNoise(x / 2.0f, z / 2.0f)*8.0f;
+	float l1 = getInterpolatedNoise(x / 32.0f, z / 32.0f)*256.0f;// 512.0f;
+	float l2 = getInterpolatedNoise(x / 8.0f, z / 8.0f)*64.0f;// 128.0f;
+	float l3 = getInterpolatedNoise(x / 2.0f, z / 2.0f)*16.0f;// 32.0f;
 	return l1 + l2 + l3;
 }
 

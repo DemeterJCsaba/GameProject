@@ -13,10 +13,11 @@ public:
 	static StateManager& getInstance();
 
 private:
-	StateManager();
 	vector<IState*> m_Stack;
+
+	StateManager();
 public:
 	IState* getCurrentState();
-	void pushState(IState* state);
-	void popState();
+	void addState(IState* state);
+	void closeCurrentState();
 };

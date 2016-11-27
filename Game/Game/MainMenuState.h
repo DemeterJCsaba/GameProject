@@ -6,14 +6,19 @@
 #include "Window.h"
 #include "StateManager.h"
 #include "SinglePlayerState.h"
+#include "RenderEngine3DDynamic.h"
 
 class MainMenuState : public IState {
 private:
 	RenderEngine2D m_RenderEngine2D;
-	ShaderProgram m_Shader;
+	ShaderProgram m_ShaderGUI;
+
+	RenderEngine3DDynamic m_RenderEngine3DD;
+	ShaderProgram m_Shader3D;
 public:
 	MainMenuState();
 	~MainMenuState();
+
 	void update();
 	void render();
 };

@@ -2,7 +2,7 @@
 
 MainMenuState::MainMenuState():
 	m_ShaderGUI(ShaderProgram("test")),
-	m_Shader3D(ShaderProgram("simple"))
+	m_Shader3D(ShaderProgram("menu3D"))
 {
 	// Temporal
 	m_RenderEngine2D.begin();
@@ -20,16 +20,22 @@ MainMenuState::MainMenuState():
 	m_ShaderGUI.setUniformiv("textures", textures, 32);
 	m_ShaderGUI.disable();
 
-	//Entity* player = new Entity("");
-	//m_RenderEngine3DD.submit(player);
+	m_Shader3D.enable();
+	m_Shader3D.setUniformMat4("pr_matrix", mat4::perspective(70, 960.0f / 540.0f, 0.1f, 1000));
+	m_Shader3D.disable();
+
+	player = new Entity("Resources\\Entitys\\test.obj");
+	
+	m_RenderEngine3DDynamic.submit(player->getRawModel());
 }
 
 MainMenuState::~MainMenuState() {
-
+	
 }
 
 void MainMenuState::update() {
-	Window::getInstance().setMouseVisibility(true);
+	player->getRawModel()->setPosition(vec3(2.0f, -0.5f, -2.0f));
+	player->getRawModel()->addRotation(vec3(0.0f,0.1f,0.0f));
 
 	// Temporal
 	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_E)) {
@@ -38,11 +44,13 @@ void MainMenuState::update() {
 }
 
 void MainMenuState::render() {
+	// 2D
 	m_ShaderGUI.enable();
 	m_RenderEngine2D.flush();
 	m_ShaderGUI.disable();
 
+	// 3D
 	m_Shader3D.enable();
-	m_RenderEngine3DD.flush();
+	m_RenderEngine3DDynamic.flush();
 	m_Shader3D.disable();
 }

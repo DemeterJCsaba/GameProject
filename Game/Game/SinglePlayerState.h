@@ -33,6 +33,7 @@ private:
 public:
 	SinglePlayerState();
 	~SinglePlayerState();
+
 	void update();
 	void render();
 };

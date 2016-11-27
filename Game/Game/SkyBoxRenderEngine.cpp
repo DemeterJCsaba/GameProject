@@ -10,7 +10,7 @@ SkyBoxRenderEngine::SkyBoxRenderEngine() {
 		glEnableVertexAttribArray(SHADER_TEXTUREID_INDEX);
 
 		glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, SKY_BOX_RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(SkyBoxVertexData, SkyBoxVertexData::vertex)));
-		glVertexAttribPointer(SHADER_TEXTURE_INDEX, 2, GL_FLOAT, GL_FALSE, SKY_BOX_RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(SkyBoxVertexData, SkyBoxVertexData::teture)));
+		glVertexAttribPointer(SHADER_TEXTURE_INDEX, 2, GL_FLOAT, GL_FALSE, SKY_BOX_RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(SkyBoxVertexData, SkyBoxVertexData::texture)));
 		glVertexAttribPointer(SHADER_TEXTUREID_INDEX, 1, GL_FLOAT, GL_FALSE, SKY_BOX_RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(SkyBoxVertexData, SkyBoxVertexData::textureId)));
 		unbindVBO();
 
@@ -43,10 +43,11 @@ void SkyBoxRenderEngine::submit(SkyBox& skyBox) {
 
 	vector<SkyBoxVertexData>& vertices = skyBox.getVertices();
 	vector<unsigned int>& indices = skyBox.getIndices();
-	Texture* skyGraident = skyBox.getTextureSkyGradient();
-	CubeTexture* nightSky = skyBox.getTextureNightSky();
-	Texture* sun = skyBox.getTextureSun();
-	Texture*moon = skyBox.getTextureMoon();
+
+	m_TextureSkyGradient = skyBox.getTextureSkyGradient();
+	m_TextureCubeNightSky = skyBox.getTextureNightSky();
+	m_TextureSun = skyBox.getTextureSun();
+	m_TextureMoon = skyBox.getTextureMoon();
 
 	for (SkyBoxVertexData& v : vertices) {
 		*m_Buffer = v;
@@ -60,23 +61,18 @@ void SkyBoxRenderEngine::submit(SkyBox& skyBox) {
 
 	m_IndexCount = indices.size();
 
-	m_TextureSkyGradientID = skyGraident->getTextureID();
-	m_TextureCubeNightSkyID = nightSky->getTextureID();
-	m_TextureSunID = sun->getTextureID();
-	m_TextureMoonID = moon->getTextureID();
-
 	end();
 }
 
 void SkyBoxRenderEngine::flush() {
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_TextureSkyGradientID);
+	if(m_TextureSkyGradient!=nullptr) m_TextureSkyGradient->bind();
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, m_TextureCubeNightSkyID);
+	if (m_TextureCubeNightSky != nullptr) m_TextureCubeNightSky->bind();
 	glActiveTexture(GL_TEXTURE2);
-	glBindTexture(GL_TEXTURE_2D, m_TextureSunID);
+	if (m_TextureSun != nullptr) m_TextureSun->bind();
 	glActiveTexture(GL_TEXTURE3);
-	glBindTexture(GL_TEXTURE_2D, m_TextureMoonID);
+	if (m_TextureMoon != nullptr) m_TextureMoon->bind();
 
 	bindVAO();
 	bindIBO();

@@ -2,8 +2,8 @@
 
 vec2::vec2()
 {
-	this->x = 0;
-	this->y = 0;
+	this->x = 0.0f;
+	this->y = 0.0f;
 }
 
 vec2::vec2(const float& x, const float& y)

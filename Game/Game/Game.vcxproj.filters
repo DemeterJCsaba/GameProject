@@ -42,8 +42,8 @@
     <Filter Include="Source Files\Graphics\Texture">
       <UniqueIdentifier>{ae6edbaf-b28a-45e0-9bc7-d1f35af378a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Utility">
-      <UniqueIdentifier>{e9a5fd93-6f29-4f5b-bcdb-6ea34c1fade3}</UniqueIdentifier>
+    <Filter Include="Source Files\Graphics\Game">
+      <UniqueIdentifier>{f1cb4d3f-dfdf-44ce-a4e9-93474b519f73}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -92,9 +92,6 @@
     <ClCompile Include="SinglePlayerState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="RawModel.cpp">
-      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
-    </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files\Graphics\Entity\Entity</Filter>
     </ClCompile>
@@ -106,9 +103,6 @@
     </ClCompile>
     <ClCompile Include="CubeTexture.cpp">
       <Filter>Source Files\Graphics\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="SkyBox.cpp">
-      <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
     <ClCompile Include="SkyBoxRenderEngine.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
@@ -125,8 +119,17 @@
     <ClCompile Include="Maths.cpp">
       <Filter>Source Files\Maths</Filter>
     </ClCompile>
+    <ClCompile Include="RenderEngine.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine3DDynamic.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClCompile>
     <ClCompile Include="Utility.cpp">
-      <Filter>Source Files\Utility</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>Source Files\Graphics\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -138,9 +141,6 @@
     </ClInclude>
     <ClInclude Include="IState.h">
       <Filter>Source Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="StateManager.h">
       <Filter>Source Files\States</Filter>
@@ -199,9 +199,6 @@
     <ClInclude Include="CubeTexture.h">
       <Filter>Source Files\Graphics\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="SkyBox.h">
-      <Filter>Source Files\Graphics\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="SkyBoxRenderEngine.h">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClInclude>
@@ -214,8 +211,17 @@
     <ClInclude Include="Terrain.h">
       <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
+    <ClInclude Include="RenderEngine.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine3DDynamic.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>Source Files\Graphics\Game</Filter>
+    </ClInclude>
     <ClInclude Include="Utility.h">
-      <Filter>Source Files\Utility</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +244,15 @@
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
     <None Include="simple.geom">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="menu3D.vert">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="menu3D.geom">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="menu3D.frag">
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
   </ItemGroup>

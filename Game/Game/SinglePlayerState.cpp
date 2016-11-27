@@ -26,7 +26,7 @@ SinglePlayerState::SinglePlayerState():
 	m_Shader.setUniformMat4("pr_matrix", mat4::perspective(70, 960.0f / 540.0f, 0.1f, 1000));
 	m_Shader.setUniform1i("SkyGradient", 0);
 	m_Shader.disable();
-	/*
+	
 	cout << m_Terrain.getHeight(5, 14) << endl;
 	cout << m_Terrain.getHeight(5, 14) << endl;
 	cout << m_Terrain.getHeight(5, 14) << endl;
@@ -34,10 +34,11 @@ SinglePlayerState::SinglePlayerState():
 	cout << m_Terrain.getHeight(5, 15) << endl;
 	cout << m_Terrain.getHeight(5, 16) << endl;
 	cout << m_Terrain.getHeight(5, 17) << endl;
-	cout << m_Terrain.getHeight(5, 18) << endl;*/
+	cout << m_Terrain.getHeight(5, 18) << endl;
 }
 
 SinglePlayerState::~SinglePlayerState() {
+	Window::getInstance().setMouseVisibility(true);
 }
 
 void SinglePlayerState::update() {
@@ -57,15 +58,6 @@ void SinglePlayerState::update() {
 	}
 
 	Camera::current->update();
-	//Camera::current->tmp(vec3(0, 0, 0), vec3(Window::getInstance().getMouseOffsetY(), Window::getInstance().getMouseOffsetX(), 0));
-	
-	//if(Window::getInstance().getMouseOffsetX()!=0 || Window::getInstance().getMouseOffsetY()!=0)
-	//	cout << Window::getInstance().getMouseOffsetX() << " - " << Window::getInstance().getMouseOffsetY() << endl;
-	/*double x = Window::getInstance().getMousePosX();
-	double y = Window::getInstance().getMousePosY();
-	Camera::current->tmp(vec3(0,0,0),vec3((-tmpy+y),(tmpx-x),0));
-	tmpx = x;
-	tmpy = y;*/
 }
 
 void SinglePlayerState::render() {

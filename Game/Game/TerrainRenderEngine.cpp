@@ -161,7 +161,7 @@ void TerrainRenderEngine::flush(vec2 position) {
 	}
 
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, m_SkyGradient->getTextureID());
+	m_SkyGradient->bind();
 
 	glBindVertexArray(m_VAO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBO);

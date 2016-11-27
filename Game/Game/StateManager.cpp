@@ -22,10 +22,12 @@ void StateManager::addState(IState* state) {
 }
 
 // Close the curret state
-void StateManager::closeCurrentState() {
+bool StateManager::closeCurrentState() {
 	if (m_Stack.size() > 0) {
-		IState* tmp = m_Stack[m_Stack.size() - 1];
+		IState* state = m_Stack[m_Stack.size() - 1];
 		m_Stack.pop_back();
-		delete tmp;
+		delete state;
+		return true;
 	}
+	return false;
 }

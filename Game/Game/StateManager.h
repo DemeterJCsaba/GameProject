@@ -19,5 +19,5 @@ private:
 public:
 	IState* getCurrentState();
 	void addState(IState* state);
-	void closeCurrentState();
+	bool closeCurrentState();
 };

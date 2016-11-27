@@ -15,13 +15,12 @@ private:
 	unsigned int m_Width;
 	unsigned int m_Height;
 	unsigned int m_Bits;
-
-	BYTE* m_Pixels;
 public:
 	Texture(const string filename);
 	~Texture();
+	
 	void bind() const;
 	void unbind() const;
 
-	GLuint getTextureID() { return m_TextureID; }
+	const string& getName() const { return m_Name; }
 };

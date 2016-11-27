@@ -20,9 +20,11 @@ void main() {
 		StateManager::getInstance().getCurrentState()->update();
 		StateManager::getInstance().getCurrentState()->render();
 
-		Window::getInstance().Draw();
+		Window::getInstance().Render();
 		fps.end();
 	}
+
+	while (StateManager::getInstance().closeCurrentState());
 
 	SettingsManager::SaveSettings();
 }

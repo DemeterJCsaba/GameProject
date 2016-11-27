@@ -207,6 +207,13 @@ void Entity::addPos(vec3 pos) {
 	m_Pos += pos;
 }
 
+void Entity::setRot(vec3 rot) {
+	m_Rot = rot;
+}
+void Entity::addRot(vec3 rot) {
+	m_Rot += rot;
+}
+
 void Entity::loadAnim(const int version, const string name, const string fileAnim, const string folder) {
 	m_Animations.push_back(new Animation(version,name, folder + "\\" + fileAnim));
 }
@@ -218,7 +225,7 @@ void Entity::RenderMesh(const Mesh& mesh)
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
 
-	glBindTexture(GL_TEXTURE_2D, mesh.m_Texture->getTextureID());
+	//glBindTexture(GL_TEXTURE_2D, mesh.m_Texture->getTextureID());
 	glVertexPointer(3, GL_FLOAT, 0, &(mesh.m_PositionBuffer[0]));//itt vmi hiba
 	glNormalPointer(GL_FLOAT, 0, &(mesh.m_NormalBuffer[0]));
 	glTexCoordPointer(2, GL_FLOAT, 0, &(mesh.m_Tex2DBuffer[0]));
@@ -462,12 +469,12 @@ void Entity::Render()
 	glPopMatrix();
 }
 
-RawModel Entity::loadObj(const char* filename) {
+RawModel<VertexData3D> Entity::loadObj(const char* filename) {
 	//cout << "Loading " << filename << "..." << endl;
 	FILE* file = fopen(filename, "r");
 	if (file == NULL) {
 		//cout << "Load faild " << endl;
-		RawModel r;
+		RawModel<VertexData3D> r;
 		return r;
 	}
 	char* ch = new char[100];
@@ -517,14 +524,15 @@ RawModel Entity::loadObj(const char* filename) {
 	fclose(file);
 	delete[] ch;
 	//cout << "Loading done!" << endl;
-	RawModel r;
-	r.indices = face;
-	for (int i = 0; i < vert.size(); ++i) {
+	RawModel<VertexData3D> r;
+	for (unsigned int i : face)
+		r.getIndices().push_back(i);
+	for (int i = 0; i < (vert.size())/3; i+=3) {
 		VertexData3D v;
-		v.vertex = vert[i];
-		v.normal = norm[i];
-		v.color = 1.0;
-		r.vertices.push_back(v);
+		v.vertex = vec3(vert[i], vert[i+1], vert[i+2]);
+		v.normal = vec3(0.0,1.0,0.0);
+		v.color = vec3(1.0,0.0,0.0);
+		r.getVertices().push_back(v);
 	}
 	return r;
 }

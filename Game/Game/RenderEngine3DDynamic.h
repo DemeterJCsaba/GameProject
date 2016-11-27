@@ -21,16 +21,17 @@ using namespace std;
 class RenderEngine3DDynamic : private RenderEngine {
 private:
 	GLuint m_IndexCount;
+	GLuint m_VertexCount;
 
 	VertexData3D* m_Buffer;
 	unsigned int* m_IndexBuffer;
 
-	vector<Entity*> m_Entities;
+	vector<RawModel<VertexData3D>*> m_Entities;
 public:
 	RenderEngine3DDynamic();
 	~RenderEngine3DDynamic();
 
-	void submit(Entity* entity);
+	void submit(RawModel<VertexData3D>* entity);
 	void flush(vec2 pos = vec2(0.0f,0.0f));
 private:
 	void begin();

@@ -77,9 +77,11 @@ void RenderEngine2D::flush() {
 
 	bindVAO();
 	bindIBO();
+	disableDepth();
 
 	glDrawElements(GL_TRIANGLES, m_IndexCount, GL_UNSIGNED_INT, NULL);
 
+	enableDepth();
 	bindIBO();
 	unbindVAO();
 }

@@ -13,8 +13,10 @@ private:
 	RenderEngine2D m_RenderEngine2D;
 	ShaderProgram m_ShaderGUI;
 
-	RenderEngine3DDynamic m_RenderEngine3DD;
+	RenderEngine3DDynamic m_RenderEngine3DDynamic;
 	ShaderProgram m_Shader3D;
+
+	Entity* player;
 public:
 	MainMenuState();
 	~MainMenuState();

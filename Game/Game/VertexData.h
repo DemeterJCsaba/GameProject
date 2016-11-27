@@ -13,8 +13,12 @@ struct VertexData2D {
 
 struct SkyBoxVertexData {
 	vec3 vertex;
-	vec2 teture;
+	vec2 texture;
 	float textureId;
+
+	SkyBoxVertexData(vec3 vertex, vec2 texture = vec2(), float textureId = 0.0f):
+		vertex(vertex),texture(texture),textureId(textureId)
+	{}
 };
 
 struct VertexData3D {

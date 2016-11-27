@@ -44,7 +44,7 @@ public:
 
 	void Clear() const;
 	void Update();
-	void Draw();
+	void Render();
 	void Close();
 	bool IsClosed() const;
 	void GetError();

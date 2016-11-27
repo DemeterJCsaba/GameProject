@@ -5,6 +5,7 @@
 #include "RenderEngine.h"
 #include "VertexData.h"
 #include "SkyBox.h"
+#include "Texture.h"
 
 #define SKY_BOX_RENDERER_VERTEX_SIZE   sizeof(SkyBoxVertexData)
 #define SKY_BOX_RENDERER_VERTEX_COUNT  (8 + 4 + 4)*SKY_BOX_RENDERER_VERTEX_SIZE
@@ -18,10 +19,10 @@ class SkyBoxRenderEngine: private RenderEngine {
 private:
 	GLuint m_IndexCount;
 
-	GLuint m_TextureSkyGradientID;
-	GLuint m_TextureCubeNightSkyID;
-	GLuint m_TextureSunID;
-	GLuint m_TextureMoonID;
+	Texture* m_TextureSkyGradient;
+	CubeTexture* m_TextureCubeNightSky;
+	Texture* m_TextureSun;
+	Texture* m_TextureMoon;
 
 	SkyBoxVertexData* m_Buffer;
 	unsigned int* m_IndexBuffer;

@@ -31,6 +31,7 @@ void RenderEngine3DDynamic::begin() {
 	m_IndexBuffer = (unsigned int*)glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_WRITE_ONLY);
 
 	m_IndexCount = 0;
+	m_VertexCount = 0;
 }
 
 void RenderEngine3DDynamic::end() {
@@ -40,14 +41,33 @@ void RenderEngine3DDynamic::end() {
 	unbindIBO();
 }
 
-void RenderEngine3DDynamic::submit(Entity* entity) {
+void RenderEngine3DDynamic::submit(RawModel<VertexData3D>* entity) {
 	m_Entities.push_back(entity);
 }
 
 void RenderEngine3DDynamic::flush(vec2 pos) {
 	begin();
-	for (Entity* e : m_Entities) {
+	for (RawModel<VertexData3D>* e : m_Entities) {
+		vec3 pos = e->getPosition();
+		vec3 rot = e->getRotation();
+		mat4 matrix = mat4::translation(pos.x, pos.y, pos.z)*mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);
+		
+		for (VertexData3D& v : e->getVertices()) {
+			*m_Buffer = v;
+			m_Buffer->vertex = matrix*m_Buffer->vertex;
+			++m_Buffer;
+		}
 
+		for (unsigned int i : e->getIndices()) {
+			int ind = (i >= 0 ? i : 0);
+			ind = (ind < e->getIndices().size() ? ind : 0);
+			*m_IndexBuffer = m_VertexCount + ind;
+			++m_IndexBuffer;
+			++m_IndexCount;
+		}
+
+		m_IndexCount += e->getIndices().size();
+		m_VertexCount += e->getVertices().size();
 	}
 	end();
 

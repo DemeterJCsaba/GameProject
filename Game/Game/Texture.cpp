@@ -3,7 +3,7 @@
 Texture::Texture(const string filename):
 	m_Name(filename)
 {
-	m_Pixels = LoadImage(filename.c_str(), &m_Width, &m_Height, &m_Bits);
+	BYTE* m_Pixels = LoadImage(filename.c_str(), &m_Width, &m_Height, &m_Bits);
 
 	glGenTextures(1, &m_TextureID);
 	glBindTexture(GL_TEXTURE_2D, m_TextureID);
@@ -23,7 +23,7 @@ Texture::Texture(const string filename):
 }
 
 Texture::~Texture() {
-	delete m_Pixels;
+	glDeleteTextures(1, &m_TextureID);
 }
 
 void Texture::bind() const {

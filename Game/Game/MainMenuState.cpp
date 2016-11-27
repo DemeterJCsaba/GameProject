@@ -6,10 +6,8 @@ MainMenuState::MainMenuState():
 {
 	// Temporal
 	m_RenderEngine2D.begin();
-	GUI g(-0.5, -0.5);
-	GUI g2(0,0,new Texture("Resources\\Images\\MainMenu_BG.png"));
-	//m_RenderEngine2D.submit(g);
-	m_RenderEngine2D.submit(g2);
+	GUIImage BG(vec2(-0.5f,-0.5f),vec2(2.0f,2.0f),new Texture("Resources\\Images\\MainMenu_BG.png"));
+	m_RenderEngine2D.submit(BG);
 	m_RenderEngine2D.end();
 
 	m_ShaderGUI.enable();

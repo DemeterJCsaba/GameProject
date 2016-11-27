@@ -469,12 +469,12 @@ void Entity::Render()
 	glPopMatrix();
 }
 
-RawModel<VertexData3D> Entity::loadObj(const char* filename) {
+RawModel3D<VertexData3D> Entity::loadObj(const char* filename) {
 	//cout << "Loading " << filename << "..." << endl;
 	FILE* file = fopen(filename, "r");
 	if (file == NULL) {
 		//cout << "Load faild " << endl;
-		RawModel<VertexData3D> r;
+		RawModel3D<VertexData3D> r;
 		return r;
 	}
 	char* ch = new char[100];
@@ -524,7 +524,7 @@ RawModel<VertexData3D> Entity::loadObj(const char* filename) {
 	fclose(file);
 	delete[] ch;
 	//cout << "Loading done!" << endl;
-	RawModel<VertexData3D> r;
+	RawModel3D<VertexData3D> r;
 	for (unsigned int i : face)
 		r.getIndices().push_back(i);
 	for (int i = 0; i < (vert.size())/3; i+=3) {

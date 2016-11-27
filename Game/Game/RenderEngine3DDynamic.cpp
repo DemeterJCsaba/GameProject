@@ -41,13 +41,13 @@ void RenderEngine3DDynamic::end() {
 	unbindIBO();
 }
 
-void RenderEngine3DDynamic::submit(RawModel<VertexData3D>* entity) {
+void RenderEngine3DDynamic::submit(RawModel3D<VertexData3D>* entity) {
 	m_Entities.push_back(entity);
 }
 
 void RenderEngine3DDynamic::flush(vec2 pos) {
 	begin();
-	for (RawModel<VertexData3D>* e : m_Entities) {
+	for (RawModel3D<VertexData3D>* e : m_Entities) {
 		vec3 pos = e->getPosition();
 		vec3 rot = e->getRotation();
 		mat4 matrix = mat4::translation(pos.x, pos.y, pos.z)*mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);

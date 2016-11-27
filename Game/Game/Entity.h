@@ -8,7 +8,7 @@
 #include"Maths.h"
 #include"Texture.h"
 #include"Utility.h"
-#include"RawModel.h"
+#include"RawModel3D.h"
 
 using namespace std;
 
@@ -61,7 +61,7 @@ private://adatatg
 	vec3 m_Pos;
 	vec3 m_Rot;
 
-	RawModel<VertexData3D> rawModel;
+	RawModel3D<VertexData3D> rawModel;
 protected:
 public:
 private://metodusok
@@ -94,9 +94,9 @@ public:
 	void RenderSkeleton(const vector<Joint>& joints);
 
 	bool CheckAnimation(const Animation& animation) const;
-	RawModel<VertexData3D> loadObj(const char* fileName);
+	RawModel3D<VertexData3D> loadObj(const char* fileName);
 
-	RawModel<VertexData3D>* getRawModel(){return &rawModel;}
+	RawModel3D<VertexData3D>* getRawModel(){return &rawModel;}
 	vec3 getPosition() { return m_Pos; }
 	vec3 getRotation() { return m_Rot; }
 };

@@ -5,7 +5,8 @@
 
 #include "RenderEngine.h"
 
-#include "GUI.h"
+#include "GUIImage.h"
+#include "Texture.h"
 
 #define RENDERER_MAX_SPRITES  300000
 #define RENDERER_VERTEX_SIZE  sizeof(VertexData2D)
@@ -29,7 +30,7 @@ private:
 public:
 	RenderEngine2D();
 	void begin();
-	void submit(GUI& entity);
+	void submit(GUIImage& entity);
 	void end();
 	void flush();
 };

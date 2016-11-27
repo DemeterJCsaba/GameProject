@@ -9,6 +9,10 @@ struct VertexData2D {
 	vec3 color;
 	vec2 texture;
 	float textureId;
+
+	VertexData2D(vec2 vertex,vec2 texture=vec2(),float textureId=0.0f,vec3 color = vec3()):
+		vertex(vertex), texture(texture), textureId(textureId), color(color)
+	{}
 };
 
 struct SkyBoxVertexData {

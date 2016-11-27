@@ -41,7 +41,7 @@ void RenderEngine2D::end() {
 	unbindIBO();
 }
 
-void RenderEngine2D::submit(GUI& entity) {
+void RenderEngine2D::submit(GUIImage& entity) {
 	vector<VertexData2D>& vertices = entity.getVertices();
 	vector<unsigned int>& indices = entity.getIndices();
 	Texture* texture = entity.getTexture();

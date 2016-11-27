@@ -26,12 +26,12 @@ private:
 	VertexData3D* m_Buffer;
 	unsigned int* m_IndexBuffer;
 
-	vector<RawModel<VertexData3D>*> m_Entities;
+	vector<RawModel3D<VertexData3D>*> m_Entities;
 public:
 	RenderEngine3DDynamic();
 	~RenderEngine3DDynamic();
 
-	void submit(RawModel<VertexData3D>* entity);
+	void submit(RawModel3D<VertexData3D>* entity);
 	void flush(vec2 pos = vec2(0.0f,0.0f));
 private:
 	void begin();

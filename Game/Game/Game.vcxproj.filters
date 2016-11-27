@@ -45,6 +45,9 @@
     <Filter Include="Source Files\Graphics\Game">
       <UniqueIdentifier>{f1cb4d3f-dfdf-44ce-a4e9-93474b519f73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Entity\2D">
+      <UniqueIdentifier>{8538df4f-f1c2-4191-b0f2-f5dce9409b90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -76,9 +79,6 @@
     </ClCompile>
     <ClCompile Include="vec4.cpp">
       <Filter>Source Files\Maths</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI.cpp">
-      <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Source Files\Graphics\Shader</Filter>
@@ -131,6 +131,9 @@
     <ClCompile Include="SkyBox.cpp">
       <Filter>Source Files\Graphics\Game</Filter>
     </ClCompile>
+    <ClCompile Include="GUIImage.cpp">
+      <Filter>Source Files\Graphics\Entity\2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -168,9 +171,6 @@
     </ClInclude>
     <ClInclude Include="vec4.h">
       <Filter>Source Files\Maths</Filter>
-    </ClInclude>
-    <ClInclude Include="GUI.h">
-      <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
     <ClInclude Include="ShaderProgram.h">
       <Filter>Source Files\Graphics\Shader</Filter>
@@ -222,6 +222,15 @@
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RawModel2D.h">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClInclude>
+    <ClInclude Include="RawModel3D.h">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIImage.h">
+      <Filter>Source Files\Graphics\Entity\2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

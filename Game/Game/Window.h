@@ -38,6 +38,8 @@ private:
 	double m_MouseOffsetX;
 	double m_MouseOffsetY;
 
+	bool m_Close;
+
 	Window(unsigned int width, unsigned int height, string title,bool fullScreen = false);
 public:
 	~Window();
@@ -50,6 +52,9 @@ public:
 	void GetError();
 
 	// Getters
+	int getWidth() const { return m_Width; }
+	int getHeight() const { return m_Height; }
+
 	bool getKeyboarPressed(unsigned int keycode) const { return m_KeyboardButtons[keycode]; }
 	bool getMousePressed(unsigned int buttoncode) const { return m_MouseButtons[buttoncode]; }
 	double getMousePosX() const { return m_MouseX; }

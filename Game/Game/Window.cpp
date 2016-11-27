@@ -24,10 +24,16 @@ Window::Window(unsigned int width,unsigned int height,string title, bool fullScr
 	}
 	m_MouseX = m_MouseY = m_MouseOffsetX = m_MouseOffsetY = m_MouseWheelOffset = 0;
 	m_MouseVisible = true;
+
+	m_Close = false;
 }
 
 Window::~Window() {
-	Close();
+	if (m_Window != nullptr) {
+		glfwDestroyWindow(m_Window);
+		glfwTerminate();
+		m_Window = nullptr;
+	}
 }
 
 bool Window::init() {
@@ -97,15 +103,11 @@ void Window::Render() {
 }
 
 void Window::Close() {
-	if (m_Window != nullptr) {
-		glfwDestroyWindow(m_Window);
-		glfwTerminate();
-		m_Window = nullptr;
-	}
+	m_Close = true;
 }
 
 bool Window::IsClosed() const {
-	return glfwWindowShouldClose(m_Window) == 1;
+	return m_Close || glfwWindowShouldClose(m_Window) == 1;
 }
 
 void Window::GetError(){

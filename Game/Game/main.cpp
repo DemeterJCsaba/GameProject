@@ -6,7 +6,9 @@
 using namespace std;
 void main() {
 	//FreeConsole();
+
 	SettingsManager::LoadSettings();
+
 	Window::getInstance();
 	FPSManager fps(60);
 

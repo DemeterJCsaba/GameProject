@@ -17,6 +17,14 @@
 
 class SkyBoxRenderEngine: private RenderEngine {
 private:
+	struct SkyBoxVertexData {
+		vec3 vertex;
+		vec2 texture;
+		float textureId;
+		SkyBoxVertexData(vec3 vertex, vec2 texture = vec2(), float textureId = 0.0f) :
+			vertex(vertex), texture(texture), textureId(textureId) {}
+	};
+
 	GLuint m_IndexCount;
 
 	Texture* m_TextureSkyGradient;

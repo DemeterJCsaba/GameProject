@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class GUIImage : public RawModel2D<VertexData2D> {
+class GUIImage : public RawModel2D {
 protected:
 	Texture* m_Texture = nullptr;
 	vec2 m_Size;

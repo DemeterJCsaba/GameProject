@@ -41,15 +41,26 @@ void SkyBoxRenderEngine::end() {
 void SkyBoxRenderEngine::submit(SkyBox& skyBox) {
 	begin();
 
-	vector<SkyBoxVertexData>& vertices = skyBox.getVertices();
-	vector<unsigned int>& indices = skyBox.getIndices();
+	vector<vec3>& vertecies = skyBox.getVertices();
+	vector<vec2>& textures = skyBox.getTextures();
+	vector<unsigned int>& indicesVertex = skyBox.getIndicesVertex();
+	vector<unsigned int>& indicesTexture = skyBox.getIndicesTexture();
 
 	m_TextureSkyGradient = skyBox.getTextureSkyGradient();
 	m_TextureCubeNightSky = skyBox.getTextureNightSky();
 	m_TextureSun = skyBox.getTextureSun();
 	m_TextureMoon = skyBox.getTextureMoon();
 
-	for (SkyBoxVertexData& v : vertices) {
+	for (int i = 0; i < vertecies.size(); ++i) {
+		m_Buffer[i].vertex = vertecies[i];
+		m_Buffer[i].textureId = (i < 8 ? 0.0f : (i < 11 ? 1.0f : 2.0f));
+	}
+
+	for (int i = 0; i < indicesVertex.size(); ++i) {
+		m_Buffer[indicesVertex[i]].texture = textures[indicesTexture[i]];
+		m_IndexBuffer[i] = indicesVertex[i];
+	}
+	/*for (SkyBoxVertexData& v : vertices) {
 		*m_Buffer = v;
 		++m_Buffer;
 	}
@@ -57,9 +68,9 @@ void SkyBoxRenderEngine::submit(SkyBox& skyBox) {
 	for (unsigned int i : indices) {
 		*m_IndexBuffer = i;
 		++m_IndexBuffer;
-	}
+	}*/
 
-	m_IndexCount = indices.size();
+	m_IndexCount = indicesVertex.size();
 
 	end();
 }

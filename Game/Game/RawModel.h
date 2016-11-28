@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include<vector>
 
@@ -15,5 +15,5 @@ protected:
 public:
 	vector<T>& getVertices() { return m_Vertices; }
 	vector<unsigned int>& getIndices() { return m_Indices; }
-};
+};*/
 

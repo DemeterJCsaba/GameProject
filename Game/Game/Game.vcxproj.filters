@@ -107,14 +107,8 @@
     <ClCompile Include="SkyBoxRenderEngine.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\Graphics\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="TerrainRenderEngine.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files\Graphics\Entity</Filter>
     </ClCompile>
     <ClCompile Include="Maths.cpp">
       <Filter>Source Files\Maths</Filter>
@@ -133,6 +127,12 @@
     </ClCompile>
     <ClCompile Include="GUIImage.cpp">
       <Filter>Source Files\Graphics\Entity\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files\Graphics\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Graphics\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,14 +202,8 @@
     <ClInclude Include="SkyBoxRenderEngine.h">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Source Files\Graphics\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="TerrainRenderEngine.h">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>Source Files\Graphics\Entity</Filter>
     </ClInclude>
     <ClInclude Include="RenderEngine.h">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
@@ -232,14 +226,17 @@
     <ClInclude Include="GUIImage.h">
       <Filter>Source Files\Graphics\Entity\2D</Filter>
     </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>Source Files\Graphics\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\Graphics\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="RawModel3DTextured.h">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="test.vert">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
-    <None Include="test.frag">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
     <None Include="sky.vert">
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
@@ -262,6 +259,12 @@
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
     <None Include="menu3D.frag">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="gui.vert">
+      <Filter>Source Files\Graphics\Shader</Filter>
+    </None>
+    <None Include="gui.frag">
       <Filter>Source Files\Graphics\Shader</Filter>
     </None>
   </ItemGroup>

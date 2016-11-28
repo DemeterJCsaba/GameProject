@@ -7,26 +7,26 @@
 
 using namespace std;
 
-class RawModel3D {
+class RawModel3DTextured {
 protected:
 	vector<vec3> m_Vertices;
 	vector<vec3> m_Normals;
-	vector<vec3> m_Colors;
+	vector<vec2> m_Textures;
 	vector<unsigned int> m_IndicesVertex;
 	vector<unsigned int> m_IndicesNormal;
-	vector<unsigned int> m_IndicesColor;
+	vector<unsigned int> m_IndicesTexture;
 
 	vec3 m_Position;
 	vec3 m_Rotation;
 public:
-	RawModel3D(vec3 postion = vec3(), vec3 rotation = vec3()) :m_Position(postion), m_Rotation(rotation) {}
+	RawModel3DTextured(vec3 postion = vec3(), vec3 rotation = vec3()) :m_Position(postion), m_Rotation(rotation) {}
 	
 	vector<vec3>& getVertices() { return m_Vertices; }
 	vector<vec3>& getNormals() { return m_Normals; }
-	vector<vec3>& getColors() { return m_Colors; }
+	vector<vec2>& getTextures() { return m_Textures; }
 	vector<unsigned int>& getIndicesVertex() { return m_IndicesVertex; }
 	vector<unsigned int>& getIndicesNormal() { return m_IndicesNormal; }
-	vector<unsigned int>& getIndicesColor() { return m_IndicesColor; }
+	vector<unsigned int>& getIndicesTexture() { return m_IndicesTexture; }
 
 	const vec3& getPosition() const { return m_Position; }
 	const vec3& getRotation() const { return m_Rotation; }

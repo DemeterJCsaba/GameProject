@@ -469,12 +469,12 @@ void Entity::Render()
 	glPopMatrix();
 }
 
-RawModel3D<VertexData3D> Entity::loadObj(const char* filename) {
+RawModel3D Entity::loadObj(const char* filename) {
 	//cout << "Loading " << filename << "..." << endl;
 	FILE* file = fopen(filename, "r");
 	if (file == NULL) {
 		//cout << "Load faild " << endl;
-		RawModel3D<VertexData3D> r;
+		RawModel3D r;
 		return r;
 	}
 	char* ch = new char[100];
@@ -524,15 +524,19 @@ RawModel3D<VertexData3D> Entity::loadObj(const char* filename) {
 	fclose(file);
 	delete[] ch;
 	//cout << "Loading done!" << endl;
-	RawModel3D<VertexData3D> r;
-	for (unsigned int i : face)
-		r.getIndices().push_back(i);
+	RawModel3D r;
+	for (unsigned int i : face) {
+		r.getIndicesVertex().push_back(i);
+		r.getIndicesNormal().push_back(i);
+	}
 	for (int i = 0; i < (vert.size())/3; i+=3) {
-		VertexData3D v;
-		v.vertex = vec3(vert[i], vert[i+1], vert[i+2]);
-		v.normal = vec3(0.0,1.0,0.0);
-		v.color = vec3(1.0,0.0,0.0);
-		r.getVertices().push_back(v);
+		//VertexData3D v;
+		r.getVertices().push_back(vec3(vert[i], vert[i + 1], vert[i + 2]));
+		//v.vertex = vec3(vert[i], vert[i+1], vert[i+2]);
+		r.getNormals().push_back(vec3(0.0, 1.0, 0.0));
+		//v.normal = vec3(0.0,1.0,0.0);
+		//v.color = vec3(1.0,0.0,0.0);
+		//r.getVertices().push_back(v);
 	}
 	return r;
 }

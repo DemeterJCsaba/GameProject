@@ -164,6 +164,7 @@
     <ClInclude Include="RawModel.h" />
     <ClInclude Include="RawModel2D.h" />
     <ClInclude Include="RawModel3D.h" />
+    <ClInclude Include="RawModel3DTextured.h" />
     <ClInclude Include="RenderEngine.h" />
     <ClInclude Include="RenderEngine2D.h" />
     <ClInclude Include="RenderEngine3DDynamic.h" />
@@ -192,8 +193,8 @@
     <None Include="sky.vert" />
     <None Include="simple.frag" />
     <None Include="simple.vert" />
-    <None Include="test.frag" />
-    <None Include="test.vert" />
+    <None Include="gui.frag" />
+    <None Include="gui.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

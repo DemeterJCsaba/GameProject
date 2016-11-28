@@ -5,6 +5,7 @@
 
 #include "RenderEngine.h"
 
+#include "VertexData.h"
 #include "GUIImage.h"
 #include "Texture.h"
 
@@ -15,12 +16,17 @@
 #define RENDERER_INDICES_SIZE RENDERER_MAX_SPRITES*3
 
 #define GUI_VERTEX_INDEX 0
-#define GUI_COLOR_INDEX  1
-#define GUI_TEXTURE_INDEX  2
-#define GUI_TEXTUREID_INDEX  3
+#define GUI_TEXTURE_INDEX  1
+#define GUI_TEXTUREID_INDEX  2
 
 class RenderEngine2D: private RenderEngine {
 private:
+	struct VertexData2D {
+		vec2 vertex;
+		vec2 texture;
+		float textureId;
+	};
+
 	VertexData2D* m_VertexBuffer;
 	int* m_IndexBuffer;
 	GLuint m_IndexCount;

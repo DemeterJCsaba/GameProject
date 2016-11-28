@@ -5,11 +5,11 @@
 #include "VertexData.h"
 #include "Texture.h"
 #include "CubeTexture.h"
-#include "RawModel.h"
+#include "RawModel3DTextured.h"
 
 using namespace std;
 
-class SkyBox : public RawModel<SkyBoxVertexData>{
+class SkyBox : public RawModel3DTextured {
 private:
 	float m_SkySize;
 	float m_SunSize;

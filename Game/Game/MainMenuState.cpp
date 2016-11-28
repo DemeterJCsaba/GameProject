@@ -1,7 +1,7 @@
 #include "MainMenuState.h"
 
 MainMenuState::MainMenuState():
-	m_ShaderGUI(ShaderProgram("test")),
+	m_ShaderGUI(ShaderProgram("gui")),
 	m_Shader3D(ShaderProgram("menu3D"))
 {
 	// Temporal

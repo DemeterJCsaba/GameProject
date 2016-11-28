@@ -61,7 +61,7 @@ private://adatatg
 	vec3 m_Pos;
 	vec3 m_Rot;
 
-	RawModel3D<VertexData3D> rawModel;
+	RawModel3D rawModel;
 protected:
 public:
 private://metodusok
@@ -94,9 +94,9 @@ public:
 	void RenderSkeleton(const vector<Joint>& joints);
 
 	bool CheckAnimation(const Animation& animation) const;
-	RawModel3D<VertexData3D> loadObj(const char* fileName);
+	RawModel3D loadObj(const char* fileName);
 
-	RawModel3D<VertexData3D>* getRawModel(){return &rawModel;}
+	RawModel3D* getRawModel(){return &rawModel;}
 	vec3 getPosition() { return m_Pos; }
 	vec3 getRotation() { return m_Rot; }
 };

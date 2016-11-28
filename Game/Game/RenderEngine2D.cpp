@@ -6,12 +6,10 @@ RenderEngine2D::RenderEngine2D() {
 		glBufferData(GL_ARRAY_BUFFER, RENDERER_BUFFER_SIZE, 0, GL_DYNAMIC_DRAW);
 
 		glEnableVertexAttribArray(GUI_VERTEX_INDEX);
-		glEnableVertexAttribArray(GUI_COLOR_INDEX);
 		glEnableVertexAttribArray(GUI_TEXTURE_INDEX);
 		glEnableVertexAttribArray(GUI_TEXTUREID_INDEX);
 	
 		glVertexAttribPointer(GUI_VERTEX_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData2D, VertexData2D::vertex)));
-		glVertexAttribPointer(GUI_COLOR_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData2D, VertexData2D::color)));
 		glVertexAttribPointer(GUI_TEXTURE_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData2D, VertexData2D::texture)));
 		glVertexAttribPointer(GUI_TEXTUREID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData2D, VertexData2D::textureId)));
 		unbindVBO();
@@ -42,8 +40,11 @@ void RenderEngine2D::end() {
 }
 
 void RenderEngine2D::submit(GUIImage& entity) {
-	vector<VertexData2D>& vertices = entity.getVertices();
-	vector<unsigned int>& indices = entity.getIndices();
+	vector<vec2>& vertices = entity.getVertices();
+	vector<vec2>& textures = entity.getTextures();
+	vector<unsigned int>& indicesVertex = entity.getIndicesVertex();
+	vector<unsigned int>& indicesTexture = entity.getIndicesTexture();
+
 	Texture* texture = entity.getTexture();
 	vec2 position = entity.getPosition();
 	
@@ -53,20 +54,22 @@ void RenderEngine2D::submit(GUIImage& entity) {
 		texId = (int)m_Textures.size();
 	}
 
-	for (VertexData2D& v : vertices) {
-		*m_VertexBuffer = v;
-		m_VertexBuffer->vertex.x += position.x;
-		m_VertexBuffer->vertex.y += position.y;
-		m_VertexBuffer->textureId = (float)texId;
-		++m_VertexBuffer;
+	for (int i = 0; i < vertices.size(); ++i) {
+		m_VertexBuffer[i].vertex = vertices[i];
+		m_VertexBuffer[i].vertex += position;
+		m_VertexBuffer[i].textureId = (float)texId;
 	}
 
-	for (unsigned int i : indices) {
-		*m_IndexBuffer = m_VertexCount + i;
-		++m_IndexBuffer;
+	for (int i = 0; i < indicesVertex.size(); ++i) {
+		m_IndexBuffer[i] = m_VertexCount + indicesVertex[i];
+		m_VertexBuffer[indicesVertex[i]].texture = textures[indicesTexture[i]];
 	}
-	m_IndexCount += (int)indices.size();
+
+	m_VertexBuffer += vertices.size();
 	m_VertexCount += (int)vertices.size();
+
+	m_IndexBuffer += indicesVertex.size();
+	m_IndexCount += (int)indicesVertex.size();
 }
 
 void RenderEngine2D::flush() {

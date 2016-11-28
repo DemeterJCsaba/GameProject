@@ -41,33 +41,42 @@ void RenderEngine3DDynamic::end() {
 	unbindIBO();
 }
 
-void RenderEngine3DDynamic::submit(RawModel3D<VertexData3D>* entity) {
+void RenderEngine3DDynamic::submit(RawModel3D* entity) {
 	m_Entities.push_back(entity);
 }
 
 void RenderEngine3DDynamic::flush(vec2 pos) {
 	begin();
-	for (RawModel3D<VertexData3D>* e : m_Entities) {
+	for (RawModel3D* e : m_Entities) {
+		vector<vec3>& vertices = e->getVertices();
+		vector<vec3>& normals = e->getNormals();
+		vector<vec3>& colors = e->getColors();
+		vector<unsigned int>& indicesVertex = e->getIndicesVertex();
+		vector<unsigned int>& indicesNormal = e->getIndicesNormal();
+		vector<unsigned int>& indicesColor = e->getIndicesColor();
+
 		vec3 pos = e->getPosition();
 		vec3 rot = e->getRotation();
 		mat4 matrix = mat4::translation(pos.x, pos.y, pos.z)*mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);
 		
-		for (VertexData3D& v : e->getVertices()) {
-			*m_Buffer = v;
-			m_Buffer->vertex = matrix*m_Buffer->vertex;
-			++m_Buffer;
+		for (int i = 0; i < vertices.size(); ++i) {
+			m_Buffer[i].vertex = matrix*vertices[i];
 		}
 
-		for (unsigned int i : e->getIndices()) {
-			int ind = (i >= 0 ? i : 0);
-			ind = (ind < e->getIndices().size() ? ind : 0);
-			*m_IndexBuffer = m_VertexCount + ind;
-			++m_IndexBuffer;
-			++m_IndexCount;
+		for (int i = 0; i < indicesVertex.size(); ++i) {
+			int ind = indicesVertex[i];
+			ind = ind < 0 ? 0 : ind;
+			ind = ind >= vertices.size() ? vertices.size() - 1 : ind;
+			m_IndexBuffer[i] = m_VertexCount + ind;
+			m_Buffer[ind].normal = normals[ind];;// normals[indicesNormal[i]];
+			m_Buffer[ind].color = vec3(1.0f, 0.0f, 1.0f);// colors[indicesColor[i]];
 		}
 
-		m_IndexCount += e->getIndices().size();
-		m_VertexCount += e->getVertices().size();
+		m_Buffer += vertices.size();
+		m_VertexCount += (int)vertices.size();
+
+		m_IndexBuffer += indicesVertex.size();
+		m_IndexCount += (int)indicesVertex.size();
 	}
 	end();
 

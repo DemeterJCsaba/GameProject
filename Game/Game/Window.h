@@ -5,6 +5,7 @@
 #include <GLFW\glfw3.h>
 
 #include "SettingsManager.h"
+#include "FPSManager.h"
 
 #define MAX_KEYS	512
 #define MAX_BUTTONS 8

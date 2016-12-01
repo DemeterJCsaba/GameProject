@@ -1,5 +1,5 @@
-#version 150
-
+#version 330 core
+ 
 layout (triangles) in;
 layout (triangle_strip, max_vertices=3) out;
 
@@ -28,6 +28,8 @@ void main(void){
 	float t = time/360.0;
 	vec3 fogColor = texture(SkyGradient,vec2(t,0.02)).xyz;
 	vec3 diffuse = brightness * fogColor;
+	
+	//vec3 tmp = mix(fogColor,diffuse * vec3(1,0,0),0.5);
 
 	for(int i = 0; i < gl_in.length(); i++){
 		gl_Position = gl_in[i].gl_Position;

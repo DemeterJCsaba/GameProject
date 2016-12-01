@@ -115,7 +115,7 @@ void Entity::loadMesh(const int version, const string fileMesh, const string fol
 				meshLn >> word;
 				if (word == "shader") {
 					meshLn >> word;
-					meshP.m_Texture = new Texture("Resources\\Entitys\\" + folder + "\\" + word);
+					meshP.m_Texture = new Texture2D("Resources\\Entitys\\" + folder + "\\" + word);
 				}
 				else if (word == "vert") {
 					Vertex vertex;

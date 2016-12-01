@@ -1,9 +1,8 @@
 #include "GUIImage.h"
 
 GUIImage::GUIImage(vec2 position, vec2 size,Texture* texture):
-	RawModel2D(position),
-	m_Size(size),
-	m_Texture(texture)
+	RawModel2D(texture,position),
+	m_Size(size)
 {
 	m_Vertices.push_back(vec2(0.0f, 0.0f));
 	m_Vertices.push_back(vec2(0.0f, 0.0f + m_Size.y));

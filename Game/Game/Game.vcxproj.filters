@@ -42,11 +42,20 @@
     <Filter Include="Source Files\Graphics\Texture">
       <UniqueIdentifier>{ae6edbaf-b28a-45e0-9bc7-d1f35af378a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Graphics\Game">
-      <UniqueIdentifier>{f1cb4d3f-dfdf-44ce-a4e9-93474b519f73}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Graphics\Entity\2D">
       <UniqueIdentifier>{8538df4f-f1c2-4191-b0f2-f5dce9409b90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{f1cb4d3f-dfdf-44ce-a4e9-93474b519f73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Shader\ShaderFiles">
+      <UniqueIdentifier>{423be4c6-ae1e-4c34-ae85-f9abdca06263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\RenderEngine\Abstraction">
+      <UniqueIdentifier>{b9af5334-fbfd-4778-91f2-17c9b4310b1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\GUIElements">
+      <UniqueIdentifier>{79b3acb9-16e3-482a-bd31-99e955972984}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +74,6 @@
     <ClCompile Include="MainMenuState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="RenderEngine2D.cpp">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClCompile>
     <ClCompile Include="mat4.cpp">
       <Filter>Source Files\Maths</Filter>
     </ClCompile>
@@ -82,9 +88,6 @@
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Source Files\Graphics\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files\Graphics\Texture</Filter>
     </ClCompile>
     <ClCompile Include="ImageLoader.cpp">
       <Filter>Source Files\Graphics\Texture</Filter>
@@ -101,38 +104,53 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\Graphics\Entity\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="CubeTexture.cpp">
-      <Filter>Source Files\Graphics\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="SkyBoxRenderEngine.cpp">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClCompile>
     <ClCompile Include="TerrainRenderEngine.cpp">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
     <ClCompile Include="Maths.cpp">
       <Filter>Source Files\Maths</Filter>
     </ClCompile>
-    <ClCompile Include="RenderEngine.cpp">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderEngine3DDynamic.cpp">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SkyBox.cpp">
-      <Filter>Source Files\Graphics\Game</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="GUIImage.cpp">
       <Filter>Source Files\Graphics\Entity\2D</Filter>
     </ClCompile>
     <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files\Graphics\Game</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\Graphics\Game</Filter>
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine.cpp">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine2D.cpp">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine3D.cpp">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine3DTextured.cpp">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderEngine3DDynamic.cpp">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCube.cpp">
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\Game\GUIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIManager.cpp">
+      <Filter>Source Files\Game\GUIElements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -150,9 +168,6 @@
     </ClInclude>
     <ClInclude Include="MainMenuState.h">
       <Filter>Source Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine2D.h">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClInclude>
     <ClInclude Include="VertexData.h">
       <Filter>Source Files\Graphics</Filter>
@@ -175,17 +190,11 @@
     <ClInclude Include="ShaderProgram.h">
       <Filter>Source Files\Graphics\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Source Files\Graphics\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="ImageLoader.h">
       <Filter>Source Files\Graphics\Texture</Filter>
     </ClInclude>
     <ClInclude Include="SinglePlayerState.h">
       <Filter>Source Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="RawModel.h">
-      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Source Files\Graphics\Entity\Entity</Filter>
@@ -196,23 +205,11 @@
     <ClInclude Include="SettingsManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CubeTexture.h">
-      <Filter>Source Files\Graphics\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyBoxRenderEngine.h">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClInclude>
     <ClInclude Include="TerrainRenderEngine.h">
       <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClInclude>
-    <ClInclude Include="RenderEngine.h">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine3DDynamic.h">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClInclude>
     <ClInclude Include="SkyBox.h">
-      <Filter>Source Files\Graphics\Game</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Source Files</Filter>
@@ -227,45 +224,81 @@
       <Filter>Source Files\Graphics\Entity\2D</Filter>
     </ClInclude>
     <ClInclude Include="Terrain.h">
-      <Filter>Source Files\Graphics\Game</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Source Files\Graphics\Game</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="RawModel3DTextured.h">
       <Filter>Source Files\Graphics\Entity\RawModel</Filter>
     </ClInclude>
+    <ClInclude Include="RenderEngine.h">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine2D.h">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine3D.h">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine3DTextured.h">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine3DDynamic.h">
+      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCube.h">
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Source Files\Game\GUIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIManager.h">
+      <Filter>Source Files\Game\GUIElements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="sky.vert">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
-    <None Include="sky.frag">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
-    <None Include="simple.vert">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
-    <None Include="simple.frag">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
-    <None Include="simple.geom">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
     <None Include="menu3D.vert">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
-    <None Include="menu3D.geom">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
-    <None Include="menu3D.frag">
-      <Filter>Source Files\Graphics\Shader</Filter>
-    </None>
-    <None Include="gui.vert">
-      <Filter>Source Files\Graphics\Shader</Filter>
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
     </None>
     <None Include="gui.frag">
-      <Filter>Source Files\Graphics\Shader</Filter>
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="gui.vert">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="menu3D.frag">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="menu3D.geom">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="simple.frag">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="simple.geom">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="simple.vert">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="sky.frag">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="sky.vert">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="tmp.vert">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
+    </None>
+    <None Include="tmp.frag">
+      <Filter>Source Files\Graphics\Shader\ShaderFiles</Filter>
     </None>
   </ItemGroup>
 </Project>

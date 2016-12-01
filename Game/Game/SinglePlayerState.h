@@ -6,17 +6,19 @@
 #include "StateManager.h"
 #include "Window.h"
 
-#include "SkyBoxRenderEngine.h"
+#include "RenderEngine3DTextured.h"
+#include "SkyBox.h"
 #include "ShaderProgram.h"
 #include "Camera.h"
+#include "Texture2D.h"
 
 #include "TerrainRenderEngine.h"
 
-#include"Entity.h"
+#include "Entity.h"
 
 class SinglePlayerState : public IState {
 private:
-	SkyBoxRenderEngine m_SkyRender;
+	RenderEngine3DTextured m_SkyBoxRenderer;
 	SkyBox m_SkyBox;
 	ShaderProgram m_SkyShader;
 

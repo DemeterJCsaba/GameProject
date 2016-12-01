@@ -4,20 +4,8 @@
 #include <vector>
 
 #include "RenderEngine.h"
-
-#include "VertexData.h"
-#include "GUIImage.h"
+#include "RawModel2D.h"
 #include "Texture.h"
-
-#define RENDERER_MAX_SPRITES  300000
-#define RENDERER_VERTEX_SIZE  sizeof(VertexData2D)
-#define RENDERER_SPRITE_SIZE  RENDERER_VERTEX_SIZE*3
-#define RENDERER_BUFFER_SIZE  RENDERER_SPRITE_SIZE*RENDERER_MAX_SPRITES
-#define RENDERER_INDICES_SIZE RENDERER_MAX_SPRITES*3
-
-#define GUI_VERTEX_INDEX 0
-#define GUI_TEXTURE_INDEX  1
-#define GUI_TEXTUREID_INDEX  2
 
 class RenderEngine2D: private RenderEngine {
 private:
@@ -26,17 +14,25 @@ private:
 		vec2 texture;
 		float textureId;
 	};
+	const int VERTEX_INDEX = 0;
+	const int TEXTURE_INDEX = 1;
+	const int TEXTUREID_INDEX = 2;
+	int m_MaxVertexSize;
 
 	VertexData2D* m_VertexBuffer;
-	int* m_IndexBuffer;
+	unsigned int* m_IndexBuffer;
 	GLuint m_IndexCount;
 	GLuint m_VertexCount;
 
+	bool m_DisableDepth;
+
 	vector<Texture*> m_Textures;
 public:
-	RenderEngine2D();
+	RenderEngine2D(bool disableDepth = false, int maxVertexSize = 300);
+
 	void begin();
-	void submit(GUIImage& entity);
 	void end();
+	void submit(RawModel2D& model);
+
 	void flush();
 };

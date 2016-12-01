@@ -1,7 +1,7 @@
-#include "CubeTexture.h"
+#include "TextureCube.h"
 
-CubeTexture::CubeTexture(string filename):
-	m_Name(filename)
+TextureCube::TextureCube(string filename):
+	Texture(filename)
 {
 	int extLen = 0;
 	if (filename.size()>4 && filename[filename.size() - 4] == '.') extLen = 3;
@@ -47,14 +47,10 @@ CubeTexture::CubeTexture(string filename):
 	unbind();
 }
 
-CubeTexture::~CubeTexture() {
-	glDeleteTextures(1, &m_TextureID);
-}
-
-void CubeTexture::bind() const {
+void TextureCube::bind() const {
 	glBindTexture(GL_TEXTURE_CUBE_MAP, m_TextureID);
 }
 
-void CubeTexture::unbind() const {
+void TextureCube::unbind() const {
 	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 }

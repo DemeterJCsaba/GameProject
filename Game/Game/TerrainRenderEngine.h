@@ -6,7 +6,7 @@
 
 #include "VertexData.h"
 #include "Terrain.h"
-#include "Texture.h"
+#include "Texture2D.h"
 
 #define MIN_BLOCK_SIZE 8
 #define MAX_BLOCK_SIZE 256

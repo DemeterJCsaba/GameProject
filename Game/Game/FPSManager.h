@@ -3,29 +3,40 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <iomanip>
 
-#define SEC_TO_MILISEC 1000.0
+#include <string>
+#include <map>
 
 using namespace std;
 
 class FPSManager {
 private:
+	static FPSManager INSTANCE;
+public:
+	static FPSManager& getInstance();
+
+private:
 	int m_FPS;
 	const int SEC;
+	
+	float m_AverageFrameTimeMilliseconds;
 
 	clock_t m_BeginFrame;
 	clock_t m_EndFrame;
 	clock_t m_DeltaTime;
+	
+	clock_t m_DeltaTimeForFrameCount;
 	unsigned int m_FrameCount;
 
-	bool m_EnableDelay;
-	float m_AverageFrameTimeMilliseconds;
-	float m_Temp;
-	float m_Sleep;
-
-	bool m_EnableLength;
+	map<string, chrono::steady_clock::time_point> startTime;
+	map<string, chrono::duration<double, std::milli>> elapsedTime;
+	
+	FPSManager(int FPS);
 public:
-	FPSManager(int FPS, bool enableDelay = true, bool enableLength = false);
 	void begin();
 	void end();
+
+	void start(string name);
+	void stop(string name);
 };

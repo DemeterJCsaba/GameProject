@@ -64,7 +64,9 @@ bool Window::init() {
 	}
 	glEnable(GL_DEPTH_TEST);
 
-	//glCullFace(GL_FRONT);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_FRONT);
+	glFrontFace(GL_CCW);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -96,10 +98,16 @@ void Window::Update() {
 }
 
 void Window::Render() {
-	GetError();
+	//FPSManager::getInstance().start("GetError");
+	//GetError();
+	//FPSManager::getInstance().stop("GetError");
 
+	FPSManager::getInstance().start("glfwPollEvents");
 	glfwPollEvents();
+	FPSManager::getInstance().stop("glfwPollEvents");
+	FPSManager::getInstance().start("glfwSwapBuffers");
 	glfwSwapBuffers(m_Window);
+	FPSManager::getInstance().stop("glfwSwapBuffers");
 }
 
 void Window::Close() {

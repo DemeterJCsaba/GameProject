@@ -1,21 +1,24 @@
 #include "RenderEngine2D.h"
 
-RenderEngine2D::RenderEngine2D() {
+RenderEngine2D::RenderEngine2D(bool disableDepth, int maxVertexSize):
+	m_MaxVertexSize(maxVertexSize),
+	m_DisableDepth(disableDepth)
+{
 	bindVAO();
 		bindVBO();
-		glBufferData(GL_ARRAY_BUFFER, RENDERER_BUFFER_SIZE, 0, GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(VertexData2D)*m_MaxVertexSize, 0, GL_DYNAMIC_DRAW);
 
-		glEnableVertexAttribArray(GUI_VERTEX_INDEX);
-		glEnableVertexAttribArray(GUI_TEXTURE_INDEX);
-		glEnableVertexAttribArray(GUI_TEXTUREID_INDEX);
+		glEnableVertexAttribArray(VERTEX_INDEX);
+		glEnableVertexAttribArray(TEXTURE_INDEX);
+		glEnableVertexAttribArray(TEXTUREID_INDEX);
 	
-		glVertexAttribPointer(GUI_VERTEX_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData2D, VertexData2D::vertex)));
-		glVertexAttribPointer(GUI_TEXTURE_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData2D, VertexData2D::texture)));
-		glVertexAttribPointer(GUI_TEXTUREID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData2D, VertexData2D::textureId)));
+		glVertexAttribPointer(VERTEX_INDEX, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData2D), (const GLvoid*)(offsetof(VertexData2D, VertexData2D::vertex)));
+		glVertexAttribPointer(TEXTURE_INDEX, 2, GL_FLOAT, GL_FALSE, sizeof(VertexData2D), (const GLvoid*)(offsetof(VertexData2D, VertexData2D::texture)));
+		glVertexAttribPointer(TEXTUREID_INDEX, 1, GL_FLOAT, GL_FALSE, sizeof(VertexData2D), (const GLvoid*)(offsetof(VertexData2D, VertexData2D::textureId)));
 		unbindVBO();
 	
 		bindIBO();
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, RENDERER_INDICES_SIZE, NULL, GL_DYNAMIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*m_MaxVertexSize*3, NULL, GL_DYNAMIC_DRAW);
 		unbindIBO();
 	unbindVAO();
 }
@@ -25,10 +28,11 @@ void RenderEngine2D::begin() {
 	m_VertexBuffer = (VertexData2D*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 
 	bindIBO();
-	m_IndexBuffer = (int*)glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_WRITE_ONLY);
+	m_IndexBuffer = (unsigned int*)glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_WRITE_ONLY);
 
 	m_IndexCount = 0;
 	m_VertexCount = 0;
+	m_Textures.clear();
 }
 
 void RenderEngine2D::end() {
@@ -39,14 +43,14 @@ void RenderEngine2D::end() {
 	unbindIBO();
 }
 
-void RenderEngine2D::submit(GUIImage& entity) {
-	vector<vec2>& vertices = entity.getVertices();
-	vector<vec2>& textures = entity.getTextures();
-	vector<unsigned int>& indicesVertex = entity.getIndicesVertex();
-	vector<unsigned int>& indicesTexture = entity.getIndicesTexture();
+void RenderEngine2D::submit(RawModel2D& model) {
+	vector<vec2>& vertices = model.getVertices();
+	vector<vec2>& textures = model.getTextures();
+	vector<unsigned int>& indicesVertex = model.getIndicesVertex();
+	vector<unsigned int>& indicesTexture = model.getIndicesTexture();
 
-	Texture* texture = entity.getTexture();
-	vec2 position = entity.getPosition();
+	Texture* texture = model.getTexture();
+	vec2 position = model.getPosition();
 	
 	int texId = 0;
 	if (texture != nullptr) {
@@ -80,11 +84,11 @@ void RenderEngine2D::flush() {
 
 	bindVAO();
 	bindIBO();
-	disableDepth();
+	if (m_DisableDepth) disableDepth();
 
 	glDrawElements(GL_TRIANGLES, m_IndexCount, GL_UNSIGNED_INT, NULL);
 
-	enableDepth();
+	if (m_DisableDepth) enableDepth();
 	bindIBO();
 	unbindVAO();
 }

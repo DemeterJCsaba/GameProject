@@ -7,6 +7,10 @@
 #include "StateManager.h"
 #include "SinglePlayerState.h"
 #include "RenderEngine3DDynamic.h"
+#include "GUIManager.h"
+
+//void startGame();
+//void exitGame();
 
 class MainMenuState : public IState {
 private:
@@ -17,6 +21,10 @@ private:
 	ShaderProgram m_Shader3D;
 
 	Entity* player;
+
+	GUIManager m_GUIManager;
+	Button m_StartButton;
+	Button m_ExitButton;
 public:
 	MainMenuState();
 	~MainMenuState();

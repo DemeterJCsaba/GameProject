@@ -18,8 +18,8 @@ in DATA{
 layout (location = 0) out vec4 color;
 
 void main(void){
-	if(fs_in.texId > 0.5){ // Sun and Moon
-		if(fs_in.texId < 1.5)
+	if(fs_in.texId > 2.5){ // Sun and Moon
+		if(fs_in.texId < 3.5)
 			color = texture(sunTexture,fs_in.PlanetTexture);
 		else
 			color = texture(moonTexture,fs_in.PlanetTexture);

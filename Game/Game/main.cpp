@@ -8,14 +8,12 @@ void main() {
 	//FreeConsole();
 
 	SettingsManager::LoadSettings();
-
 	Window::getInstance();
-	FPSManager fps(60);
-
 	StateManager::getInstance().addState(new MainMenuState());
 
 	while (!Window::getInstance().IsClosed()) {
-		fps.begin();
+		FPSManager::getInstance().begin();
+
 		Window::getInstance().Clear();
 		Window::getInstance().Update();
 
@@ -23,7 +21,8 @@ void main() {
 		StateManager::getInstance().getCurrentState()->render();
 
 		Window::getInstance().Render();
-		fps.end();
+
+		FPSManager::getInstance().end();
 	}
 
 	while (StateManager::getInstance().closeCurrentState());

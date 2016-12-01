@@ -6,7 +6,7 @@
 
 #include"Animation.h"
 #include"Maths.h"
-#include"Texture.h"
+#include"Texture2D.h"
 #include"Utility.h"
 #include"RawModel3D.h"
 

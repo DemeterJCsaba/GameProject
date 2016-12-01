@@ -1,7 +1,7 @@
-#include "Texture.h"
+#include "Texture2D.h"
 
-Texture::Texture(const string filename):
-	m_Name(filename)
+Texture2D::Texture2D(const string filename):
+	Texture(filename)
 {
 	BYTE* m_Pixels = LoadImage(filename.c_str(), &m_Width, &m_Height, &m_Bits);
 
@@ -22,14 +22,10 @@ Texture::Texture(const string filename):
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-Texture::~Texture() {
-	glDeleteTextures(1, &m_TextureID);
-}
-
-void Texture::bind() const {
+void Texture2D::bind() const {
 	glBindTexture(GL_TEXTURE_2D, m_TextureID);
 }
 
-void Texture::unbind() const {
+void Texture2D::unbind() const {
 	glBindTexture(GL_TEXTURE_2D, 0);
 }

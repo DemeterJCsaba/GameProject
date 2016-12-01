@@ -3,7 +3,6 @@
 #include<vector>
 
 #include "Maths.h"
-#include "RawModel.h"
 
 using namespace std;
 

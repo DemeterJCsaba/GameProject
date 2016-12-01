@@ -19,7 +19,7 @@ TerrainRenderEngine::TerrainRenderEngine(unsigned int blockSize):
 	m_IndexMidleBottom = 7 * block;
 	m_IndexRightBottom = 8 * block;
 
-	m_SkyGradient = new Texture("Resources\\Images\\SkyGradient.png");
+	m_SkyGradient = new Texture2D("Resources\\Images\\SkyGradient.png");
 }
 
 void TerrainRenderEngine::init() {
@@ -159,7 +159,7 @@ void TerrainRenderEngine::flush(vec2 position) {
 			end();
 		}
 	}
-
+	
 	glActiveTexture(GL_TEXTURE0);
 	m_SkyGradient->bind();
 
@@ -266,11 +266,11 @@ void TerrainRenderEngine::updateBlock(int x, int y,const int ind) {
 			m_Buffer[index + 5].normal = norm2;
 
 			m_IndexBuffer[index + 0] = index + 0;
-			m_IndexBuffer[index + 1] = index + 1;
-			m_IndexBuffer[index + 2] = index + 2;
+			m_IndexBuffer[index + 1] = index + 2;
+			m_IndexBuffer[index + 2] = index + 1;
 			m_IndexBuffer[index + 3] = index + 3;
-			m_IndexBuffer[index + 4] = index + 4;
-			m_IndexBuffer[index + 5] = index + 5;
+			m_IndexBuffer[index + 4] = index + 5;
+			m_IndexBuffer[index + 5] = index + 4;
 
 			indexCount += 6;
 		}

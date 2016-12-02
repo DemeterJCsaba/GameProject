@@ -27,8 +27,6 @@ private:
 	double m_Time;
 	vec3 m_SunPosition;
 
-	double tmpx, tmpy;
-
 	TerrainRenderEngine m_TerrainRenderer;
 	Terrain m_Terrain;
 	ShaderProgram m_Shader;
@@ -38,4 +36,7 @@ public:
 
 	void update();
 	void render();
+
+	void resume();
+	void pause();
 };

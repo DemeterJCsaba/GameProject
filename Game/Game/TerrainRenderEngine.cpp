@@ -231,7 +231,16 @@ void TerrainRenderEngine::updateBlock(int x, int y,const int ind) {
 			vec3 d = vec3((i + 1)*s, m_HeightBuffer[ii + 1][jj], j*s);
 			vec3 norm1 = norm(a, b, c);
 			vec3 norm2 = norm(a, c, d);
-			vec3 color = vec3(0.2705, 0.545, 0.0);
+			norm1.normalize();
+			norm2.normalize();
+
+			//vec3 color = a.y>50.0f ? vec3(1, 1, 1) : (a.y>30.0f ? vec3(0.5f, 0.5f, 0.5f) : (norm1.y<0.9 ? vec3(0.2851f, 0.1914f, 0.1093f) : vec3(0.2705, 0.545, 0.0)));
+			float tmp = (norm1.y*8.0f-6.5f);
+			tmp = tmp < 0 ? 0 : (tmp>1?1:tmp);
+			vec3 color1 = a.y>50.0f? vec3(1,1,1):(a.y>30.0f? vec3(0.5f,0.5f,0.5f):(vec3::mix(vec3(0.2705, 0.545, 0.0),vec3(0.2851f,0.1914f,0.1093f),tmp) ));
+			tmp = (norm2.y*8.0f - 6.5f);
+			tmp = tmp < 0 ? 0 : (tmp>1 ? 1 : tmp);
+			vec3 color2 = d.y>50.0f ? vec3(1, 1, 1) : (d.y>30.0f ? vec3(0.5f, 0.5f, 0.5f) : (vec3::mix(vec3(0.2705, 0.545, 0.0), vec3(0.2851f, 0.1914f, 0.1093f), tmp)));
 
 			if (((i < 0 ? -i : i) + (j < 0 ? -j : j)) % 2 == 0) {
 				m_Buffer[index + 0].vertex = a;
@@ -251,12 +260,12 @@ void TerrainRenderEngine::updateBlock(int x, int y,const int ind) {
 				m_Buffer[index + 5].vertex = a;
 			}
 
-			m_Buffer[index + 0].color = color;
-			m_Buffer[index + 1].color = color;
-			m_Buffer[index + 2].color = color;
-			m_Buffer[index + 3].color = color;
-			m_Buffer[index + 4].color = color;
-			m_Buffer[index + 5].color = color;
+			m_Buffer[index + 0].color = color1;
+			m_Buffer[index + 1].color = color1;
+			m_Buffer[index + 2].color = color1;
+			m_Buffer[index + 3].color = color2;
+			m_Buffer[index + 4].color = color2;
+			m_Buffer[index + 5].color = color2;
 
 			m_Buffer[index + 0].normal = norm1;
 			m_Buffer[index + 1].normal = norm1;

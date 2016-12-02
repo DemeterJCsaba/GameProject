@@ -22,10 +22,11 @@ void main() {
 
 		Window::getInstance().Render();
 
+		StateManager::getInstance().Update();
 		FPSManager::getInstance().end();
 	}
 
-	while (StateManager::getInstance().closeCurrentState());
+	StateManager::getInstance().closeAll();
 
 	SettingsManager::SaveSettings();
 }

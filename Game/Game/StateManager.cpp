@@ -5,7 +5,9 @@ StateManager& StateManager::getInstance() {
 	return s_Instance;
 }
 
-StateManager::StateManager() {}
+StateManager::StateManager() {
+	m_Close = 0;
+}
 
 // Returns the current state 
 IState* StateManager::getCurrentState() {
@@ -19,15 +21,28 @@ IState* StateManager::getCurrentState() {
 void StateManager::addState(IState* state) {
 	if (state != nullptr)
 		m_Stack.push_back(state);
+	if (m_Stack.size() > 0) m_Stack[m_Stack.size() - 1]->pause();
+	state->resume();
+}
+
+void StateManager::Update() {
+	for (int i = 0; i < m_Close; ++i) {
+		if (m_Stack.size() > 0) {
+			IState* state = m_Stack[m_Stack.size() - 1];
+			m_Stack.pop_back();
+			state->pause();
+			delete state;
+		}
+	}
+	m_Close = 0;
+	if (m_Stack.size() > 0) m_Stack[m_Stack.size() - 1]->resume();
 }
 
 // Close the curret state
-bool StateManager::closeCurrentState() {
-	if (m_Stack.size() > 0) {
-		IState* state = m_Stack[m_Stack.size() - 1];
-		m_Stack.pop_back();
-		delete state;
-		return true;
-	}
-	return false;
+void StateManager::closeCurrentState(int count) {
+	m_Close = count;
+}
+
+void StateManager::closeAll() {
+	m_Close = m_Stack.size();
 }

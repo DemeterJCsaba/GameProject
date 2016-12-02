@@ -31,4 +31,7 @@ public:
 
 	void update();
 	void render();
+
+	void resume();
+	void pause();
 };

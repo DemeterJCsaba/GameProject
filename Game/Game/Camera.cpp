@@ -2,7 +2,10 @@
 
 Camera* Camera::current = nullptr;
 
-Camera::Camera() {
+Camera::Camera(Terrain* terrain, float distance):
+	m_Terrain(terrain),
+	m_Distance(distance)
+{
 	m_Position = vec3(0, 0, 0);
 	m_Rotation = vec3(0, 0, 0);
 
@@ -44,6 +47,13 @@ void Camera::update() {
 		if (Window::getInstance().getKeyboarPressed(GLFW_KEY_D)) {
 			m_Position.x += d2x;
 			m_Position.z += d2y;
+		}
+	}
+
+	if (m_Terrain != nullptr) {
+		float height = m_Terrain->getHeight(m_Position.x / m_Terrain->getSize(), m_Position.z / m_Terrain->getSize());
+		if (m_Position.y < height+1) {
+			m_Position.y = height+1;
 		}
 	}
 }

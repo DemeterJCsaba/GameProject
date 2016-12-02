@@ -5,7 +5,8 @@ SinglePlayerState::SinglePlayerState():
 	m_SkyShader(ShaderProgram("sky")),
 	m_Terrain(Terrain(12345,5)),
 	m_TerrainRenderer(TerrainRenderEngine(150)),
-	m_Shader(ShaderProgram("tmp"))
+	m_Shader(ShaderProgram("tmp")),
+	m_Camera(Camera(&m_Terrain))
 {
 	m_SkyBoxRenderer.begin();
 	m_SkyBoxRenderer.addTexture(new Texture2D("Resources\\Images\\SkyGradient.png"));
@@ -49,7 +50,7 @@ SinglePlayerState::~SinglePlayerState() {
 
 void SinglePlayerState::update() {
 	m_SunPosition = vec3(0, sin(toRadian(m_Time)), cos(toRadian(m_Time)));
-	m_Time = m_Time + 0.2;
+	m_Time = m_Time + 0.0002;
 	m_Time = m_Time > 360 ? m_Time - 360 : m_Time;
 
 	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_ESCAPE)) {
@@ -88,4 +89,12 @@ void SinglePlayerState::render() {
 	m_Shader.setUniform1f("time", m_Time);
 	m_TerrainRenderer.flush(Camera::current->getVerPos());
 	m_Shader.disable();
+}
+
+void SinglePlayerState::resume() {
+
+}
+
+void SinglePlayerState::pause() {
+
 }

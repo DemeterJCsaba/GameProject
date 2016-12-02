@@ -14,10 +14,14 @@ public:
 
 private:
 	vector<IState*> m_Stack;
+	int m_Close;
 
 	StateManager();
 public:
 	IState* getCurrentState();
 	void addState(IState* state);
-	bool closeCurrentState();
+	void Update();
+	void closeCurrentState(int count = 1); 
+	void closeAll();
+private:
 };

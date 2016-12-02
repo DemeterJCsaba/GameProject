@@ -51,9 +51,7 @@ MainMenuState::~MainMenuState() {
 }
 
 void MainMenuState::update() {
-	player->getRawModel()->setPosition(vec3(2.0f, -0.5f, -2.0f));
 	player->getRawModel()->addRotation(vec3(0.0f,0.1f,0.0f));
-
 	m_GUIManager.execute();
 }
 
@@ -69,4 +67,11 @@ void MainMenuState::render() {
 	m_Shader3D.disable();
 }
 
+void MainMenuState::resume() {
+	player->getRawModel()->setPosition(vec3(2.0f, -0.5f, -2.0f));
+}
+
+void MainMenuState::pause() {
+
+}
 

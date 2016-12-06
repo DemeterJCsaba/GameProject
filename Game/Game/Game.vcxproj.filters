@@ -57,6 +57,9 @@
     <Filter Include="Source Files\Game\GUIElements">
       <UniqueIdentifier>{79b3acb9-16e3-482a-bd31-99e955972984}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Collision">
+      <UniqueIdentifier>{065953ae-ca51-493e-a77d-4c457f454a67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

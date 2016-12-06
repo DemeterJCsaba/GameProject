@@ -8,7 +8,7 @@ Camera::Camera(Terrain* terrain, float distance):
 {
 	m_Position = vec3(0, 0, 0);
 	m_Rotation = vec3(0, 0, 0);
-
+	
 	m_Speed = 0.3f;
 }
 

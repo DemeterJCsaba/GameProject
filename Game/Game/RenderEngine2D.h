@@ -32,7 +32,7 @@ public:
 
 	void begin();
 	void end();
-	void submit(RawModel2D& model);
+	void submit(RawModel2D* model);
 
 	void flush();
 };

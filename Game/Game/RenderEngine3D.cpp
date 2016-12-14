@@ -1,6 +1,7 @@
 #include "RenderEngine3D.h"
 
 RenderEngine3D::RenderEngine3D(bool disableDepth, int maxVertexSize):
+	RenderEngine(),
 	m_MaxVertexSize(maxVertexSize),
 	m_DisableDepth(disableDepth)
 {
@@ -42,16 +43,23 @@ void RenderEngine3D::end() {
 	unbindIBO();
 }
 
-void RenderEngine3D::submit(RawModel3D& model) {
-	vector<vec3>& vertices = model.getVertices();
-	vector<vec3>& normals = model.getNormals();
-	vector<vec3>& colors = model.getColors();
-	vector<unsigned int>& indicesVertex = model.getIndicesVertex();
-	vector<unsigned int>& indicesNormal = model.getIndicesNormal();
-	vector<unsigned int>& indicesColor = model.getIndicesColor();
+void RenderEngine3D::submit(RawModel3D* model) {
+	vector<vec3>& vertices = model->getVertices();
+	vector<vec3>& normals = model->getNormals();
+	vector<vec3>& colors = model->getColors();
+	vector<unsigned int>& indicesVertex = model->getIndicesVertex();
+	vector<unsigned int>& indicesNormal = model->getIndicesNormal();
+	vector<unsigned int>& indicesColor = model->getIndicesColor();
 
-	vec3 pos = model.getPosition();
-	vec3 rot = model.getRotation();
+	/*if (vertices.size() == 0) vertices.push_back(vec3());
+	if (normals.size() == 0) normals.push_back(vec3());
+	if (colors.size() == 0) colors.push_back(vec3());
+	if (indicesVertex.size() == 0) indicesVertex.push_back(0);
+	if (indicesNormal.size() == 0) indicesNormal.push_back(0);
+	if (indicesColor.size() == 0) indicesColor.push_back(0);*/
+
+	vec3 pos = model->getPosition();
+	vec3 rot = model->getRotation();
 	mat4 matrix = mat4::translation(pos.x, pos.y, pos.z)*mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);
 
 	for (int i = 0; i < vertices.size(); ++i) {
@@ -59,14 +67,26 @@ void RenderEngine3D::submit(RawModel3D& model) {
 	}
 
 	for (int i = 0; i < indicesVertex.size(); ++i) {
-		m_IndexBuffer[i] = m_VertexCount + indicesVertex[i];
-		int tmp = indicesVertex[i] < 0 ? 0 : indicesVertex[i];
-		m_VertexBuffer[tmp].normal = vec3(0, 1, 0); //normals[indicesNormal[i]];
-		m_VertexBuffer[tmp].color = vec3(1,0,1);// colors[indicesColor[i]];
-		//m_VertexBuffer[indicesVertex[i]].normal = normals[indicesNormal[i]];
-		//m_VertexBuffer[indicesVertex[i]].color = colors[indicesColor[i]];
-	}
+		/*int indV = indicesVertex.size()>i?indicesVertex[i]:0;
+		indV = (indV < 0 ? 0 : indV);
+		indV = (indV>= vertices.size()? vertices.size()-1:indV);
+		int indN = indicesNormal.size()>i ? indicesNormal[i]:0;
+		indN = (indN < 0 ? 0 : indN);
+		indN = (indN >= normals.size() ? normals.size() - 1 : indN);
+		int indC = indicesColor.size()>i ? indicesColor[i]:0;
+		indC = (indC < 0 ? 0 : indC);
+		indC = (indC >= colors.size() ? colors.size() - 1 : indC);*/
 
+		/*m_IndexBuffer[i] = m_VertexCount + indV;
+		m_VertexBuffer[indV].normal = normals[indN];
+		m_VertexBuffer[indV].color = colors[indC];*/
+		/*int tmp = indicesVertex[i] < 0 ? 0 : indicesVertex[i];
+		int tmp2 = indicesNormal[i] < 0 ? 0 : indicesNormal[i];*/
+		m_IndexBuffer[i] = m_VertexCount + indicesVertex[i];
+		m_VertexBuffer[indicesVertex[i]].normal = normals[indicesNormal[i]];
+		m_VertexBuffer[indicesVertex[i]].color = colors[indicesColor[i]];
+	}
+	
 	m_VertexBuffer += vertices.size();
 	m_VertexCount += (int)vertices.size();
 
@@ -75,6 +95,11 @@ void RenderEngine3D::submit(RawModel3D& model) {
 }
 
 void RenderEngine3D::flush() {
+	for (int i = 0; i < m_Textures.size(); ++i) {
+		glActiveTexture(GL_TEXTURE0 + i);
+		m_Textures[i]->bind();
+	}
+
 	bindVAO();
 	bindIBO();
 	if (m_DisableDepth) disableDepth();
@@ -84,4 +109,12 @@ void RenderEngine3D::flush() {
 	if (m_DisableDepth) enableDepth();
 	bindIBO();
 	unbindVAO();
+}
+
+int RenderEngine3D::addTexture(Texture* texture) {
+	if (texture != nullptr) {
+		m_Textures.push_back(texture);
+		return (int)m_Textures.size();
+	}
+	return 0;
 }

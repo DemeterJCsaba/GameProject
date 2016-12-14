@@ -1,25 +1,20 @@
 #include "SkyBox.h"
 
 
-SkyBox::SkyBox(float skySize, float sunSize, float moonSize) :
-	m_SkySize(skySize),
-	m_SunSize(sunSize),
-	m_MoonSize(moonSize),
-	m_Sky(RawModel3DTextured(new TextureCube("Resources\\Images\\CubeTextures\\galaxy.png"))),
-	m_Sun(RawModel3DTextured(new Texture2D("Resources\\Images\\sun.png"))),
-	m_Moon(RawModel3DTextured(new Texture2D("Resources\\Images\\moon.png")))
+SkyBox::SkyBox(TextureCube* texture,float size) :
+	RawModel3DTextured(texture),
+	m_Size(size)
 {
-	// SkyBox
-	m_Sky.getVertices().push_back(vec3(m_SkySize, m_SkySize, -m_SkySize));
-	m_Sky.getVertices().push_back(vec3(m_SkySize, m_SkySize, m_SkySize));
-	m_Sky.getVertices().push_back(vec3(-m_SkySize, m_SkySize, m_SkySize));
-	m_Sky.getVertices().push_back(vec3(-m_SkySize, m_SkySize, -m_SkySize));
-	m_Sky.getVertices().push_back(vec3(m_SkySize, -m_SkySize, -m_SkySize));
-	m_Sky.getVertices().push_back(vec3(m_SkySize, -m_SkySize, m_SkySize));
-	m_Sky.getVertices().push_back(vec3(-m_SkySize, -m_SkySize, m_SkySize));
-	m_Sky.getVertices().push_back(vec3(-m_SkySize, -m_SkySize, -m_SkySize));
-	m_Sky.getNormals().push_back(vec3());
-	m_Sky.getTextures().push_back(vec2());
+	m_Vertices.push_back(vec3(m_Size,   m_Size, -m_Size));
+	m_Vertices.push_back(vec3(m_Size,   m_Size,  m_Size));
+	m_Vertices.push_back(vec3(-m_Size,  m_Size,  m_Size));
+	m_Vertices.push_back(vec3(-m_Size,  m_Size, -m_Size));
+	m_Vertices.push_back(vec3(m_Size,  -m_Size, -m_Size));
+	m_Vertices.push_back(vec3(m_Size,  -m_Size,  m_Size));
+	m_Vertices.push_back(vec3(-m_Size, -m_Size,  m_Size));
+	m_Vertices.push_back(vec3(-m_Size, -m_Size, -m_Size));
+	m_Normals.push_back(vec3());
+	m_Textures.push_back(vec2());
 	unsigned int skyVertexIndices[] = {
 		0, 1, 4, 1, 5, 4,       // Right
 		2, 3, 6, 3, 7, 6,       // Left
@@ -29,45 +24,9 @@ SkyBox::SkyBox(float skySize, float sunSize, float moonSize) :
 		3, 0, 7, 0, 4, 7        // Front
 	};
 	for (unsigned int i : skyVertexIndices) {
-		m_Sky.getIndicesVertex().push_back(i);
-		m_Sky.getIndicesNormal().push_back(0);
-		m_Sky.getIndicesTexture().push_back(0);
-	}
-
-	// Sun
-	m_Sun.getVertices().push_back(vec3(m_SunSize, -m_SunSize, m_SkySize));
-	m_Sun.getVertices().push_back(vec3(m_SunSize, m_SunSize, m_SkySize));
-	m_Sun.getVertices().push_back(vec3(-m_SunSize, m_SunSize, m_SkySize));
-	m_Sun.getVertices().push_back(vec3(-m_SunSize, -m_SunSize, m_SkySize));
-	m_Sun.getTextures().push_back(vec2(0.0f, 0.0f));
-	m_Sun.getTextures().push_back(vec2(0.0f, 1.0f));
-	m_Sun.getTextures().push_back(vec2(1.0f, 1.0f));
-	m_Sun.getTextures().push_back(vec2(1.0f, 0.0f));
-	m_Sun.getNormals().push_back(vec3());
-	unsigned int sunVertexIndices[] = { 0, 1, 2, 0, 2, 3 };
-	unsigned int sunTextureIndices[] = { 0, 1, 2, 0, 2, 3 };
-	for (int i = 0;i<6;++i){
-		m_Sun.getIndicesVertex().push_back(sunVertexIndices[i]);
-		m_Sun.getIndicesTexture().push_back(sunTextureIndices[i]);
-		m_Sun.getIndicesNormal().push_back(0);
-	}
-	
-	// Moon
-	m_Moon.getVertices().push_back(vec3(-m_MoonSize, -m_MoonSize, -m_SkySize));
-	m_Moon.getVertices().push_back(vec3(-m_MoonSize, m_MoonSize, -m_SkySize));
-	m_Moon.getVertices().push_back(vec3(m_MoonSize, m_MoonSize, -m_SkySize));
-	m_Moon.getVertices().push_back(vec3(m_MoonSize, -m_MoonSize, -m_SkySize));
-	m_Moon.getTextures().push_back(vec2(0.0f, 0.0f));
-	m_Moon.getTextures().push_back(vec2(0.0f, 1.0f));
-	m_Moon.getTextures().push_back(vec2(1.0f, 1.0f));
-	m_Moon.getTextures().push_back(vec2(1.0f, 0.0f));
-	m_Moon.getNormals().push_back(vec3());
-	unsigned int moonVertexIndices[] = { 0, 2, 1, 0, 2, 3 };// { 3, 1, 2, 3, 0, 1 };
-	unsigned int moonTextureIndices[] = { 2, 0, 1, 0, 3, 2 };
-	for (int i = 0; i<6; ++i) {
-		m_Moon.getIndicesVertex().push_back(sunVertexIndices[i]);
-		m_Moon.getIndicesTexture().push_back(sunTextureIndices[i]);
-		m_Moon.getIndicesNormal().push_back(0);
+		m_IndicesVertex.push_back(i);
+		m_IndicesNormal.push_back(0);
+		m_IndicesTexture.push_back(0);
 	}
 }
 

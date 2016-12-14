@@ -1,25 +1,34 @@
 #pragma once
 
 #include <random>
+
 #include "Maths.h"
+#include "RawModel3D.h"
 
 using namespace std;
 
-class Terrain {
+class Terrain : public RawModel3D {
 private:
-	long long m_Seed;
-	unsigned int m_Size;
-
+	static float getNoise(int seed, int x, int z);
+	static float getSmoothNoise(int seed, int x, int z);
+	static float interpolate(int seed, float a, float b, float blend);
+	static float getInterpolatedNoise(int seed, float x, float z);
 public:
-	Terrain(long long seed, unsigned int size = 5);
+	static float getHeight(int seed,float x, float z);
+	static vec3 getColor(vec3 a, vec3 b, vec3 c,vec3 norm);
+
+private:
+	int m_Seed;
+	int m_Size;
+	int m_BlockSize;
+public:
+	Terrain(int x,int z,int seed, unsigned int size = 5, unsigned int blockSize = 32);
 	~Terrain();
 
-	float getHeight(float x,float z);
-
 	int getSize() const { return m_Size; }
-private:
-	float getNoise(int x, int z);
-	float getSmoothNoise(int x, int z);
-	float interpolate(float a, float b, float blend);
-	float getInterpolatedNoise(float x, float z);
+	int getSeed() const { return m_Seed; }
+	int getBlockSize() const { return m_BlockSize; }
+
+	//RawModel3D* getBlockRawModel(vec2 position);
+//private:
 };

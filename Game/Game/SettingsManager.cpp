@@ -13,9 +13,11 @@ bool SettingsManager::Window_FullScreen = false;
 void SettingsManager::LoadSettings() {
 	ifstream SettingsFile(SettingsFileName);
 	if(!SettingsFile.good()) {
+		// log
 		SaveSettings();
 		SettingsFile = ifstream(SettingsFileName);
 	}
+	
 	string line;
 	while (getline(SettingsFile, line)) {
 		istringstream iss(line);

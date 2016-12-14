@@ -2,6 +2,7 @@
 
 #include "RenderEngine.h"
 #include "RawModel3D.h"
+#include "Texture.h"
 
 class RenderEngine3D : private RenderEngine {
 private:
@@ -21,12 +22,16 @@ private:
 	GLuint m_VertexCount;
 
 	bool m_DisableDepth;
+
+	vector<Texture*> m_Textures;
 public:
 	RenderEngine3D(bool disableDepth = false, int maxVertexSize = 3000);
 
 	void begin();
 	void end();
-	void submit(RawModel3D& model);
+	void submit(RawModel3D* model);
+
+	int addTexture(Texture* texture);
 
 	void flush();
 };

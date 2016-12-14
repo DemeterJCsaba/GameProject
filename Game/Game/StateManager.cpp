@@ -34,8 +34,8 @@ void StateManager::Update() {
 			delete state;
 		}
 	}
+	if (m_Close!=0 && m_Stack.size() > 0) m_Stack[m_Stack.size() - 1]->resume();
 	m_Close = 0;
-	if (m_Stack.size() > 0) m_Stack[m_Stack.size() - 1]->resume();
 }
 
 // Close the curret state

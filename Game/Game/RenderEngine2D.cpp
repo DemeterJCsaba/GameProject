@@ -43,14 +43,14 @@ void RenderEngine2D::end() {
 	unbindIBO();
 }
 
-void RenderEngine2D::submit(RawModel2D& model) {
-	vector<vec2>& vertices = model.getVertices();
-	vector<vec2>& textures = model.getTextures();
-	vector<unsigned int>& indicesVertex = model.getIndicesVertex();
-	vector<unsigned int>& indicesTexture = model.getIndicesTexture();
+void RenderEngine2D::submit(RawModel2D* model) {
+	vector<vec2>& vertices = model->getVertices();
+	vector<vec2>& textures = model->getTextures();
+	vector<unsigned int>& indicesVertex = model->getIndicesVertex();
+	vector<unsigned int>& indicesTexture = model->getIndicesTexture();
 
-	Texture* texture = model.getTexture();
-	vec2 position = model.getPosition();
+	Texture* texture = model->getTexture();
+	vec2 position = model->getPosition();
 	
 	int texId = 0;
 	if (texture != nullptr) {

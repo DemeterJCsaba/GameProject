@@ -6,25 +6,21 @@
 #include "Window.h"
 #include "StateManager.h"
 #include "SinglePlayerState.h"
-#include "RenderEngine3DDynamic.h"
 #include "GUIManager.h"
+#include "LayerGUI.h"
+#include "Layer3DDynamic.h"
 
-//void startGame();
-//void exitGame();
+//class LayerGUI;
+//class Layer3DDynamic;
+//class GUIManager;
 
 class MainMenuState : public IState {
 private:
-	RenderEngine2D m_RenderEngine2D;
-	ShaderProgram m_ShaderGUI;
-
-	RenderEngine3DDynamic m_RenderEngine3DDynamic;
-	ShaderProgram m_Shader3D;
-
-	Entity* player;
+	LayerGUI* m_LayerGUI; // csoreh!!!
+	//std::shared_ptr<Layer3DDynamic> m_LayerGuiPtr;
+	Layer3DDynamic* m_Layer3D;
 
 	GUIManager m_GUIManager;
-	Button m_StartButton;
-	Button m_ExitButton;
 public:
 	MainMenuState();
 	~MainMenuState();
@@ -34,4 +30,6 @@ public:
 
 	void resume();
 	void pause();
+private:
+	void init();
 };

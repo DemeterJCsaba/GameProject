@@ -99,7 +99,7 @@ void Window::Update() {
 
 void Window::Render() {
 	//FPSManager::getInstance().start("GetError");
-	//GetError();
+	GetError();
 	//FPSManager::getInstance().stop("GetError");
 
 	FPSManager::getInstance().start("glfwPollEvents");

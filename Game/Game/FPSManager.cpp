@@ -43,7 +43,7 @@ void FPSManager::end()
 
 		double fram = elapsedTime["Frame"].count();
 		for (map<string, chrono::duration<double, std::milli>>::iterator it = elapsedTime.begin(); it != elapsedTime.end(); ++it) {
-			cout << setw(20)<< left << it->first << ": " << setw(10) << left << ((100.0*it->second.count())/ fram) << "% - " << it->second.count() << endl;
+			//cout << setw(20)<< left << it->first << ": " << setw(10) << left << ((100.0*it->second.count())/ fram) << "% - " << it->second.count() << endl;
 			it->second = chrono::duration<double, std::milli>();
 		}
 	}

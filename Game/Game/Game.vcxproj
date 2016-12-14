@@ -123,7 +123,13 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Environment.cpp" />
     <ClCompile Include="GUIManager.cpp" />
+    <ClCompile Include="Layer3DDynamic.cpp" />
+    <ClCompile Include="Layer3DStatic.cpp" />
+    <ClCompile Include="LayerGUI.cpp" />
+    <ClCompile Include="LayerSky.cpp" />
+    <ClCompile Include="Planet.cpp" />
     <ClCompile Include="TextureCube.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FPSManager.cpp" />
@@ -136,7 +142,6 @@
     <ClCompile Include="RenderEngine.cpp" />
     <ClCompile Include="RenderEngine2D.cpp" />
     <ClCompile Include="RenderEngine3D.cpp" />
-    <ClCompile Include="RenderEngine3DDynamic.cpp" />
     <ClCompile Include="RenderEngine3DTextured.cpp" />
     <ClCompile Include="SettingsManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -144,7 +149,6 @@
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Terrain.cpp" />
-    <ClCompile Include="TerrainRenderEngine.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="vec2.cpp" />
@@ -156,7 +160,13 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Environment.h" />
     <ClInclude Include="GUIManager.h" />
+    <ClInclude Include="Layer3DDynamic.h" />
+    <ClInclude Include="Layer3DStatic.h" />
+    <ClInclude Include="LayerGUI.h" />
+    <ClInclude Include="LayerSky.h" />
+    <ClInclude Include="Planet.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureCube.h" />
     <ClInclude Include="Entity.h" />
@@ -173,7 +183,6 @@
     <ClInclude Include="RenderEngine.h" />
     <ClInclude Include="RenderEngine2D.h" />
     <ClInclude Include="RenderEngine3D.h" />
-    <ClInclude Include="RenderEngine3DDynamic.h" />
     <ClInclude Include="RenderEngine3DTextured.h" />
     <ClInclude Include="SettingsManager.h" />
     <ClInclude Include="ShaderProgram.h" />
@@ -181,13 +190,11 @@
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="Terrain.h" />
-    <ClInclude Include="TerrainRenderEngine.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />
-    <ClInclude Include="VertexData.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

@@ -63,6 +63,9 @@
     <Filter Include="Source Files\Game\3DElements">
       <UniqueIdentifier>{551ee47d-3b40-4368-b90e-2deb01a2162b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Collision">
+      <UniqueIdentifier>{065953ae-ca51-493e-a77d-4c457f454a67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

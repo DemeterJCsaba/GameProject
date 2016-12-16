@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MAINMENUSTATE_H
+#define MAINMENUSTATE_H
 
 #include <memory>
 
@@ -11,17 +12,18 @@
 #include "GUIManager.h"
 #include "LayerGUI.h"
 #include "Layer3DDynamic.h"
-#include "InterpolationManeger.h"
+#include "TimerManeger.h"
 
 using namespace std;
 
 class MainMenuState : public IState {
 private:
+	shared_ptr<LayerGUI> m_LayerGuiBGPtr;
 	shared_ptr<LayerGUI> m_LayerGuiPtr;
 	shared_ptr<Layer3DDynamic> m_Layer3DPtr;
 
-	GUIManager m_GUIManager;
-	InterpolationManager m_InterpolationManager;
+	GUIManager<MainMenuState> m_GUIManager;
+	TimerManager m_TimerManager;
 	Camera m_Camera;
 public:
 	MainMenuState();
@@ -35,4 +37,15 @@ public:
 private:
 	void init();
 	void load();
+
+	void backToMain();
+	void mainButtonsIn();
+	void mainButtonsOut();
+	void startGameButtonExecute();
+	void startGame();
+	void exitGame();
+	void selectCaracter();
+	void fade(float value);
 };
+
+#endif // !MAINMENUSTATE_H

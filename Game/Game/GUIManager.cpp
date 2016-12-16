@@ -1,4 +1,4 @@
-#include "GUIManager.h"
+/*#include "GUIManager.h"
 
 void GUIManager::addButton(Button* button) {
 	m_Buttons.push_back(button);
@@ -18,4 +18,4 @@ void GUIManager::execute() {
 			}
 		}
 	}
-}
+}*/

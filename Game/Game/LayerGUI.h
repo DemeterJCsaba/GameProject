@@ -1,6 +1,6 @@
 #pragma once
 
-#include <map>
+#include <list>
 
 #include "RawModel2D.h"
 #include "ShaderProgram.h"
@@ -13,9 +13,11 @@ private:
 	RenderEngine2D m_Renderer;
 	ShaderProgram* m_Shader;
 
-	map<string, RawModel2D*> m_Models;
+	list<pair<string, RawModel2D*>> m_Models;
 public:
 	LayerGUI(ShaderProgram* shader);
+
+	ShaderProgram* getShader() const { return m_Shader; }
 
 	void addModel(string name,RawModel2D* model);
 	RawModel2D* getModel(string name);

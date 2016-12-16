@@ -1,4 +1,4 @@
-#include "Button.h"
+/*#include "Button.h"
 
 Button::Button(vec2 position, vec2 size, Texture* texture, void(*function)()):
 	GUIImage(position,size,texture),
@@ -9,4 +9,4 @@ Button::Button(vec2 position, vec2 size, Texture* texture, void(*function)()):
 
 void Button::execute() {
 	m_Function();
-}
+}*/

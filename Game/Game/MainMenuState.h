@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "IState.h"
 #include "RenderEngine2D.h"
 #include "ShaderProgram.h"
@@ -9,18 +11,18 @@
 #include "GUIManager.h"
 #include "LayerGUI.h"
 #include "Layer3DDynamic.h"
+#include "InterpolationManeger.h"
 
-//class LayerGUI;
-//class Layer3DDynamic;
-//class GUIManager;
+using namespace std;
 
 class MainMenuState : public IState {
 private:
-	LayerGUI* m_LayerGUI; // csoreh!!!
-	//std::shared_ptr<Layer3DDynamic> m_LayerGuiPtr;
-	Layer3DDynamic* m_Layer3D;
+	shared_ptr<LayerGUI> m_LayerGuiPtr;
+	shared_ptr<Layer3DDynamic> m_Layer3DPtr;
 
 	GUIManager m_GUIManager;
+	InterpolationManager m_InterpolationManager;
+	Camera m_Camera;
 public:
 	MainMenuState();
 	~MainMenuState();
@@ -32,4 +34,5 @@ public:
 	void pause();
 private:
 	void init();
+	void load();
 };

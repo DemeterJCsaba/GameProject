@@ -66,6 +66,15 @@
     <Filter Include="Source Files\Collision">
       <UniqueIdentifier>{065953ae-ca51-493e-a77d-4c457f454a67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Settings">
+      <UniqueIdentifier>{1044b6af-9228-4669-a599-b0230bb9510d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Window\Events">
+      <UniqueIdentifier>{4d9c2658-5f8b-49de-8850-34936ebba663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Entity\RawModel\Interpolate">
+      <UniqueIdentifier>{36d84131-e728-4bbb-90d2-33efd59f1558}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -106,9 +115,6 @@
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files\Graphics\Entity\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingsManager.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\Graphics\Entity\Animation</Filter>
@@ -173,6 +179,27 @@
     <ClCompile Include="Layer3DStatic.cpp">
       <Filter>Source Files\Graphics\Layers</Filter>
     </ClCompile>
+    <ClCompile Include="SettingsManager.cpp">
+      <Filter>Source Files\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowSettings.cpp">
+      <Filter>Source Files\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardButtonEvent.cpp">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="RawModel3D.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClCompile>
+    <ClCompile Include="InterpolationManager.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel\Interpolate</Filter>
+    </ClCompile>
+    <ClCompile Include="Interpolation2D.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel\Interpolate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -219,9 +246,6 @@
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Source Files\Graphics\Entity\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsManager.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Source Files</Filter>
@@ -291,6 +315,27 @@
     </ClInclude>
     <ClInclude Include="Layer3DStatic.h">
       <Filter>Source Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsManager.h">
+      <Filter>Source Files\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowSettings.h">
+      <Filter>Source Files\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardButtonEvent.h">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="InterpolationManeger.h">
+      <Filter>Source Files\Graphics\Entity\RawModel\Interpolate</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation.h">
+      <Filter>Source Files\Graphics\Entity\RawModel\Interpolate</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation2D.h">
+      <Filter>Source Files\Graphics\Entity\RawModel\Interpolate</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

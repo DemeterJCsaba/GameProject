@@ -1,42 +1,51 @@
 #include "SettingsManager.h"
 
+#include <fstream>
+#include <sstream>
+#include <iostream>
+
 // Settings file name
 const string SettingsManager::SettingsFileName = "Settings.txt";
 
-// Window settings - Default values
-unsigned int SettingsManager::Window_Width = 960;
-unsigned int SettingsManager::Window_Height = 540;
-const string SettingsManager::Window_Title = "Game";
-bool SettingsManager::Window_FullScreen = false;
-
 // Load setting from file
-void SettingsManager::LoadSettings() {
-	ifstream SettingsFile(SettingsFileName);
-	if(!SettingsFile.good()) {
-		// log
-		SaveSettings();
-		SettingsFile = ifstream(SettingsFileName);
-	}
-	
-	string line;
-	while (getline(SettingsFile, line)) {
-		istringstream iss(line);
-		string key, value;
-		iss >> key >> value;
-		if (key == "Window_Width:") {
-			setWindowWidth(stoi(value));
-		}else if (key == "Window_Height:") {
-			setWindowHeight(stoi(value));
-		}else if (key == "Window_FullScreen:") {
-			setWindowFullScreen(stoi(value));
+void SettingsManager::loadSettings() {
+	try {
+		ifstream SettingsFile(SettingsFileName);
+		if (!SettingsFile.good()) {
+			saveSettings();
+			SettingsFile = ifstream(SettingsFileName);
 		}
+		string line;
+		while (getline(SettingsFile, line)) {
+			istringstream iss(line);
+			string key, value;
+			iss >> key >> value;
+			if (key == "Window_Width:") {
+				m_WindowSettings.setWidth(stoi(value));
+			}
+			else if (key == "Window_Height:") {
+				m_WindowSettings.setHeight(stoi(value));
+			}
+			else if (key == "Window_FullScreen:") {
+				m_WindowSettings.setFullScreen(stoi(value));
+			}
+		}
+
+		SettingsFile.close();
 	}
+	catch (exception& e) { 
+		cout << "Faild to load game setting: " << e.what() << endl;
+	} 
 }
 
 // Save setting to file
-void SettingsManager::SaveSettings() {
+void SettingsManager::saveSettings() {
 	ofstream SettingsFile(SettingsFileName);
-	SettingsFile << "Window_Width: " << Window_Width << endl;
-	SettingsFile << "Window_Height: " << Window_Height << endl;
-	SettingsFile << "Window_FullScreen: " << Window_FullScreen << endl;
+	
+	// Window settings
+	SettingsFile << "Window_Width: " << m_WindowSettings.getWidth() << endl;
+	SettingsFile << "Window_Height: " << m_WindowSettings.getHeight() << endl;
+	SettingsFile << "Window_FullScreen: " << m_WindowSettings.isFullScreen() << endl;
+	
+	SettingsFile.close();
 }

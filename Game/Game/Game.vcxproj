@@ -124,12 +124,16 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Environment.cpp" />
+    <ClCompile Include="Event.cpp" />
     <ClCompile Include="GUIManager.cpp" />
+    <ClCompile Include="InterpolationManager.cpp" />
+    <ClCompile Include="KeyboardButtonEvent.cpp" />
     <ClCompile Include="Layer3DDynamic.cpp" />
     <ClCompile Include="Layer3DStatic.cpp" />
     <ClCompile Include="LayerGUI.cpp" />
     <ClCompile Include="LayerSky.cpp" />
     <ClCompile Include="Planet.cpp" />
+    <ClCompile Include="RawModel3D.cpp" />
     <ClCompile Include="TextureCube.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FPSManager.cpp" />
@@ -150,18 +154,25 @@
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="Interpolation2D.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="vec4.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="WindowSettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Environment.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="GUIManager.h" />
+    <ClInclude Include="Interpolation.h" />
+    <ClInclude Include="Interpolation2D.h" />
+    <ClInclude Include="InterpolationManeger.h" />
+    <ClInclude Include="KeyboardButtonEvent.h" />
     <ClInclude Include="Layer3DDynamic.h" />
     <ClInclude Include="Layer3DStatic.h" />
     <ClInclude Include="LayerGUI.h" />
@@ -196,6 +207,7 @@
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowSettings.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="menu3D.frag" />

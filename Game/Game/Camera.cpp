@@ -15,13 +15,13 @@ Camera::Camera(/*Terrain* terrain, */float distance):
 void Camera::update() {
 	if (m_Entity == nullptr) {
 		float speed = m_Speed;
-		if (Window::getInstance().getKeyboarPressed(GLFW_KEY_LEFT_SHIFT)) {
+		if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_LEFT_SHIFT)) {
 			speed = 20.0f;
 		}
-		m_Rotation.x += (float)Window::getInstance().getMouseOffsetY();
+		m_Rotation.x += (float)Window::GetInstance()->getMouseOffsetY();
 		m_Rotation.x = m_Rotation.x < -90.0f ? -90.0f : m_Rotation.x;
 		m_Rotation.x = m_Rotation.x > 90.0f ? 90.0f : m_Rotation.x;
-		m_Rotation.y += (float)Window::getInstance().getMouseOffsetX();
+		m_Rotation.y += (float)Window::GetInstance()->getMouseOffsetX();
 		m_Rotation.y += m_Rotation.y < 0.0f ? 360.0f : 0.0f;
 		m_Rotation.y -= m_Rotation.y >= 360.0f ? 360.0f : 0.0f;
 
@@ -30,21 +30,21 @@ void Camera::update() {
 		float dz = speed*sin(toRadian(m_Rotation.x));
 		float d2x = speed*cos(toRadian(m_Rotation.y));
 		float d2y = speed*sin(toRadian(m_Rotation.y));
-		if (Window::getInstance().getKeyboarPressed(GLFW_KEY_W)) {
+		if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_W)) {
 			m_Position.x += dy;
 			m_Position.y -= dz;
 			m_Position.z -= dx;
 		}
-		if (Window::getInstance().getKeyboarPressed(GLFW_KEY_S)) {
+		if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_S)) {
 			m_Position.x -= dy;
 			m_Position.y += dz;
 			m_Position.z += dx;
 		}
-		if (Window::getInstance().getKeyboarPressed(GLFW_KEY_A)) {
+		if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_A)) {
 			m_Position.x -= d2x;
 			m_Position.z -= d2y;
 		}
-		if (Window::getInstance().getKeyboarPressed(GLFW_KEY_D)) {
+		if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_D)) {
 			m_Position.x += d2x;
 			m_Position.z += d2y;
 		}

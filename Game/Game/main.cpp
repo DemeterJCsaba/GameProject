@@ -1,3 +1,4 @@
+#include "SettingsManager.h"
 #include "Window.h"
 #include "FPSManager.h"
 #include "StateManager.h"
@@ -6,27 +7,32 @@
 using namespace std;
 void main() {
 	//FreeConsole();
+	
+	SettingsManager settingsManager;
+	settingsManager.loadSettings();
 
-	SettingsManager::LoadSettings();
-	Window::getInstance();
+	Window::CreateWindow(settingsManager.getWindowSettings());
+	Window* window = Window::GetInstance();
+
 	StateManager::getInstance().addState(new MainMenuState());
 
-	while (!Window::getInstance().IsClosed()) {
+	while (!window->isClosed()) {
 		FPSManager::getInstance().begin();
 
-		Window::getInstance().Clear();
-		Window::getInstance().Update();
+		window->clear();
+		window->update();
 
 		StateManager::getInstance().getCurrentState()->update();
 		StateManager::getInstance().getCurrentState()->render();
 
-		Window::getInstance().Render();
+		window->render();
 
 		StateManager::getInstance().Update();
 		FPSManager::getInstance().end();
 	}
 
 	StateManager::getInstance().closeAll();
+	Window::CloseWindow();
 
-	SettingsManager::SaveSettings();
+	settingsManager.saveSettings();
 }

@@ -52,3 +52,9 @@ bool vec2::operator != (const vec2& other)
 	return (this->x != other.x || this->y != other.y);
 }
 
+vec2 operator*(const vec2& left, const float& right) {
+	vec2 result;
+	result.x = left.x*right;
+	result.y = left.y*right;
+	return result;
+}

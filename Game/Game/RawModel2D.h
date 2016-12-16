@@ -32,7 +32,7 @@ public:
 	const float getRotation() const { return m_Rotation; }
 
 	void setPosition(vec2 position) { m_Position = position; }
-	void setRotation(float rotation) { m_Rotation += rotation; }
-	void addPosition(vec2 position) { m_Position = position; }
+	void setRotation(float rotation) { m_Rotation = rotation; }
+	void addPosition(vec2 position) { m_Position += position; }
 	void addRotation(float rotation) { m_Rotation += rotation; }
 };

@@ -19,10 +19,11 @@ IState* StateManager::getCurrentState() {
 
 // Add a new state
 void StateManager::addState(IState* state) {
-	if (state != nullptr)
+	if (state != nullptr) {
+		if (m_Stack.size() > 0) m_Stack[m_Stack.size() - 1]->pause();
 		m_Stack.push_back(state);
-	if (m_Stack.size() > 0) m_Stack[m_Stack.size() - 1]->pause();
-	state->resume();
+		state->resume();
+	}
 }
 
 void StateManager::Update() {

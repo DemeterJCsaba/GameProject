@@ -38,7 +38,7 @@ void SinglePlayerState::init() {
 	m_LayerGUI = new LayerGUI(shader2d);
 
 	// Sky Layer
-	mat4 perspectiveMatrix = mat4::perspective(70, Window::getInstance().getWidth()*1.0f / Window::getInstance().getHeight(), 0.1f, 1000);
+	mat4 perspectiveMatrix = mat4::perspective(70, Window::GetInstance()->getWidth()*1.0f / Window::GetInstance()->getHeight(), 0.1f, 1000);
 	ShaderProgram* shaderSky = new ShaderProgram("sky");
 	shaderSky->enable();
 	shaderSky->setUniformMat4("pr_matrix", perspectiveMatrix);
@@ -82,7 +82,7 @@ void SinglePlayerState::resume() {
 }
 
 void SinglePlayerState::pause() {
-	Window::getInstance().setMouseVisibility(true);
+	Window::GetInstance()->setMouseVisibility(true);
 }
 
 void SinglePlayerState::update() {
@@ -91,14 +91,14 @@ void SinglePlayerState::update() {
 	m_MainCamera->update();
 	updateTerrain();
 
-	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_ESCAPE)) {
+	if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_ESCAPE)) {
 		StateManager::getInstance().closeCurrentState();
 	}
-	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_Z)) {
-		Window::getInstance().setMouseVisibility(false);
+	if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_Z)) {
+		Window::GetInstance()->setMouseVisibility(false);
 	}
-	if (Window::getInstance().getKeyboarPressed(GLFW_KEY_X)) {
-		Window::getInstance().setMouseVisibility(true);
+	if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_X)) {
+		Window::GetInstance()->setMouseVisibility(true);
 	}
 }
 

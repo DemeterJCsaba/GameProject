@@ -36,7 +36,7 @@ public:
 	const vec3& getRotation() const { return m_Rotation; }
 
 	void setPosition(vec3 position) { m_Position = position; }
-	void setRotation(vec3 rotation) { m_Rotation += rotation; }
-	void addPosition(vec3 position) { m_Position = position; }
+	void setRotation(vec3 rotation) { m_Rotation = rotation; }
+	void addPosition(vec3 position) { m_Position += position; }
 	void addRotation(vec3 rotation) { m_Rotation += rotation; }
 };

@@ -1,5 +1,7 @@
 #include "RenderEngine3D.h"
 
+#include <iostream>
+
 RenderEngine3D::RenderEngine3D(bool disableDepth, int maxVertexSize):
 	RenderEngine(),
 	m_MaxVertexSize(maxVertexSize),
@@ -60,7 +62,8 @@ void RenderEngine3D::submit(RawModel3D* model) {
 
 	vec3 pos = model->getPosition();
 	vec3 rot = model->getRotation();
-	mat4 matrix = mat4::translation(pos.x, pos.y, pos.z)*mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);
+	mat4 rotation = mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);
+	mat4 matrix = mat4::translation(pos.x, pos.y, pos.z)*rotation;
 
 	for (int i = 0; i < vertices.size(); ++i) {
 		m_VertexBuffer[i].vertex = matrix*vertices[i];
@@ -83,7 +86,7 @@ void RenderEngine3D::submit(RawModel3D* model) {
 		/*int tmp = indicesVertex[i] < 0 ? 0 : indicesVertex[i];
 		int tmp2 = indicesNormal[i] < 0 ? 0 : indicesNormal[i];*/
 		m_IndexBuffer[i] = m_VertexCount + indicesVertex[i];
-		m_VertexBuffer[indicesVertex[i]].normal = normals[indicesNormal[i]];
+		m_VertexBuffer[indicesVertex[i]].normal = rotation*normals[indicesNormal[i]];
 		m_VertexBuffer[indicesVertex[i]].color = colors[indicesColor[i]];
 	}
 	

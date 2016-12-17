@@ -1,51 +1,54 @@
-#include "LayerGUI.h"
+#include "Layer2D.h"
 
-LayerGUI::LayerGUI(ShaderProgram* shader):
-	m_Shader(shader),
+Layer2D::Layer2D():
 	m_Renderer(RenderEngine2D(true))
 {
 
 }
 
-void LayerGUI::addModel(string name, RawModel2D* model) {
-	removeModel(name);
-	m_Models.push_back(make_pair(name, model));
-	//m_Models[name] = model;
+Layer2D::~Layer2D() {
+	delete m_ShaderPtr.get();
 }
 
-RawModel2D* LayerGUI::getModel(string name) {
+void Layer2D::setShader(ShaderProgram* shader) {
+	m_ShaderPtr = shared_ptr<ShaderProgram>(shader);
+}
+
+void Layer2D::addModel(string name, RawModel2D* model) {
+	removeModel(name);
+	m_Models.push_back(make_pair(name, model));
+}
+
+RawModel2D* Layer2D::getModel(string name) {
 	for (pair<string, RawModel2D*> &e : m_Models) {
 		if (e.first == name) {
 			return e.second;
 		}
 	}
 	return nullptr;
-	/*if (m_Models.find(name) != m_Models.end()) {
-		return m_Models[name];
-	}
-	return nullptr;*/
 }
 
-void LayerGUI::removeModel(string name) {
+void Layer2D::removeModel(string name) {
 	for (pair<string, RawModel2D*> &e : m_Models) {
 		if (e.first == name) {
 			m_Models.remove(e);
 			break;
 		}
 	}
-	/*if (m_Models.find(name)!=m_Models.end()) {
-		m_Models.erase(name);
-	}*/
 }
 
-void LayerGUI::render() {
+void Layer2D::udate() {
+	
+}
+
+void Layer2D::render() {
 	m_Renderer.begin();
 	for (list<pair<string, RawModel2D*>>::iterator it = m_Models.begin(); it != m_Models.end(); ++it) {
 		m_Renderer.submit(it->second);
 	}
 	m_Renderer.end();
 
-	m_Shader->enable();
+	if (m_ShaderPtr != nullptr) m_ShaderPtr->enable();
 	m_Renderer.flush();
-	m_Shader->disable();
+	if (m_ShaderPtr != nullptr) m_ShaderPtr->disable();
 }

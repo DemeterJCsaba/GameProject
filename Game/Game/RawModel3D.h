@@ -36,5 +36,5 @@ public:
 	void addPosition(vec3 position) { m_Position += position; }
 	void addRotation(vec3 rotation) { m_Rotation += rotation; }
 
-	static RawModel3D* loadFromOBJ(string fileName); // friend 
+	void loadFromOBJ(string fileName); // friend 
 };

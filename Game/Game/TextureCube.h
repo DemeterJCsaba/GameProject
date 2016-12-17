@@ -1,8 +1,9 @@
-#pragma once
+#ifndef TEXTURECUBE_H
+#define TEXTURECUBE_H
 
 #include <GLEW\glew.h>
 #include <string>
-#include <iostream>
+#include <map>
 
 #include "Texture.h"
 #include "ImageLoader.h"
@@ -11,10 +12,18 @@ using namespace std;
 
 class TextureCube : public Texture {
 private:
-	string m_FileName[6];
+	static string m_Dir;
 public:
-	TextureCube(string filename);
+	static TextureCube* getTexture(string name);
 
+
+private:
+	string m_FileName[6];
+
+	TextureCube(string filename);
+public:
 	void bind() const;
 	void unbind() const;
 };
+
+#endif // !TEXTURECUBE_H

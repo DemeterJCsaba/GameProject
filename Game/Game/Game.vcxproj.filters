@@ -51,17 +51,8 @@
     <Filter Include="Source Files\Graphics\Shader\ShaderFiles">
       <UniqueIdentifier>{423be4c6-ae1e-4c34-ae85-f9abdca06263}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game\GUIElements">
-      <UniqueIdentifier>{79b3acb9-16e3-482a-bd31-99e955972984}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Graphics\Layers">
       <UniqueIdentifier>{13e355ec-81ec-462d-883d-cf775075310b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game\SkyElements">
-      <UniqueIdentifier>{26e75cb6-3632-46e8-8c66-aba5909802ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game\3DElements">
-      <UniqueIdentifier>{551ee47d-3b40-4368-b90e-2deb01a2162b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Collision">
       <UniqueIdentifier>{065953ae-ca51-493e-a77d-4c457f454a67}</UniqueIdentifier>
@@ -74,6 +65,21 @@
     </Filter>
     <Filter Include="Source Files\Game\Timer">
       <UniqueIdentifier>{36d84131-e728-4bbb-90d2-33efd59f1558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Entities">
+      <UniqueIdentifier>{50f466bf-577a-4de1-a39a-5fc80c401a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Entities\SkyElements">
+      <UniqueIdentifier>{26e75cb6-3632-46e8-8c66-aba5909802ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Entities\GUIElements">
+      <UniqueIdentifier>{79b3acb9-16e3-482a-bd31-99e955972984}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Entities\3DElements">
+      <UniqueIdentifier>{551ee47d-3b40-4368-b90e-2deb01a2162b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{104b6799-a42f-445c-babf-79a7139e1408}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -138,13 +144,10 @@
       <Filter>Source Files\Graphics\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Source Files\Game\GUIElements</Filter>
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClCompile>
     <ClCompile Include="GUIManager.cpp">
-      <Filter>Source Files\Game\GUIElements</Filter>
-    </ClCompile>
-    <ClCompile Include="LayerGUI.cpp">
-      <Filter>Source Files\Graphics\Layers</Filter>
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClCompile>
     <ClCompile Include="Layer3DDynamic.cpp">
       <Filter>Source Files\Graphics\Layers</Filter>
@@ -168,13 +171,13 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="SkyBox.cpp">
-      <Filter>Source Files\Game\SkyElements</Filter>
+      <Filter>Source Files\Game\Entities\SkyElements</Filter>
     </ClCompile>
     <ClCompile Include="Planet.cpp">
-      <Filter>Source Files\Game\SkyElements</Filter>
+      <Filter>Source Files\Game\Entities\SkyElements</Filter>
     </ClCompile>
     <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files\Game\3DElements</Filter>
+      <Filter>Source Files\Game\Entities\3DElements</Filter>
     </ClCompile>
     <ClCompile Include="Layer3DStatic.cpp">
       <Filter>Source Files\Graphics\Layers</Filter>
@@ -196,6 +199,18 @@
     </ClCompile>
     <ClCompile Include="TimerManager.cpp">
       <Filter>Source Files\Game\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer2D.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="Movable.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuGui.cpp">
+      <Filter>Source Files\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -272,13 +287,10 @@
       <Filter>Source Files\Graphics\Texture</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Source Files\Game\GUIElements</Filter>
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClInclude>
     <ClInclude Include="GUIManager.h">
-      <Filter>Source Files\Game\GUIElements</Filter>
-    </ClInclude>
-    <ClInclude Include="LayerGUI.h">
-      <Filter>Source Files\Graphics\Layers</Filter>
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClInclude>
     <ClInclude Include="Layer3DDynamic.h">
       <Filter>Source Files\Graphics\Layers</Filter>
@@ -302,13 +314,13 @@
       <Filter>Source Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="SkyBox.h">
-      <Filter>Source Files\Game\SkyElements</Filter>
+      <Filter>Source Files\Game\Entities\SkyElements</Filter>
     </ClInclude>
     <ClInclude Include="Planet.h">
-      <Filter>Source Files\Game\SkyElements</Filter>
+      <Filter>Source Files\Game\Entities\SkyElements</Filter>
     </ClInclude>
     <ClInclude Include="Terrain.h">
-      <Filter>Source Files\Game\3DElements</Filter>
+      <Filter>Source Files\Game\Entities\3DElements</Filter>
     </ClInclude>
     <ClInclude Include="Layer3DStatic.h">
       <Filter>Source Files\Graphics\Layers</Filter>
@@ -336,6 +348,18 @@
     </ClInclude>
     <ClInclude Include="Delay.h">
       <Filter>Source Files\Game\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSettings.h">
+      <Filter>Source Files\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer2D.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="Movable.h">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuGui.h">
+      <Filter>Source Files\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

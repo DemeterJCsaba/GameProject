@@ -6,7 +6,6 @@
 #include "StateManager.h"
 #include "Window.h"
 
-#include "LayerGUI.h"
 #include "LayerSky.h"
 #include "Layer3DStatic.h"
 
@@ -21,7 +20,7 @@
 
 class SinglePlayerState : public IState {
 private:
-	LayerGUI* m_LayerGUI;
+	//LayerGUI* m_LayerGUI;
 	LayerSky* m_LayerSky;
 
 	int m_BlockCount;

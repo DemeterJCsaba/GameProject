@@ -32,6 +32,7 @@ void main() {
 	}
 
 	StateManager::getInstance().closeAll();
+	Texture::clearTextures();
 	Window::CloseWindow();
 
 	settingsManager.saveSettings();

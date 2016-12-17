@@ -8,9 +8,9 @@ SinglePlayerState::SinglePlayerState():
 	init();
 
 	// Sky object
-	m_LayerSky->addEntity("SkyBox",new SkyBox(new TextureCube("Resources\\Images\\CubeTextures\\galaxy.png")));
-	m_LayerSky->addEntity("Sun",new Planet(new Texture2D("Resources\\Images\\sun.png"),100.0f,vec3(),5.0f));
-	m_LayerSky->addEntity("Moon", new Planet(new Texture2D("Resources\\Images\\moon.png"), 100.0f, vec3(180.0f,0.0f,0.0f), 4.0f));
+	m_LayerSky->addEntity("SkyBox",new SkyBox(TextureCube::getTexture("galaxy.png")));
+	m_LayerSky->addEntity("Sun",new Planet(Texture2D::getTexture("sun.png"),100.0f,vec3(),5.0f));
+	m_LayerSky->addEntity("Moon", new Planet(Texture2D::getTexture("moon.png"), 100.0f, vec3(180.0f,0.0f,0.0f), 4.0f));
 
 
 	m_Environment.setSeed(12345);
@@ -29,13 +29,13 @@ SinglePlayerState::SinglePlayerState():
 
 void SinglePlayerState::init() {
 	// GUI Layer
-	ShaderProgram* shader2d = new ShaderProgram("gui");
+	/*ShaderProgram* shader2d = new ShaderProgram("gui");
 	shader2d->enable();
 	GLint textures[32];
 	for (int i = 0; i < 32; ++i) textures[i] = i;
 	shader2d->setUniformiv("textures", textures, 32);
 	shader2d->disable();
-	m_LayerGUI = new LayerGUI(shader2d);
+	m_LayerGUI = new LayerGUI(shader2d);*/
 
 	// Sky Layer
 	mat4 perspectiveMatrix = mat4::perspective(70, Window::GetInstance()->getWidth()*1.0f / Window::GetInstance()->getHeight(), 0.1f, 1000);
@@ -65,7 +65,7 @@ void SinglePlayerState::init() {
 }
 
 SinglePlayerState::~SinglePlayerState() {
-	delete m_LayerGUI;
+	//delete m_LayerGUI;
 	delete m_LayerSky;
 
 	for (int i = 0; i < m_BlockCount; ++i) {
@@ -171,7 +171,7 @@ void SinglePlayerState::render() {
 		viewMatrix = Camera::current->getMatrix();
 	}
 
-	m_LayerGUI->render();
+	//m_LayerGUI->render();
 	m_LayerSky->render(roationMatrix,m_Environment.getTime(), m_Environment.getSunDirection());
 	for (int i = 0; i < m_BlockCount; ++i)
 		for (int j = 0; j < m_BlockCount; ++j)

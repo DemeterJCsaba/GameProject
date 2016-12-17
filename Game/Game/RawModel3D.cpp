@@ -4,8 +4,8 @@
 #include <fstream>
 #include <sstream>
 
-RawModel3D* RawModel3D::loadFromOBJ(string fileName) {
-	RawModel3D* result = new RawModel3D();
+void RawModel3D::loadFromOBJ(string fileName) {
+	//RawModel3D* result = new RawModel3D();
 	
 	ifstream in(fileName);
 	string line;
@@ -16,7 +16,7 @@ RawModel3D* RawModel3D::loadFromOBJ(string fileName) {
 	int i;
 	int j;
 
-	result->m_Colors.push_back(vec3(1.0f, 0.0f, 0.0f));
+	/*result->*/m_Colors.push_back(vec3(1.0f, 0.0f, 0.0f));
 
 	while (getline(in, line)) {
 		istringstream iss(line);
@@ -24,7 +24,7 @@ RawModel3D* RawModel3D::loadFromOBJ(string fileName) {
 		// Vertex Coordinates
 		if (line[0] == 'v' && line[1] == ' ') {
 			iss >> temp >> s1 >> s2 >> s3;
-			result->m_Vertices.push_back(vec3(atof(s1.c_str()), atof(s2.c_str()), atof(s3.c_str())));
+			/*result->*/m_Vertices.push_back(vec3(atof(s1.c_str()), atof(s2.c_str()), atof(s3.c_str())));
 		}
 		// Texture Coordinates
 		else if (line[0] == 'v' && line[1] == 't' && line[2] == ' ') {
@@ -33,7 +33,7 @@ RawModel3D* RawModel3D::loadFromOBJ(string fileName) {
 		// Normal Coordinates
 		else if (line[0] == 'v' && line[1] == 'n' && line[2] == ' ') {
 			iss >> temp >> s1 >> s2 >> s3;
-			result->m_Normals.push_back(vec3(atof(s1.c_str()), atof(s2.c_str()), atof(s3.c_str())));
+			/*result->*/m_Normals.push_back(vec3(atof(s1.c_str()), atof(s2.c_str()), atof(s3.c_str())));
 		}
 		// Index Coordinates
 		else if (line[0] == 'f' && line[1] == ' ') {
@@ -51,17 +51,17 @@ RawModel3D* RawModel3D::loadFromOBJ(string fileName) {
 			getline(iss3, s32, '/');
 			getline(iss3, s33, '/');
 
-			result->m_IndicesVertex.push_back(atoi(s31.c_str())-1);
-			result->m_IndicesNormal.push_back(atoi(s33.c_str())-1);
-			result->m_IndicesColor.push_back(0);
-			result->m_IndicesVertex.push_back(atoi(s21.c_str())-1);
-			result->m_IndicesNormal.push_back(atoi(s23.c_str())-1);
-			result->m_IndicesColor.push_back(0);
-			result->m_IndicesVertex.push_back(atoi(s11.c_str())-1);
-			result->m_IndicesNormal.push_back(atoi(s13.c_str())-1);
-			result->m_IndicesColor.push_back(0);
+			/*result->*/m_IndicesVertex.push_back(atoi(s31.c_str())-1);
+			/*result->*/m_IndicesNormal.push_back(atoi(s33.c_str())-1);
+			/*result->*/m_IndicesColor.push_back(0);
+			/*result->*/m_IndicesVertex.push_back(atoi(s21.c_str())-1);
+			/*result->*/m_IndicesNormal.push_back(atoi(s23.c_str())-1);
+			/*result->*/m_IndicesColor.push_back(0);
+			/*result->*/m_IndicesVertex.push_back(atoi(s11.c_str())-1);
+			/*result->*/m_IndicesNormal.push_back(atoi(s13.c_str())-1);
+			/*result->*/m_IndicesColor.push_back(0);
 		}
 	}
 	
-	return result;
+	//return result;
 }

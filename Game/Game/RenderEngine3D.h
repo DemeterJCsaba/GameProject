@@ -25,7 +25,7 @@ private:
 
 	vector<Texture*> m_Textures;
 public:
-	RenderEngine3D(bool disableDepth = false, int maxVertexSize = 3000);
+	RenderEngine3D(bool disableDepth = false, int maxVertexSize = 10000);
 
 	void begin();
 	void end();

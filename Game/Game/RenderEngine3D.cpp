@@ -62,8 +62,9 @@ void RenderEngine3D::submit(RawModel3D* model) {
 
 	vec3 pos = model->getPosition();
 	vec3 rot = model->getRotation();
+	vec3 sca = model->getScale();
 	mat4 rotation = mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);
-	mat4 matrix = mat4::translation(pos.x, pos.y, pos.z)*rotation;
+	mat4 matrix = mat4::scale(sca.x,sca.y,sca.z)*mat4::translation(pos.x, pos.y, pos.z)*rotation;
 
 	for (int i = 0; i < vertices.size(); ++i) {
 		m_VertexBuffer[i].vertex = matrix*vertices[i];

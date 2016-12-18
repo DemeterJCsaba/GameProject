@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BUTTON_H
+#define BUTTON_H
 
 #include "GUIImage.h"
 #include "Text.h"
@@ -24,3 +25,5 @@ public:
 		(m_Object->*m_Function)();
 	}
 };
+
+#endif // !BUTTON_H

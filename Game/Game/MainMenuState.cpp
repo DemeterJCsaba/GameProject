@@ -3,6 +3,7 @@
 #include "Interpolation.h"
 #include "Delay.h"
 #include "Text.h"
+#include "Player.h"
 
 MainMenuState::MainMenuState():
 	m_Gui(&m_LayerGui,&m_Layer3DDynamic)
@@ -39,11 +40,8 @@ void MainMenuState::init() {
 void MainMenuState::load() {
 	m_LayerBG.addModel("Fade", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::getTexture("Fade.png")));
 	m_LayerBG.addModel("BackGround", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::getTexture("MainMenu_BG.png")));
-
-	Movable* player = new Movable();
-	player->loadFromOBJ("Resources\\Entitys\\kocka.obj");
-	m_Layer3DDynamic.addModel("Player", player);
-	m_Layer3DDynamic.getModel("Player")->setPosition(vec3(3.0f, -0.5f, -7.0f));
+	
+	m_Layer3DDynamic.addModel("Player", new Player(100.0f,vec3(3.0f, -0.5f, -7.0f)));
 
 	m_Gui.load();
 }

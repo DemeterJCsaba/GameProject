@@ -23,21 +23,28 @@ public:
 	void start();
 	void load();
 private:
+	enum STATES {MAIN,SELECT_CHARACTER,CREATE_CHARACTER};
 	int state;
 
-	void backToMain();
-	void mainButtonsIn();
-	void mainButtonsOut();
-	void startGameButtonExecute();
+	// Main state 
+	void stateMainIn();
+	void stateMainOut();
 	void startGame();
+	void startGameButtonExecute();
 	void exitGame();
-
 	void selectCaracter();
-	void selectCharacterIn();
-	void selectCharacterOut();
-	void createCharater();
-
 	void fade(float value);
+
+	// Select character state
+	void stateSelectCharacterIn();
+	void stateSelectCharacterOut();
+	void back();
+	void newCharater();
+
+	// Create character
+	void stateCreateCharacterIn();
+	void stateCreateCharacterOut();
+	void createCharacter();
 };
 
 #endif // !MENUGUI_H

@@ -1,8 +1,11 @@
 #include "Window.h"
 
 #include <iostream>
-#include "FPSManager.h"
 
+#include "FPSManager.h"
+#include "StateManager.h"
+#include "KeyboardButtonEvent.h"
+#include "MouseButtonEvent.h"
 
 
 Window* Window::Instance = nullptr;
@@ -159,11 +162,13 @@ void window_resize(GLFWwindow *window, int width, int height) {
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
 	win->m_KeyboardButtons[key] = (action != GLFW_RELEASE);
+	StateManager::addEvent(new KeyboardButtonEvent(key, action));
 }
 
 void mouse_callback(GLFWwindow* window, int button, int action, int mods) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
 	win->m_MouseButtons[button] = (action != GLFW_RELEASE);
+	StateManager::addEvent(new MouseButtonEvent(button, action));
 }
 
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {

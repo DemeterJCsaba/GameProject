@@ -1,7 +1,9 @@
 #include "Event.h"
 
-Event::Event(string action):
-	m_Action(action)
+//enum Event::EVENTS = {ASD,AS};
+
+Event::Event(unsigned int event):
+	m_Event(event)
 {
 
 }

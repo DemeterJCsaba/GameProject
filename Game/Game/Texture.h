@@ -29,6 +29,10 @@ public:
 	virtual void bind() const = 0;
 	virtual void unbind() const = 0;
 
+	unsigned int getWidth() const { return m_Width; };
+	unsigned int getHeight() const { return m_Height; };
+	unsigned int getBits() const { return m_Bits; };
+
 	const string& getName() const { return m_Name; }
 };
 

@@ -81,6 +81,9 @@
     <Filter Include="Source Files\GUI">
       <UniqueIdentifier>{104b6799-a42f-445c-babf-79a7139e1408}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Graphics\Font">
+      <UniqueIdentifier>{41c1eb23-0d2a-4e5a-8f25-3e8a7fde74c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -146,9 +149,6 @@
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClCompile>
-    <ClCompile Include="GUIManager.cpp">
-      <Filter>Source Files\Game\Entities\GUIElements</Filter>
-    </ClCompile>
     <ClCompile Include="Layer3DDynamic.cpp">
       <Filter>Source Files\Graphics\Layers</Filter>
     </ClCompile>
@@ -211,6 +211,18 @@
     </ClCompile>
     <ClCompile Include="MenuGui.cpp">
       <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files\Graphics\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="RawModel2D.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseButtonEvent.cpp">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -360,6 +372,15 @@
     </ClInclude>
     <ClInclude Include="MenuGui.h">
       <Filter>Source Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Source Files\Graphics\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseButtonEvent.h">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

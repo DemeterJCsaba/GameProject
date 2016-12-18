@@ -1,5 +1,12 @@
 #include "StateManager.h"
 
+
+list<Event*> StateManager::m_Events = list<Event*>();
+
+void StateManager::addEvent(Event* event) {
+	m_Events.push_back(event);
+}
+
 StateManager& StateManager::getInstance() {
 	static StateManager s_Instance;
 	return s_Instance;
@@ -20,6 +27,11 @@ IState* StateManager::getCurrentState() {
 // Add a new state
 void StateManager::addState(IState* state) {
 	if (state != nullptr) {
+		for (list<Event*>::iterator i = m_Events.begin(); i != m_Events.end(); ) {
+			delete (*i++);
+		}
+		m_Events.clear();
+
 		if (m_Stack.size() > 0) m_Stack[m_Stack.size() - 1]->pause();
 		m_Stack.push_back(state);
 		state->resume();
@@ -37,6 +49,13 @@ void StateManager::Update() {
 	}
 	if (m_Close!=0 && m_Stack.size() > 0) m_Stack[m_Stack.size() - 1]->resume();
 	m_Close = 0;
+
+	if (m_Stack.size() > 0) {
+		for (Event* e : m_Events) {
+			m_Stack[m_Stack.size() - 1]->addEvent(e);
+		}
+		m_Events.clear();
+	}
 }
 
 // Close the curret state

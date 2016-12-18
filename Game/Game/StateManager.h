@@ -2,16 +2,20 @@
 #define STATEMANAGER_H
 
 #include <vector>
+#include <list>
 
 #include "IState.h"
+#include "Event.h"
 
 using namespace std;
 
 class StateManager {
 private:
 	static StateManager s_Instance;
+	static list<Event*> m_Events;
 public:
 	static StateManager& getInstance();
+	static void addEvent(Event* event);
 
 private:
 	vector<IState*> m_Stack;

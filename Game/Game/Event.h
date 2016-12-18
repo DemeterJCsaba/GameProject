@@ -6,12 +6,15 @@
 using namespace std;
 
 class Event {
-private:
-	string m_Action;
 public:
-	Event(string action);
+	static enum EVENTS {MOUSE_BUTTON,KEYBOARD_BUTTON};
 
-	string& getAction() { return m_Action; }
+private:
+	unsigned int m_Event;
+public:
+	Event(unsigned int event);
+
+	unsigned int getEvent() { return m_Event; }
 };
 
 

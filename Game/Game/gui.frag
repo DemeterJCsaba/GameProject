@@ -13,8 +13,8 @@ in DATA{
 layout (location = 0) out vec4 color;
 
 void main(void){
-	if(fs_in.texId < 4.5){
-		color = texture(textures[int(fs_in.texId - 0.5)],fs_in.texture); // + vec4(1.0,1.0,1.0,1.0)*fade; 
+	if(fs_in.texId > 1.5){
+		color = texture(textures[int(fs_in.texId - 0.5)],fs_in.texture)*fade;
 	}else{
 		color = vec4(0.0,0.0,0.0,1.0-fade);
 	}

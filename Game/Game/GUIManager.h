@@ -4,6 +4,7 @@
 
 #include "Button.h"
 #include "Window.h"
+#include "MouseButtonEvent.h"
 
 using namespace std;
 
@@ -17,8 +18,8 @@ public:
 		m_Buttons.push_back(button);
 	}
 
-	void execute() {
-		if (Window::GetInstance()->getMousePressed(GLFW_MOUSE_BUTTON_1)) {
+	void execute(MouseButtonEvent* event) {
+		if(event->getKeyCode() == GLFW_MOUSE_BUTTON_1 && event->getActionCode() == GLFW_PRESS){
 			double x = (Window::GetInstance()->getMousePosX() / Window::GetInstance()->getWidth())*2.0 - 1.0;
 			double y = (1.0 - Window::GetInstance()->getMousePosY() / Window::GetInstance()->getHeight())*2.0 - 1.0;
 

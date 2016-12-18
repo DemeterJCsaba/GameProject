@@ -22,12 +22,13 @@ void main() {
 		window->clear();
 		window->update();
 
+		StateManager::getInstance().Update();
+		
 		StateManager::getInstance().getCurrentState()->update();
 		StateManager::getInstance().getCurrentState()->render();
 
 		window->render();
 
-		StateManager::getInstance().Update();
 		FPSManager::getInstance().end();
 	}
 

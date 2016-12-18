@@ -21,6 +21,8 @@ RenderEngine2D::RenderEngine2D(bool disableDepth, int maxVertexSize):
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int)*m_MaxVertexSize*3, NULL, GL_DYNAMIC_DRAW);
 		unbindIBO();
 	unbindVAO();
+
+	m_TransformationStack.push_back(vec2());
 }
 
 void RenderEngine2D::begin() {
@@ -44,14 +46,23 @@ void RenderEngine2D::end() {
 }
 
 void RenderEngine2D::submit(RawModel2D* model) {
+	m_TransformationStack.push_back(m_TransformationStack[m_TransformationStack.size()-1] + model->getPosition());
+	submitModel(model);
+	list<RawModel2D*>* list = model->getList();
+	for (RawModel2D* m : *list) {
+		submit(m);
+	}
+	m_TransformationStack.pop_back();
+}
+
+void RenderEngine2D::submitModel(RawModel2D* model) {
 	vector<vec2>& vertices = model->getVertices();
 	vector<vec2>& textures = model->getTextures();
 	vector<unsigned int>& indicesVertex = model->getIndicesVertex();
 	vector<unsigned int>& indicesTexture = model->getIndicesTexture();
 
 	Texture* texture = model->getTexture();
-	vec2 position = model->getPosition();
-	
+
 	int texId = 0;
 	if (texture != nullptr) {
 		m_Textures.push_back(texture);
@@ -60,7 +71,7 @@ void RenderEngine2D::submit(RawModel2D* model) {
 
 	for (int i = 0; i < vertices.size(); ++i) {
 		m_VertexBuffer[i].vertex = vertices[i];
-		m_VertexBuffer[i].vertex += position;
+		m_VertexBuffer[i].vertex += m_TransformationStack[m_TransformationStack.size() - 1];
 		m_VertexBuffer[i].textureId = (float)texId;
 	}
 

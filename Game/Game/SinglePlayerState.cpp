@@ -78,7 +78,7 @@ SinglePlayerState::~SinglePlayerState() {
 }
 
 void SinglePlayerState::resume() {
-	m_Environment.setTime(45.0f);
+	m_Environment.setTime(200.0f);
 }
 
 void SinglePlayerState::pause() {

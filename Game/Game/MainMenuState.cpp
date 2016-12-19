@@ -4,6 +4,7 @@
 #include "Delay.h"
 #include "Text.h"
 #include "Player.h"
+#include "SettingsManager.h"
 
 MainMenuState::MainMenuState():
 	m_Gui(&m_LayerGui,&m_Layer3DDynamic)
@@ -41,7 +42,13 @@ void MainMenuState::load() {
 	m_LayerBG.addModel("Fade", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::getTexture("Fade.png")));
 	m_LayerBG.addModel("BackGround", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::getTexture("MainMenu_BG.png")));
 	
-	m_Layer3DDynamic.addModel("Player", new Player(100.0f,vec3(3.0f, -0.5f, -7.0f)));
+	int ind = SettingsManager::Instance->getSelectedPlayerIndex();
+	if (ind != 0) {
+		PlayerSettings* playerSettigs = (*SettingsManager::Instance->getPlayerSettings())[ind-1];
+		Player* player = new Player(100.0f, vec3(3.0f, -0.5f, -7.0f), vec3(), playerSettigs->getSize());
+		player->setColor(playerSettigs->getColor());
+		m_Layer3DDynamic.addModel("Player",player);
+	}	
 
 	m_Gui.load();
 }
@@ -49,13 +56,17 @@ void MainMenuState::load() {
 
 
 void MainMenuState::update() {
+	// Events
 	for (Event* e : m_Events)
 		m_Gui.handleEvent(e);
 	m_Events.clear();
 
 	m_Gui.update();
 
-	m_Layer3DDynamic.getModel("Player")->addRotate(vec3(0.0f, -0.03f, 0.0f));
+	// Object update
+	Movable* player = m_Layer3DDynamic.getModel("Player");
+	if (player != nullptr)
+		player->addRotate(vec3(0.0f, -0.03f, 0.0f));
 	m_Layer3DDynamic.udate();
 }
 
@@ -68,13 +79,13 @@ void MainMenuState::render() {
 
 
 void MainMenuState::resume() {
-	cout << "Main menu resume." << endl;
-
-	m_Layer3DDynamic.getModel("Player")->setRotate(vec3(0.0f, -100.0f, 0.0f));
+	Movable* player = m_Layer3DDynamic.getModel("Player");
+	if(player != nullptr)
+		player->setRotate(vec3(0.0f, -100.0f, 0.0f));
 	m_Gui.start();
 }
 
 void MainMenuState::pause() {
-	cout << "Main menu pause." << endl;
+	
 }
 

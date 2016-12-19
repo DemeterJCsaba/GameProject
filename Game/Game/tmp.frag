@@ -20,7 +20,7 @@ void main(void){
 	vec3 unitSun    = normalize(sunPosition);
 	float nDot = dot(unitNormal,unitSun);
 	float inten = clamp((sunPosition.y + 0.2)*10.0 ,0.0,1.0);
-	float brightness = max(nDot*inten,0.1);
+	float brightness = max(nDot*inten,0.7);
 	float t = time/360.0;
 	vec3 fogColor = texture(SkyGradient,vec2(t,0.02)).xyz;
 	vec3 diffuse = brightness * fogColor;

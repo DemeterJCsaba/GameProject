@@ -53,13 +53,6 @@ void RenderEngine3D::submit(RawModel3D* model) {
 	vector<unsigned int>& indicesNormal = model->getIndicesNormal();
 	vector<unsigned int>& indicesColor = model->getIndicesColor();
 
-	/*if (vertices.size() == 0) vertices.push_back(vec3());
-	if (normals.size() == 0) normals.push_back(vec3());
-	if (colors.size() == 0) colors.push_back(vec3());
-	if (indicesVertex.size() == 0) indicesVertex.push_back(0);
-	if (indicesNormal.size() == 0) indicesNormal.push_back(0);
-	if (indicesColor.size() == 0) indicesColor.push_back(0);*/
-
 	vec3 pos = model->getPosition();
 	vec3 rot = model->getRotation();
 	vec3 sca = model->getScale();
@@ -71,21 +64,6 @@ void RenderEngine3D::submit(RawModel3D* model) {
 	}
 
 	for (int i = 0; i < indicesVertex.size(); ++i) {
-		/*int indV = indicesVertex.size()>i?indicesVertex[i]:0;
-		indV = (indV < 0 ? 0 : indV);
-		indV = (indV>= vertices.size()? vertices.size()-1:indV);
-		int indN = indicesNormal.size()>i ? indicesNormal[i]:0;
-		indN = (indN < 0 ? 0 : indN);
-		indN = (indN >= normals.size() ? normals.size() - 1 : indN);
-		int indC = indicesColor.size()>i ? indicesColor[i]:0;
-		indC = (indC < 0 ? 0 : indC);
-		indC = (indC >= colors.size() ? colors.size() - 1 : indC);*/
-
-		/*m_IndexBuffer[i] = m_VertexCount + indV;
-		m_VertexBuffer[indV].normal = normals[indN];
-		m_VertexBuffer[indV].color = colors[indC];*/
-		/*int tmp = indicesVertex[i] < 0 ? 0 : indicesVertex[i];
-		int tmp2 = indicesNormal[i] < 0 ? 0 : indicesNormal[i];*/
 		m_IndexBuffer[i] = m_VertexCount + indicesVertex[i];
 		m_VertexBuffer[indicesVertex[i]].normal = rotation*normals[indicesNormal[i]];
 		m_VertexBuffer[indicesVertex[i]].color = colors[indicesColor[i]];

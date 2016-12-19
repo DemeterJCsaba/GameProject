@@ -24,9 +24,6 @@ private:
 	Layer3DDynamic m_Layer3DDynamic;
 
 	MenuGui m_Gui;
-
-	//TimerManager m_TimerManager;
-	Camera m_Camera;
 public:
 	MainMenuState();
 	~MainMenuState();

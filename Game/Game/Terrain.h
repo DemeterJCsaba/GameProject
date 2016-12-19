@@ -28,7 +28,4 @@ public:
 	int getSize() const { return m_Size; }
 	int getSeed() const { return m_Seed; }
 	int getBlockSize() const { return m_BlockSize; }
-
-	//RawModel3D* getBlockRawModel(vec2 position);
-//private:
 };

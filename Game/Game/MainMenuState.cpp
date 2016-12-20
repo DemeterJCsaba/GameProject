@@ -41,7 +41,7 @@ MainMenuState::MainMenuState():
 	m_Shader3D.setUniformMat4("pr_matrix", mat4::perspective(70, 960.0f / 540.0f, 0.1f, 1000));
 	m_Shader3D.disable();
 
-	player = new Entity("Resources\\Entitys\\test.obj");
+	player = new Entity("Resources\\Entitys\\kocka.obj");
 	
 	m_RenderEngine3DDynamic.submit(player->getRawModel());
 }

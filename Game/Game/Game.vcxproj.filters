@@ -60,6 +60,39 @@
     <Filter Include="Source Files\Collision">
       <UniqueIdentifier>{065953ae-ca51-493e-a77d-4c457f454a67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Collision\Globe">
+      <UniqueIdentifier>{3d620d98-7afb-47de-946a-e227e2ee73d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collision\Squere">
+      <UniqueIdentifier>{0dfd61f2-e716-4a1f-9295-31e98eed9524}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collision\Cylinder">
+      <UniqueIdentifier>{35053640-a7c7-4589-a645-b04e3aca23cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SysThread">
+      <UniqueIdentifier>{1ed8e89a-084d-4db2-962d-37d1dcdeee12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ClientSide">
+      <UniqueIdentifier>{947f6d6b-0c90-4d29-b2e3-47efe55cfaf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ClientSide\Client">
+      <UniqueIdentifier>{8a6da503-944a-4702-94fc-b21a7f5e28a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ClientSide\ReadThread">
+      <UniqueIdentifier>{32595375-5b23-41fe-b747-87322532a13b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ClientSide\WriteThread">
+      <UniqueIdentifier>{e979ca77-c4fc-4841-b2d6-4f43c8dde41a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ClientSide\Lock">
+      <UniqueIdentifier>{60a310cb-a74a-4859-b185-d7ac0ffbeb89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ClientSide\FullMsg">
+      <UniqueIdentifier>{022439fb-541f-4a79-bb79-7fdae187573b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ClientSide\Msg">
+      <UniqueIdentifier>{453fa69b-f4c4-4a87-bd3a-6e45f89ed7c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -154,6 +187,33 @@
     </ClCompile>
     <ClCompile Include="GUIManager.cpp">
       <Filter>Source Files\Game\GUIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobeBox.cpp">
+      <Filter>Source Files\Collision\Globe</Filter>
+    </ClCompile>
+    <ClCompile Include="SquereBox.cpp">
+      <Filter>Source Files\Collision\Squere</Filter>
+    </ClCompile>
+    <ClCompile Include="CylinderBox.cpp">
+      <Filter>Source Files\Collision\Cylinder</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSide.cpp">
+      <Filter>Source Files\ClientSide\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="SysThread.cpp">
+      <Filter>Source Files\SysThread</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadThread.cpp">
+      <Filter>Source Files\ClientSide\ReadThread</Filter>
+    </ClCompile>
+    <ClCompile Include="WriteThread.cpp">
+      <Filter>Source Files\ClientSide\WriteThread</Filter>
+    </ClCompile>
+    <ClCompile Include="FullMsg.cpp">
+      <Filter>Source Files\ClientSide\FullMsg</Filter>
+    </ClCompile>
+    <ClCompile Include="Msg.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +325,37 @@
     <ClInclude Include="GUIManager.h">
       <Filter>Source Files\Game\GUIElements</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionBox.h">
+      <Filter>Source Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobeBox.h">
+      <Filter>Source Files\Collision\Globe</Filter>
+    </ClInclude>
+    <ClInclude Include="SquereBox.h">
+      <Filter>Source Files\Collision\Squere</Filter>
+    </ClInclude>
+    <ClInclude Include="CylinderBox.h">
+      <Filter>Source Files\Collision\Cylinder</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSide.h">
+      <Filter>Source Files\ClientSide\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="SysThread.h">
+      <Filter>Source Files\SysThread</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadThread.h">
+      <Filter>Source Files\ClientSide\ReadThread</Filter>
+    </ClInclude>
+    <ClInclude Include="WriteThread.h">
+      <Filter>Source Files\ClientSide\WriteThread</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock.h">
+      <Filter>Source Files\ClientSide\Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="FullMsg.h">
+      <Filter>Source Files\ClientSide\FullMsg</Filter>
+    </ClInclude>
+    <ClInclude Include="Msg.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="menu3D.vert">

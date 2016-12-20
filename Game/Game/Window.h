@@ -1,24 +1,25 @@
-#pragma once
+#ifndef WINDOW_H
+#define WINDOW_H
 
-#include <iostream>
 #include <GLEW\glew.h>
 #include <GLFW\glfw3.h>
 
-#include "SettingsManager.h"
-#include "FPSManager.h"
-
-#define MAX_KEYS	512
-#define MAX_BUTTONS 8
+#include "WindowSettings.h"
 
 using namespace std;
 
 class Window {
 private:
-	static Window s_Instance;
+	static Window* Instance;
 public:
-	static Window& getInstance();
+	static void CreateWindow(WindowSettings* settings);
+	static void CloseWindow();
+	static Window* GetInstance() { return Instance; }
 
 private:
+	static const int MAX_KEYBOARD_BUTTONS = 512;
+	static const int MAX_MOUSE_BUTTONS = 8;
+
 	int m_Width;
 	int m_Height;
 	string m_Title;
@@ -31,8 +32,8 @@ private:
 	double m_OldMouseY;
 	bool m_MouseVisible;
 
-	bool m_KeyboardButtons[MAX_KEYS];
-	bool m_MouseButtons[MAX_BUTTONS];
+	bool m_KeyboardButtons[MAX_KEYBOARD_BUTTONS];
+	bool m_MouseButtons[MAX_MOUSE_BUTTONS];
 	double m_MouseX;
 	double m_MouseY;
 	double m_MouseWheelOffset;
@@ -45,12 +46,12 @@ private:
 public:
 	~Window();
 
-	void Clear() const;
-	void Update();
-	void Render();
-	void Close();
-	bool IsClosed() const;
-	void GetError();
+	void clear() const;
+	void update();
+	void render();
+	void close();
+	bool isClosed() const;
+	void getError();
 
 	// Getters
 	int getWidth() const { return m_Width; }
@@ -76,4 +77,4 @@ private:
 	friend static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 };
 
-
+#endif /* WINDOW_H */

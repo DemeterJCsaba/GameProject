@@ -2,27 +2,17 @@
 
 #include <vector>
 
-#include "VertexData.h"
-#include "Texture2D.h"
-#include "TextureCube.h"
 #include "RawModel3DTextured.h"
+#include "TextureCube.h"
 
 using namespace std;
 
-class SkyBox {
+class SkyBox : public RawModel3DTextured{
 private:
-	RawModel3DTextured m_Sky;
-	RawModel3DTextured m_Sun;
-	RawModel3DTextured m_Moon;
-
-	float m_SkySize;
-	float m_SunSize;
-	float m_MoonSize;
+	float m_Size;
 public:
-	SkyBox(float skySize = 100.0f, float sunSize = 5.0f, float moonSize = 4.0f);
+	SkyBox(TextureCube* texture, float size = 100.0f);
 	~SkyBox();
 
-	RawModel3DTextured& getSkyModel() { return m_Sky; }
-	RawModel3DTextured& getSunModel() { return m_Sun; }
-	RawModel3DTextured& getMoonModel() { return m_Moon; }
+	float getSize() const { return m_Size; }
 };

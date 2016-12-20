@@ -83,14 +83,14 @@
       <SDLCheck>true</SDLCheck>
       <BrowseInformation>true</BrowseInformation>
       <AdditionalIncludeDirectories>$(ProjectDir)\..\res\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
     <Link>
       <AdditionalLibraryDirectories>$(ProjectDir)\..\res\lib\GLEW;$(ProjectDir)\..\res\lib\FImg;$(ProjectDir)\..\res\lib\GLFW;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;FreeImage.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -123,15 +123,25 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="ClientSide.cpp" />
-    <ClCompile Include="CylinderBox.cpp" />
-    <ClCompile Include="FullMsg.cpp" />
-    <ClCompile Include="GlobeBox.cpp" />
-    <ClCompile Include="GUIManager.cpp" />
-    <ClCompile Include="Msg.cpp" />
-    <ClCompile Include="ReadThread.cpp" />
-    <ClCompile Include="SquereBox.cpp" />
-    <ClCompile Include="SysThread.cpp" />
+    <ClCompile Include="Environment.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="GuiState.cpp" />
+    <ClCompile Include="MenuGui.cpp" />
+    <ClCompile Include="Layer2D.cpp" />
+    <ClCompile Include="MouseButtonEvent.cpp" />
+    <ClCompile Include="Movable.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RawModel2D.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TimerManager.cpp" />
+    <ClCompile Include="KeyboardButtonEvent.cpp" />
+    <ClCompile Include="Layer3DDynamic.cpp" />
+    <ClCompile Include="Layer3DStatic.cpp" />
+    <ClCompile Include="LayerSky.cpp" />
+    <ClCompile Include="Planet.cpp" />
+    <ClCompile Include="RawModel3D.cpp" />
     <ClCompile Include="TextureCube.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FPSManager.cpp" />
@@ -144,7 +154,6 @@
     <ClCompile Include="RenderEngine.cpp" />
     <ClCompile Include="RenderEngine2D.cpp" />
     <ClCompile Include="RenderEngine3D.cpp" />
-    <ClCompile Include="RenderEngine3DDynamic.cpp" />
     <ClCompile Include="RenderEngine3DTextured.cpp" />
     <ClCompile Include="SettingsManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -152,30 +161,40 @@
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Terrain.cpp" />
-    <ClCompile Include="TerrainRenderEngine.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="vec4.cpp" />
     <ClCompile Include="Window.cpp" />
-    <ClCompile Include="WriteThread.cpp" />
+    <ClCompile Include="WindowSettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="ClientSide.h" />
-    <ClInclude Include="CollisionBox.h" />
-    <ClInclude Include="CylinderBox.h" />
-    <ClInclude Include="FullMsg.h" />
-    <ClInclude Include="GlobeBox.h" />
+    <ClInclude Include="Delay.h" />
+    <ClInclude Include="Environment.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="GuiState.h" />
+    <ClInclude Include="LivingEntity.h" />
+    <ClInclude Include="MenuGui.h" />
     <ClInclude Include="GUIManager.h" />
-    <ClInclude Include="Lock.h" />
-    <ClInclude Include="Msg.h" />
-    <ClInclude Include="ReadThread.h" />
-    <ClInclude Include="SquereBox.h" />
-    <ClInclude Include="SysThread.h" />
+    <ClInclude Include="Interpolation.h" />
+    <ClInclude Include="Layer2D.h" />
+    <ClInclude Include="MouseButtonEvent.h" />
+    <ClInclude Include="Movable.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerSettings.h" />
+    <ClInclude Include="Slider.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="TimerManeger.h" />
+    <ClInclude Include="KeyboardButtonEvent.h" />
+    <ClInclude Include="Layer3DDynamic.h" />
+    <ClInclude Include="Layer3DStatic.h" />
+    <ClInclude Include="LayerSky.h" />
+    <ClInclude Include="Planet.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureCube.h" />
     <ClInclude Include="Entity.h" />
@@ -192,7 +211,6 @@
     <ClInclude Include="RenderEngine.h" />
     <ClInclude Include="RenderEngine2D.h" />
     <ClInclude Include="RenderEngine3D.h" />
-    <ClInclude Include="RenderEngine3DDynamic.h" />
     <ClInclude Include="RenderEngine3DTextured.h" />
     <ClInclude Include="SettingsManager.h" />
     <ClInclude Include="ShaderProgram.h" />
@@ -200,15 +218,14 @@
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="Terrain.h" />
-    <ClInclude Include="TerrainRenderEngine.h" />
     <ClInclude Include="Texture2D.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />
-    <ClInclude Include="VertexData.h" />
     <ClInclude Include="Window.h" />
-    <ClInclude Include="WriteThread.h" />
+    <ClInclude Include="WindowSettings.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="menu3D.frag" />

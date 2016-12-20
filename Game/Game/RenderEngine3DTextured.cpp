@@ -1,6 +1,7 @@
 #include "RenderEngine3DTextured.h"
 
 RenderEngine3DTextured::RenderEngine3DTextured(bool disableDepth, int maxVertexSize) :
+	RenderEngine(),
 	m_MaxVertexSize(maxVertexSize),
 	m_DisableDepth(disableDepth)
 {
@@ -26,11 +27,9 @@ RenderEngine3DTextured::RenderEngine3DTextured(bool disableDepth, int maxVertexS
 }
 
 void RenderEngine3DTextured::begin() {
-	unbindVBO();
 	bindVBO();
 	m_VertexBuffer = (VertexData3DTextured*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 
-	unbindIBO();
 	bindIBO();
 	m_IndexBuffer = (unsigned int*)glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_WRITE_ONLY);
 

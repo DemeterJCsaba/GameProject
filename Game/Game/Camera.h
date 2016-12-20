@@ -10,7 +10,6 @@ public:
 	static Camera* current;
 
 private:
-	Terrain* m_Terrain;
 	RawModel3D* m_Entity;
 	float m_Distance;
 
@@ -19,7 +18,7 @@ private:
 	vec3 m_Position;
 	vec3 m_Rotation;
 public:
-	Camera(Terrain* terrain,float distance = 10.0f);
+	Camera(float distance = 10.0f);
 	void setCurrentCamera(){ current = this; }
 	void setEntity(RawModel3D* entity) { m_Entity = entity; }
 	void relaseEntity() { m_Entity = nullptr; }

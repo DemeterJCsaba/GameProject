@@ -1,30 +1,29 @@
-#pragma once
+#ifndef MAINMENUSTATE_H
+#define MAINMENUSTATE_H
+
+#include <memory>
 
 #include "IState.h"
+#include "Layer2D.h"
+#include "MenuGui.h"
 #include "RenderEngine2D.h"
 #include "ShaderProgram.h"
 #include "Window.h"
 #include "StateManager.h"
 #include "SinglePlayerState.h"
-#include "RenderEngine3DDynamic.h"
 #include "GUIManager.h"
+#include "Layer3DDynamic.h"
+#include "TimerManeger.h"
 
-//void startGame();
-//void exitGame();
+using namespace std;
 
 class MainMenuState : public IState {
 private:
-	RenderEngine2D m_RenderEngine2D;
-	ShaderProgram m_ShaderGUI;
+	Layer2D m_LayerBG;
+	Layer2D m_LayerGui;
+	Layer3DDynamic m_Layer3DDynamic;
 
-	RenderEngine3DDynamic m_RenderEngine3DDynamic;
-	ShaderProgram m_Shader3D;
-
-	Entity* player;
-
-	GUIManager m_GUIManager;
-	Button m_StartButton;
-	Button m_ExitButton;
+	MenuGui m_Gui;
 public:
 	MainMenuState();
 	~MainMenuState();
@@ -34,4 +33,9 @@ public:
 
 	void resume();
 	void pause();
+private:
+	void init();
+	void load();
 };
+
+#endif // !MAINMENUSTATE_H

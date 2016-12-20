@@ -1,77 +1,91 @@
 #include "MainMenuState.h"
 
-// Functions
-void startGame() {
-	StateManager::getInstance().addState(new SinglePlayerState());
-}
+#include "Interpolation.h"
+#include "Delay.h"
+#include "Text.h"
+#include "Player.h"
+#include "SettingsManager.h"
 
-void exitGame() {
-	Window::getInstance().Close();
-}
-
-
-// Main menu state
 MainMenuState::MainMenuState():
-	m_RenderEngine2D(true),
-	m_ShaderGUI(ShaderProgram("gui")),
-	m_Shader3D(ShaderProgram("menu3D")),
-	m_StartButton(vec2(-0.85f, 0.2f), vec2(0.35f, 0.15f), new Texture2D("Resources\\Images\\StartGameButton.png"),&startGame),
-	m_ExitButton(vec2(-0.85f, -0.35f), vec2(0.35f, 0.15f), new Texture2D("Resources\\Images\\ExitGameButton.png"),&exitGame)
+	m_Gui(&m_LayerGui,&m_Layer3DDynamic)
 {
-	// Temporal
-	m_RenderEngine2D.begin();
-	GUIImage BG(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), new Texture2D("Resources\\Images\\MainMenu_BG.png"));
-	m_RenderEngine2D.submit(BG);
-	m_RenderEngine2D.submit(m_StartButton);
-	m_RenderEngine2D.submit(m_ExitButton);
-	m_RenderEngine2D.end();
-
-	m_GUIManager.addButton(&m_StartButton);
-	m_GUIManager.addButton(&m_ExitButton);
-
-	m_ShaderGUI.enable();
-	GLint textures[32];
-	for (int i = 0; i < 32; ++i) {
-		textures[i] = i;
-	}
-	m_ShaderGUI.setUniformiv("textures", textures, 32);
-	m_ShaderGUI.disable();
-
-	m_Shader3D.enable();
-	m_Shader3D.setUniformMat4("pr_matrix", mat4::perspective(70, 960.0f / 540.0f, 0.1f, 1000));
-	m_Shader3D.disable();
-
-	player = new Entity("Resources\\Entitys\\kocka.obj");
-	
-	m_RenderEngine3DDynamic.submit(player->getRawModel());
+	init();
+	load();
 }
 
 MainMenuState::~MainMenuState() {
 	
 }
 
+// Initializing shaders and renderers
+void MainMenuState::init() {
+	// GUI Layer
+	ShaderProgram* shader2d = new ShaderProgram("gui");
+	shader2d->enable();
+	GLint textures[32];
+	for (int i = 0; i < 32; ++i) textures[i] = i;
+	shader2d->setUniformiv("textures", textures, 32);
+	shader2d->disable();
+	m_LayerBG.setShader(shader2d);
+	m_LayerGui.setShader(shader2d);
+
+	// 3D Layer
+	ShaderProgram* shader3d = new ShaderProgram("menu3D");
+	shader3d->enable();
+	shader3d->setUniformMat4("pr_matrix", mat4::perspective(50.0f, Window::GetInstance()->getWidth()*1.0f / Window::GetInstance()->getHeight(), 0.1f, 1000));
+	shader3d->disable();
+	m_Layer3DDynamic.setShader(shader3d);
+}
+
+// Loading objects
+void MainMenuState::load() {
+	m_LayerBG.addModel("Fade", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::getTexture("Fade.png")));
+	m_LayerBG.addModel("BackGround", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::getTexture("MainMenu_BG.png")));
+	
+	int ind = SettingsManager::Instance->getSelectedPlayerIndex();
+	if (ind != 0) {
+		PlayerSettings* playerSettigs = (*SettingsManager::Instance->getPlayerSettings())[ind-1];
+		Player* player = new Player(100.0f, vec3(3.0f, -0.5f, -7.0f), vec3(), playerSettigs->getSize());
+		player->setColor(playerSettigs->getColor());
+		m_Layer3DDynamic.addModel("Player",player);
+	}	
+
+	m_Gui.load();
+}
+ 
+
+
 void MainMenuState::update() {
-	player->getRawModel()->addRotation(vec3(0.0f,0.1f,0.0f));
-	m_GUIManager.execute();
+	// Events
+	for (Event* e : m_Events)
+		m_Gui.handleEvent(e);
+	m_Events.clear();
+
+	m_Gui.update();
+
+	// Object update
+	Movable* player = m_Layer3DDynamic.getModel("Player");
+	if (player != nullptr)
+		player->addRotate(vec3(0.0f, -0.03f, 0.0f));
+	m_Layer3DDynamic.udate();
 }
 
 void MainMenuState::render() {
-	// 2D
-	m_ShaderGUI.enable();
-	m_RenderEngine2D.flush();
-	m_ShaderGUI.disable();
-
-	// 3D
-	m_Shader3D.enable();
-	m_RenderEngine3DDynamic.flush();
-	m_Shader3D.disable();
+	m_LayerBG.render();
+	m_Layer3DDynamic.render();
+	m_LayerGui.render();
 }
 
+
+
 void MainMenuState::resume() {
-	player->getRawModel()->setPosition(vec3(2.0f, -0.5f, -2.0f));
+	Movable* player = m_Layer3DDynamic.getModel("Player");
+	if(player != nullptr)
+		player->setRotate(vec3(0.0f, -100.0f, 0.0f));
+	m_Gui.start();
 }
 
 void MainMenuState::pause() {
-
+	
 }
 

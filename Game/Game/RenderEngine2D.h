@@ -27,12 +27,16 @@ private:
 	bool m_DisableDepth;
 
 	vector<Texture*> m_Textures;
+
+	vector<vec2> m_TransformationStack;
 public:
-	RenderEngine2D(bool disableDepth = false, int maxVertexSize = 300);
+	RenderEngine2D(bool disableDepth = false, int maxVertexSize = 1000);
 
 	void begin();
 	void end();
-	void submit(RawModel2D& model);
+	void submit(RawModel2D* model);
 
 	void flush();
+private:
+	void submitModel(RawModel2D* model);
 };

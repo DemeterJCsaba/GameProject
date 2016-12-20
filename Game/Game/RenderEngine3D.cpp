@@ -1,6 +1,9 @@
 #include "RenderEngine3D.h"
 
+#include <iostream>
+
 RenderEngine3D::RenderEngine3D(bool disableDepth, int maxVertexSize):
+	RenderEngine(),
 	m_MaxVertexSize(maxVertexSize),
 	m_DisableDepth(disableDepth)
 {
@@ -42,17 +45,19 @@ void RenderEngine3D::end() {
 	unbindIBO();
 }
 
-void RenderEngine3D::submit(RawModel3D& model) {
-	vector<vec3>& vertices = model.getVertices();
-	vector<vec3>& normals = model.getNormals();
-	vector<vec3>& colors = model.getColors();
-	vector<unsigned int>& indicesVertex = model.getIndicesVertex();
-	vector<unsigned int>& indicesNormal = model.getIndicesNormal();
-	vector<unsigned int>& indicesColor = model.getIndicesColor();
+void RenderEngine3D::submit(RawModel3D* model) {
+	vector<vec3>& vertices = model->getVertices();
+	vector<vec3>& normals = model->getNormals();
+	vector<vec3>& colors = model->getColors();
+	vector<unsigned int>& indicesVertex = model->getIndicesVertex();
+	vector<unsigned int>& indicesNormal = model->getIndicesNormal();
+	vector<unsigned int>& indicesColor = model->getIndicesColor();
 
-	vec3 pos = model.getPosition();
-	vec3 rot = model.getRotation();
-	mat4 matrix = mat4::translation(pos.x, pos.y, pos.z)*mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);
+	vec3 pos = model->getPosition();
+	vec3 rot = model->getRotation();
+	vec3 sca = model->getScale();
+	mat4 rotation = mat4::rotation(rot.x, 1, 0, 0)*mat4::rotation(rot.y, 0, 1, 0)*mat4::rotation(rot.z, 0, 0, 1);
+	mat4 matrix = mat4::scale(sca.x,sca.y,sca.z)*mat4::translation(pos.x, pos.y, pos.z)*rotation;
 
 	for (int i = 0; i < vertices.size(); ++i) {
 		m_VertexBuffer[i].vertex = matrix*vertices[i];
@@ -60,13 +65,10 @@ void RenderEngine3D::submit(RawModel3D& model) {
 
 	for (int i = 0; i < indicesVertex.size(); ++i) {
 		m_IndexBuffer[i] = m_VertexCount + indicesVertex[i];
-		int tmp = indicesVertex[i] < 0 ? 0 : indicesVertex[i];
-		m_VertexBuffer[tmp].normal = vec3(0, 1, 0); //normals[indicesNormal[i]];
-		m_VertexBuffer[tmp].color = vec3(1,0,1);// colors[indicesColor[i]];
-		//m_VertexBuffer[indicesVertex[i]].normal = normals[indicesNormal[i]];
-		//m_VertexBuffer[indicesVertex[i]].color = colors[indicesColor[i]];
+		m_VertexBuffer[indicesVertex[i]].normal = rotation*normals[indicesNormal[i]];
+		m_VertexBuffer[indicesVertex[i]].color = colors[indicesColor[i]];
 	}
-
+	
 	m_VertexBuffer += vertices.size();
 	m_VertexCount += (int)vertices.size();
 
@@ -75,6 +77,11 @@ void RenderEngine3D::submit(RawModel3D& model) {
 }
 
 void RenderEngine3D::flush() {
+	for (int i = 0; i < m_Textures.size(); ++i) {
+		glActiveTexture(GL_TEXTURE0 + i);
+		m_Textures[i]->bind();
+	}
+
 	bindVAO();
 	bindIBO();
 	if (m_DisableDepth) disableDepth();
@@ -84,4 +91,12 @@ void RenderEngine3D::flush() {
 	if (m_DisableDepth) enableDepth();
 	bindIBO();
 	unbindVAO();
+}
+
+int RenderEngine3D::addTexture(Texture* texture) {
+	if (texture != nullptr) {
+		m_Textures.push_back(texture);
+		return (int)m_Textures.size();
+	}
+	return 0;
 }

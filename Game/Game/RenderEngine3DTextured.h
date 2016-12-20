@@ -31,6 +31,7 @@ public:
 	void begin();
 	void end();
 	void submit(RawModel3DTextured& model);
+
 	int addTexture(Texture* texture);
 
 	void flush();

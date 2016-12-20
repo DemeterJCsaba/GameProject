@@ -1,6 +1,7 @@
 #pragma once
 
-#include<vector>
+#include <vector>
+#include <list>
 
 #include "Texture.h"
 #include "Maths.h"
@@ -18,8 +19,11 @@ protected:
 
 	vec2 m_Position;
 	float m_Rotation;
+
+	list<RawModel2D*> m_Models;
 public:
 	RawModel2D(Texture* texture, vec2 positon = vec2(), float rotation = 0.0f) :m_Texture(texture), m_Position(positon), m_Rotation(rotation) {}
+	~RawModel2D();
 	
 	vector<vec2>& getVertices() { return m_Vertices; }
 	vector<vec2>& getTextures() { return m_Textures; }
@@ -32,7 +36,10 @@ public:
 	const float getRotation() const { return m_Rotation; }
 
 	void setPosition(vec2 position) { m_Position = position; }
-	void setRotation(float rotation) { m_Rotation += rotation; }
-	void addPosition(vec2 position) { m_Position = position; }
+	void setRotation(float rotation) { m_Rotation = rotation; }
+	void addPosition(vec2 position) { m_Position += position; }
 	void addRotation(float rotation) { m_Rotation += rotation; }
+
+	//void addModel(RawModel2D* model);
+	list<RawModel2D*>* getList();
 };

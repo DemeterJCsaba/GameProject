@@ -1,34 +1,40 @@
-#pragma once
+#ifndef SETTINGSMANAGER_H
+#define SETTINGSMANAGER_H
 
-#include <fstream>
 #include <string>
-#include <sstream>
+#include <vector>
+
+#include "WindowSettings.h"
+#include "PlayerSettings.h"
 
 using namespace std;
 
 class SettingsManager {
 private:
 	static const string SettingsFileName;
-
-	// Window Settings
-	static unsigned int Window_Width;
-	static unsigned int Window_Height;
-	static const string Window_Title;
-	static bool Window_FullScreen;
-
-	SettingsManager() {}
+	static const string PlayerSettingDir;
 public:
-	static void LoadSettings();
-	static void SaveSettings();
+	static SettingsManager* Instance;
 
-	// Getters
-	static unsigned int getWindowWidth() { return Window_Width; }
-	static unsigned int getWindowHeight() { return Window_Height; }
-	static string getWindowTitle() { return Window_Title; }
-	static bool getWindowFullScreen() { return Window_FullScreen; }
+private:
+	WindowSettings m_WindowSettings;
+	vector<PlayerSettings*> m_PlayerSettings;
+	int m_SelectedPlayerIndex;
+public:
+	SettingsManager();
+	~SettingsManager();
 
-	// Setters
-	static void setWindowWidth(unsigned int width) { Window_Width = (width >= 640 ? width : 640); }
-	static void setWindowHeight(unsigned int height) { Window_Height = (height >= 480 ? height : 480); }
-	static void setWindowFullScreen(bool fullScreen) { Window_FullScreen = fullScreen; }
+	void loadSettings();
+	void saveSettings();
+
+	WindowSettings* getWindowSettings() { return &m_WindowSettings; }
+
+	vector<PlayerSettings*>* getPlayerSettings() { return &m_PlayerSettings; }
+	void addPlayerSettings(PlayerSettings* player);
+	int getSelectedPlayerIndex() const { return m_SelectedPlayerIndex; }
+	void setSelectedPlayerndex(int ind) { m_SelectedPlayerIndex = ind; }
+private:
+	void loadPlayerSettings(string name);
 };
+
+#endif /* SETTINGSMANAGER_H */

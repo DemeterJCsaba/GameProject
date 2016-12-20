@@ -6,30 +6,33 @@
 #include "StateManager.h"
 #include "Window.h"
 
-#include "RenderEngine3DTextured.h"
+#include "LayerSky.h"
+#include "Layer3DStatic.h"
+
+#include "Environment.h"
+#include "Planet.h"
 #include "SkyBox.h"
+
 #include "ShaderProgram.h"
 #include "Camera.h"
-#include "Texture2D.h"
-
-#include "TerrainRenderEngine.h"
 
 #include "Entity.h"
 
 class SinglePlayerState : public IState {
 private:
-	RenderEngine3DTextured m_SkyBoxRenderer;
-	SkyBox m_SkyBox;
-	ShaderProgram m_SkyShader;
+	//LayerGUI* m_LayerGUI;
+	LayerSky* m_LayerSky;
 
-	Camera m_Camera;
+	int m_BlockCount;
+	int m_BlockSize;
+	float m_SpriteSize;
+	Layer3DStatic*** m_Layer3DStatic;
+	int m_PosX;
+	int m_PosZ;
 
-	double m_Time;
-	vec3 m_SunPosition;
-
-	TerrainRenderEngine m_TerrainRenderer;
-	Terrain m_Terrain;
-	ShaderProgram m_Shader;
+	Environment m_Environment;
+	Camera* m_MainCamera;
+	//std::shared_ptr<Camera> m_MainCameraPtr;
 public:
 	SinglePlayerState();
 	~SinglePlayerState();
@@ -39,4 +42,8 @@ public:
 
 	void resume();
 	void pause();
+private:
+	void init();
+
+	void updateTerrain();
 };

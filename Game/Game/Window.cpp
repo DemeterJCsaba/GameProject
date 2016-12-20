@@ -1,12 +1,30 @@
 #include "Window.h"
 
-Window& Window::getInstance() {
-	static Window s_Instance(SettingsManager::getWindowWidth(), 
-							 SettingsManager::getWindowHeight(),
-							 SettingsManager::getWindowTitle(),
-							 SettingsManager::getWindowFullScreen());
-	return s_Instance;
+#include <iostream>
+
+#include "FPSManager.h"
+#include "StateManager.h"
+#include "KeyboardButtonEvent.h"
+#include "MouseButtonEvent.h"
+
+
+Window* Window::Instance = nullptr;
+
+void Window::CreateWindow(WindowSettings* settings) {
+	CloseWindow();
+	Instance = new Window(settings->getWidth(),
+						  settings->getHeight(),
+						  settings->getTitle(),
+						  settings->isFullScreen());
 }
+
+void Window::CloseWindow() {
+	if (Instance != nullptr) {
+		delete Instance;
+	}
+}
+
+
 
 Window::Window(unsigned int width,unsigned int height,string title, bool fullScreen):
 	m_Width(width),m_Height(height),m_Title(title),m_FullScreen(fullScreen)
@@ -16,15 +34,14 @@ Window::Window(unsigned int width,unsigned int height,string title, bool fullScr
 		exit(EXIT_FAILURE);
 	}
 	
-	for (int i = 0; i < MAX_KEYS; ++i) {
+	for (int i = 0; i < MAX_KEYBOARD_BUTTONS; ++i) {
 		m_KeyboardButtons[i] = false;
 	}
-	for (int i = 0; i < MAX_BUTTONS; ++i) {
+	for (int i = 0; i < MAX_MOUSE_BUTTONS; ++i) {
 		m_MouseButtons[i] = false;
 	}
 	m_MouseX = m_MouseY = m_MouseOffsetX = m_MouseOffsetY = m_MouseWheelOffset = 0;
 	m_MouseVisible = true;
-
 	m_Close = false;
 }
 
@@ -75,50 +92,43 @@ bool Window::init() {
 	return true;
 }
 
-void Window::Clear() const {
+void Window::clear() const {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Window::Update() {
+void Window::update() {
+	FPSManager::getInstance().start("glfwPollEvents");
+	glfwPollEvents();
+	FPSManager::getInstance().stop("glfwPollEvents");
 	if (m_MouseVisible) {
 		m_MouseOffsetX = 0;
 		m_MouseOffsetY = 0;
 	}
 	else {
-		//cout << m_MouseX << " - " << (m_Width / 2) << " | " << m_MouseY << " - " << (m_Height / 2) << endl;
 		m_MouseOffsetX = m_MouseX - (m_Width / 2);
 		m_MouseOffsetY = m_MouseY - (m_Height / 2);
 		if(m_MouseX!=(m_Width / 2) || m_MouseY!=(m_Height / 2))
 			glfwSetCursorPos(m_Window, m_Width / 2, m_Height / 2);
-		/*else if (m_MouseX != (m_Width / 2) && m_MouseY == (m_Height / 2))
-			glfwSetCursorPos(m_Window, m_Width / 2, m_MouseX);
-		else if (m_MouseX == (m_Width / 2) && m_MouseY != (m_Height / 2))
-			glfwSetCursorPos(m_Window, m_MouseY, m_Height / 2);*/
 	}
 }
 
-void Window::Render() {
-	//FPSManager::getInstance().start("GetError");
-	//GetError();
-	//FPSManager::getInstance().stop("GetError");
+void Window::render() {
+	getError();
 
-	FPSManager::getInstance().start("glfwPollEvents");
-	glfwPollEvents();
-	FPSManager::getInstance().stop("glfwPollEvents");
 	FPSManager::getInstance().start("glfwSwapBuffers");
 	glfwSwapBuffers(m_Window);
 	FPSManager::getInstance().stop("glfwSwapBuffers");
 }
 
-void Window::Close() {
+void Window::close() {
 	m_Close = true;
 }
 
-bool Window::IsClosed() const {
+bool Window::isClosed() const {
 	return m_Close || glfwWindowShouldClose(m_Window) == 1;
 }
 
-void Window::GetError(){
+void Window::getError(){
 	m_Error = glGetError();
 	if (m_Error != GL_NO_ERROR) {
 		printf("OpenGl Error: %d\n", m_Error);
@@ -139,8 +149,9 @@ void Window::setMouseVisibility(bool mod) {
 	m_MouseVisible = mod;
 }
 
-// Event Handlers
 
+
+// Event Handlers
 void window_resize(GLFWwindow *window, int width, int height) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
 	win->m_Width = width;
@@ -151,11 +162,13 @@ void window_resize(GLFWwindow *window, int width, int height) {
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
 	win->m_KeyboardButtons[key] = (action != GLFW_RELEASE);
+	StateManager::addEvent(new KeyboardButtonEvent(key, action));
 }
 
 void mouse_callback(GLFWwindow* window, int button, int action, int mods) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
 	win->m_MouseButtons[button] = (action != GLFW_RELEASE);
+	StateManager::addEvent(new MouseButtonEvent(button, action));
 }
 
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {

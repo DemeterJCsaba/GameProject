@@ -1,11 +1,11 @@
 #include "Player.h"
 
-
-
-Player::Player(){
+Player::Player(float health,vec3 position, vec3 rotation, vec3 scale):
+	LivingEntity(health,position, rotation, scale)
+{
+	loadFromOBJ("Wolf.obj");
 }
 
-
-Player::~Player()
-{
+void Player::setColor(vec3 color) {
+	m_Colors[0] = color;
 }

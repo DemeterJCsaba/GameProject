@@ -51,47 +51,41 @@
     <Filter Include="Source Files\Graphics\Shader\ShaderFiles">
       <UniqueIdentifier>{423be4c6-ae1e-4c34-ae85-f9abdca06263}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Graphics\RenderEngine\Abstraction">
-      <UniqueIdentifier>{b9af5334-fbfd-4778-91f2-17c9b4310b1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game\GUIElements">
-      <UniqueIdentifier>{79b3acb9-16e3-482a-bd31-99e955972984}</UniqueIdentifier>
+    <Filter Include="Source Files\Graphics\Layers">
+      <UniqueIdentifier>{13e355ec-81ec-462d-883d-cf775075310b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Collision">
       <UniqueIdentifier>{065953ae-ca51-493e-a77d-4c457f454a67}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Collision\Globe">
-      <UniqueIdentifier>{3d620d98-7afb-47de-946a-e227e2ee73d8}</UniqueIdentifier>
+    <Filter Include="Source Files\Settings">
+      <UniqueIdentifier>{1044b6af-9228-4669-a599-b0230bb9510d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Collision\Squere">
-      <UniqueIdentifier>{0dfd61f2-e716-4a1f-9295-31e98eed9524}</UniqueIdentifier>
+    <Filter Include="Source Files\Graphics\Window\Events">
+      <UniqueIdentifier>{4d9c2658-5f8b-49de-8850-34936ebba663}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Collision\Cylinder">
-      <UniqueIdentifier>{35053640-a7c7-4589-a645-b04e3aca23cb}</UniqueIdentifier>
+    <Filter Include="Source Files\Game\Timer">
+      <UniqueIdentifier>{36d84131-e728-4bbb-90d2-33efd59f1558}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\SysThread">
-      <UniqueIdentifier>{1ed8e89a-084d-4db2-962d-37d1dcdeee12}</UniqueIdentifier>
+    <Filter Include="Source Files\Game\Entities">
+      <UniqueIdentifier>{50f466bf-577a-4de1-a39a-5fc80c401a19}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ClientSide">
-      <UniqueIdentifier>{947f6d6b-0c90-4d29-b2e3-47efe55cfaf7}</UniqueIdentifier>
+    <Filter Include="Source Files\Game\Entities\SkyElements">
+      <UniqueIdentifier>{26e75cb6-3632-46e8-8c66-aba5909802ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ClientSide\Client">
-      <UniqueIdentifier>{8a6da503-944a-4702-94fc-b21a7f5e28a8}</UniqueIdentifier>
+    <Filter Include="Source Files\Game\Entities\GUIElements">
+      <UniqueIdentifier>{79b3acb9-16e3-482a-bd31-99e955972984}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ClientSide\ReadThread">
-      <UniqueIdentifier>{32595375-5b23-41fe-b747-87322532a13b}</UniqueIdentifier>
+    <Filter Include="Source Files\Game\Entities\3DElements">
+      <UniqueIdentifier>{551ee47d-3b40-4368-b90e-2deb01a2162b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ClientSide\WriteThread">
-      <UniqueIdentifier>{e979ca77-c4fc-4841-b2d6-4f43c8dde41a}</UniqueIdentifier>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{104b6799-a42f-445c-babf-79a7139e1408}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ClientSide\Lock">
-      <UniqueIdentifier>{60a310cb-a74a-4859-b185-d7ac0ffbeb89}</UniqueIdentifier>
+    <Filter Include="Source Files\Graphics\Font">
+      <UniqueIdentifier>{41c1eb23-0d2a-4e5a-8f25-3e8a7fde74c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ClientSide\FullMsg">
-      <UniqueIdentifier>{022439fb-541f-4a79-bb79-7fdae187573b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\ClientSide\Msg">
-      <UniqueIdentifier>{453fa69b-f4c4-4a87-bd3a-6e45f89ed7c7}</UniqueIdentifier>
+    <Filter Include="Source Files\GUI\Menu">
+      <UniqueIdentifier>{b979e2e1-e032-43d0-b916-2a878ccf3911}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -134,14 +128,8 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files\Graphics\Entity\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="SettingsManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\Graphics\Entity\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="TerrainRenderEngine.cpp">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
     <ClCompile Include="Maths.cpp">
       <Filter>Source Files\Maths</Filter>
@@ -149,32 +137,11 @@
     <ClCompile Include="Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SkyBox.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="GUIImage.cpp">
       <Filter>Source Files\Graphics\Entity\2D</Filter>
     </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderEngine.cpp">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderEngine2D.cpp">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderEngine3D.cpp">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderEngine3DTextured.cpp">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderEngine3DDynamic.cpp">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
       <Filter>Source Files\Graphics\Texture</Filter>
@@ -183,37 +150,88 @@
       <Filter>Source Files\Graphics\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>Source Files\Game\GUIElements</Filter>
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClCompile>
-    <ClCompile Include="GUIManager.cpp">
-      <Filter>Source Files\Game\GUIElements</Filter>
+    <ClCompile Include="Layer3DDynamic.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
     </ClCompile>
-    <ClCompile Include="GlobeBox.cpp">
-      <Filter>Source Files\Collision\Globe</Filter>
+    <ClCompile Include="RenderEngine.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
-    <ClCompile Include="SquereBox.cpp">
-      <Filter>Source Files\Collision\Squere</Filter>
+    <ClCompile Include="RenderEngine2D.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
-    <ClCompile Include="CylinderBox.cpp">
-      <Filter>Source Files\Collision\Cylinder</Filter>
+    <ClCompile Include="RenderEngine3D.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
-    <ClCompile Include="ClientSide.cpp">
-      <Filter>Source Files\ClientSide\Client</Filter>
+    <ClCompile Include="RenderEngine3DTextured.cpp">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClCompile>
-    <ClCompile Include="SysThread.cpp">
-      <Filter>Source Files\SysThread</Filter>
+    <ClCompile Include="LayerSky.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
     </ClCompile>
-    <ClCompile Include="ReadThread.cpp">
-      <Filter>Source Files\ClientSide\ReadThread</Filter>
+    <ClCompile Include="Environment.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="WriteThread.cpp">
-      <Filter>Source Files\ClientSide\WriteThread</Filter>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>Source Files\Game\Entities\SkyElements</Filter>
     </ClCompile>
-    <ClCompile Include="FullMsg.cpp">
-      <Filter>Source Files\ClientSide\FullMsg</Filter>
+    <ClCompile Include="Planet.cpp">
+      <Filter>Source Files\Game\Entities\SkyElements</Filter>
     </ClCompile>
-    <ClCompile Include="Msg.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files\Game\Entities\3DElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer3DStatic.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsManager.cpp">
+      <Filter>Source Files\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowSettings.cpp">
+      <Filter>Source Files\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardButtonEvent.cpp">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="RawModel3D.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerManager.cpp">
+      <Filter>Source Files\Game\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer2D.cpp">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="Movable.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuGui.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Source Files\Graphics\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="RawModel2D.cpp">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseButtonEvent.cpp">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiState.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Game\Entities\3DElements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -231,9 +249,6 @@
     </ClInclude>
     <ClInclude Include="MainMenuState.h">
       <Filter>Source Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexData.h">
-      <Filter>Source Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Maths.h">
       <Filter>Source Files\Maths</Filter>
@@ -265,15 +280,6 @@
     <ClInclude Include="Animation.h">
       <Filter>Source Files\Graphics\Entity\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="SettingsManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TerrainRenderEngine.h">
-      <Filter>Source Files\Graphics\RenderEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyBox.h">
-      <Filter>Source Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -286,29 +292,11 @@
     <ClInclude Include="GUIImage.h">
       <Filter>Source Files\Graphics\Entity\2D</Filter>
     </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>Source Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="RawModel3DTextured.h">
       <Filter>Source Files\Graphics\Entity\RawModel</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine.h">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine2D.h">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine3D.h">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine3DTextured.h">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderEngine3DDynamic.h">
-      <Filter>Source Files\Graphics\RenderEngine\Abstraction</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
       <Filter>Source Files\Graphics\Texture</Filter>
@@ -320,42 +308,101 @@
       <Filter>Source Files\Graphics\Texture</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
-      <Filter>Source Files\Game\GUIElements</Filter>
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClInclude>
     <ClInclude Include="GUIManager.h">
-      <Filter>Source Files\Game\GUIElements</Filter>
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionBox.h">
-      <Filter>Source Files\Collision</Filter>
+    <ClInclude Include="Layer3DDynamic.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
     </ClInclude>
-    <ClInclude Include="GlobeBox.h">
-      <Filter>Source Files\Collision\Globe</Filter>
+    <ClInclude Include="RenderEngine.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClInclude>
-    <ClInclude Include="SquereBox.h">
-      <Filter>Source Files\Collision\Squere</Filter>
+    <ClInclude Include="RenderEngine2D.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClInclude>
-    <ClInclude Include="CylinderBox.h">
-      <Filter>Source Files\Collision\Cylinder</Filter>
+    <ClInclude Include="RenderEngine3D.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClInclude>
-    <ClInclude Include="ClientSide.h">
-      <Filter>Source Files\ClientSide\Client</Filter>
+    <ClInclude Include="RenderEngine3DTextured.h">
+      <Filter>Source Files\Graphics\RenderEngine</Filter>
     </ClInclude>
-    <ClInclude Include="SysThread.h">
-      <Filter>Source Files\SysThread</Filter>
+    <ClInclude Include="LayerSky.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
     </ClInclude>
-    <ClInclude Include="ReadThread.h">
-      <Filter>Source Files\ClientSide\ReadThread</Filter>
+    <ClInclude Include="Environment.h">
+      <Filter>Source Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="WriteThread.h">
-      <Filter>Source Files\ClientSide\WriteThread</Filter>
+    <ClInclude Include="SkyBox.h">
+      <Filter>Source Files\Game\Entities\SkyElements</Filter>
     </ClInclude>
-    <ClInclude Include="Lock.h">
-      <Filter>Source Files\ClientSide\Lock</Filter>
+    <ClInclude Include="Planet.h">
+      <Filter>Source Files\Game\Entities\SkyElements</Filter>
     </ClInclude>
-    <ClInclude Include="FullMsg.h">
-      <Filter>Source Files\ClientSide\FullMsg</Filter>
+    <ClInclude Include="Terrain.h">
+      <Filter>Source Files\Game\Entities\3DElements</Filter>
     </ClInclude>
-    <ClInclude Include="Msg.h" />
+    <ClInclude Include="Layer3DStatic.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsManager.h">
+      <Filter>Source Files\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowSettings.h">
+      <Filter>Source Files\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardButtonEvent.h">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation.h">
+      <Filter>Source Files\Game\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Source Files\Game\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerManeger.h">
+      <Filter>Source Files\Game\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Delay.h">
+      <Filter>Source Files\Game\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSettings.h">
+      <Filter>Source Files\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer2D.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="Movable.h">
+      <Filter>Source Files\Graphics\Entity\RawModel</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuGui.h">
+      <Filter>Source Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Source Files\Graphics\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseButtonEvent.h">
+      <Filter>Source Files\Graphics\Window\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiState.h">
+      <Filter>Source Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Slider.h">
+      <Filter>Source Files\Game\Entities\GUIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source Files\Game\Entities\3DElements</Filter>
+    </ClInclude>
+    <ClInclude Include="LivingEntity.h">
+      <Filter>Source Files\Game\Entities\3DElements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="menu3D.vert">

@@ -22,4 +22,6 @@ public:
 
 	void enableDepth();
 	void disableDepth();
+
+	virtual void flush() = 0;
 };

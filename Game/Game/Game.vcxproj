@@ -137,6 +137,7 @@
     <ClCompile Include="PlayerSettings.cpp" />
     <ClCompile Include="RawModel2D.cpp" />
     <ClCompile Include="ReadThread.cpp" />
+    <ClCompile Include="SysThread.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimerManager.cpp" />

@@ -248,6 +248,9 @@
     <ClCompile Include="WriteThread.cpp">
       <Filter>Source Files\Client</Filter>
     </ClCompile>
+    <ClCompile Include="SysThread.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">

@@ -8,6 +8,8 @@
 #include "SkyBox.h"
 #include "ShaderProgram.h"
 #include "Entity.h"
+#include "SettingsManager.h"
+#include "Player.h"
 
 SinglePlayerState::SinglePlayerState():
 	m_BlockCount(5),
@@ -63,6 +65,11 @@ void SinglePlayerState::load() {
 	m_LayerSky.addEntity("Sun", new Planet(Texture2D::get("sun.png"), 100.0f, vec3(), 5.0f));
 	m_LayerSky.addEntity("Moon", new Planet(Texture2D::get("moon.png"), 100.0f, vec3(180.0f, 0.0f, 0.0f), 4.0f));
 
+	int ind = SettingsManager::Instance->getSelectedPlayerIndex();
+	PlayerSettings* playerSettigs = (*SettingsManager::Instance->getPlayerSettings())[ind - 1];
+	Player* player = new Player(100.0f, vec3(3.0f, -0.5f, -7.0f), vec3(), playerSettigs->getSize());
+	player->setColor(playerSettigs->getColor());
+	m_Layer3DDynamic.addModel("Player", player);
 
 	m_Environment.setSeed(12345);
 	m_PosX = 0;

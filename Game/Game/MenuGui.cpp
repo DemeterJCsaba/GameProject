@@ -40,10 +40,6 @@ void MenuGui::load() {
 	m_LayerGuiPtr->addModel("ColorGSlider", new Slider(vec2(-0.85f, -0.2f), vec2(0.4f, 0.1f), 0.0f, 1.0f));
 	m_LayerGuiPtr->addModel("ColorBSlider", new Slider(vec2(-0.85f,-0.05f), vec2(0.4f, 0.1f), 0.0f, 1.0f));
 	// load players
-	vector<PlayerSettings*>* players = SettingsManager::Instance->getPlayerSettings();
-	for (PlayerSettings* player : *players) {
-		
-	}
 
 	m_GUIManager.addButton((Button<MenuGui>*)m_LayerGuiPtr->getModel("StartButton"));
 	m_GUIManager.addButton((Button<MenuGui>*)m_LayerGuiPtr->getModel("ExitButton"));

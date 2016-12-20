@@ -14,7 +14,7 @@ private:
 	static float interpolate(int seed, float a, float b, float blend);
 	static float getInterpolatedNoise(int seed, float x, float z);
 public:
-	static float getHeight(int seed,float x, float z);
+	static float getHeight(int seed,float x, float z, float size);
 	static vec3 getColor(vec3 a, vec3 b, vec3 c,vec3 norm);
 
 private:

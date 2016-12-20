@@ -1,7 +1,9 @@
 #include "Terrain.h"
 
 // static
-float Terrain::getHeight(int seed, float x, float z) {
+float Terrain::getHeight(int seed, float x, float z,float size) {
+	x = x / size;
+	z = z / size;
 	x = x < 0 ? -x : x;
 	z = z < 0 ? -z : z;
 	float l1 = getInterpolatedNoise(seed,x / 32.0f, z / 32.0f)*256.0f;
@@ -65,7 +67,7 @@ Terrain::Terrain(int x, int z,int seed, unsigned int size,unsigned int blockSize
 
 	for (int i = 0; i <= m_BlockSize; ++i)
 		for (int j = 0; j <= m_BlockSize; ++j)
-			heightsBuffer[i][j] = getHeight(m_Seed, i + n1, j + n2);
+			heightsBuffer[i][j] = getHeight(m_Seed, (i + n1)*m_Size, (j + n2)*m_Size,m_Size);
 	
 	int indexCount = 0;
 	int indexCount2 = 0;

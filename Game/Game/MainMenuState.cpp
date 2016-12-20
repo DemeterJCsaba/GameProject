@@ -45,7 +45,7 @@ void MainMenuState::load() {
 	int ind = SettingsManager::Instance->getSelectedPlayerIndex();
 	if (ind != 0) {
 		PlayerSettings* playerSettigs = (*SettingsManager::Instance->getPlayerSettings())[ind-1];
-		Player* player = new Player(100.0f, vec3(3.0f, -0.5f, -7.0f), vec3(), playerSettigs->getSize());
+		Player* player = new Player(100.0f, vec3(3.0f, 1.5f, -7.0f), vec3(), playerSettigs->getSize());
 		player->setColor(playerSettigs->getColor());
 		m_Layer3DDynamic.addModel("Player",player);
 	}	

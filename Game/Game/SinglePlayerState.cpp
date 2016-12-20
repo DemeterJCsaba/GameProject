@@ -43,7 +43,7 @@ void SinglePlayerState::init() {
 	m_LayerSky.setShader(shaderSky);
 
 	// 3D static object Layer
-	ShaderProgram* shader3d = new ShaderProgram("tmp");
+	ShaderProgram* shader3d = new ShaderProgram("simple");
 	shader3d->enable();
 	shader3d->setUniformMat4("pr_matrix", perspectiveMatrix);
 	shader3d->setUniform1i("SkyGradient", 0);
@@ -65,11 +65,15 @@ void SinglePlayerState::load() {
 	m_LayerSky.addEntity("Sun", new Planet(Texture2D::get("sun.png"), 100.0f, vec3(), 5.0f));
 	m_LayerSky.addEntity("Moon", new Planet(Texture2D::get("moon.png"), 100.0f, vec3(180.0f, 0.0f, 0.0f), 4.0f));
 
+	m_MainCameraPtr = shared_ptr<Camera>(new Camera());
+	m_MainCameraPtr->setCurrentCamera();
+
 	int ind = SettingsManager::Instance->getSelectedPlayerIndex();
 	PlayerSettings* playerSettigs = (*SettingsManager::Instance->getPlayerSettings())[ind - 1];
-	Player* player = new Player(100.0f, vec3(3.0f, -0.5f, -7.0f), vec3(), playerSettigs->getSize());
+	Player* player = new Player(100.0f, vec3(10.0f, Terrain::getHeight(m_Environment.getSeed(),10.f,10.0f,5.0f), 10.0f), vec3(), playerSettigs->getSize());
 	player->setColor(playerSettigs->getColor());
 	m_Layer3DDynamic.addModel("Player", player);
+	m_MainCameraPtr->setEntity(player);
 
 	m_Environment.setSeed(12345);
 	m_PosX = 0;
@@ -81,8 +85,7 @@ void SinglePlayerState::load() {
 		}
 	}
 
-	m_MainCameraPtr = shared_ptr<Camera>(new Camera());
-	m_MainCameraPtr->setCurrentCamera();
+	
 }
 
 SinglePlayerState::~SinglePlayerState() {
@@ -97,6 +100,7 @@ SinglePlayerState::~SinglePlayerState() {
 
 void SinglePlayerState::resume() {
 	m_Environment.setTime(50.0f);
+	m_Environment.setTimeSpeed(0.01f);
 }
 
 void SinglePlayerState::pause() {
@@ -118,12 +122,14 @@ void SinglePlayerState::update() {
 	if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_X)) {
 		Window::GetInstance()->setMouseVisibility(true);
 	}
+
+	m_Layer3DDynamic.udate();
 }
 
 void SinglePlayerState::updateTerrain() {
-	vec2 pos = Camera::current->getVerPos();
+	vec3 pos = Camera::Current->getPosition();
 	int newX = pos.x / (m_BlockSize * m_SpriteSize) - (pos.x < 0 ? 1 : 0);
-	int newZ = pos.y / (m_BlockSize * m_SpriteSize) - (pos.y < 0 ? 1 : 0);
+	int newZ = pos.z / (m_BlockSize * m_SpriteSize) - (pos.z < 0 ? 1 : 0);
 	if (newX != m_PosX) {
 		if (newX > m_PosX) {  // +X
 			for (int i = 0; i < m_BlockCount; ++i) {
@@ -184,9 +190,9 @@ void SinglePlayerState::updateTerrain() {
 void SinglePlayerState::render() {
 	mat4 roationMatrix = mat4::identity();
 	mat4 viewMatrix = mat4::identity();
-	if (Camera::current != nullptr) {
-		roationMatrix = Camera::current->getRotationMatrix();
-		viewMatrix = Camera::current->getMatrix();
+	if (Camera::Current != nullptr) {
+		roationMatrix = Camera::Current->getRotationMatrix();
+		viewMatrix = Camera::Current->getMatrix();
 	}
 
 	// Sky 

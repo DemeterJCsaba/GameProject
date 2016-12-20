@@ -19,7 +19,7 @@ void RawModel3D::loadFromOBJ(string fileName) {
 
 	m_Colors.push_back(vec3(1.0f, 0.0f, 0.0f));
 
-	mat4 scale = mat4::translation(0.0f, -1.0f, 0.0f)*mat4::scale(0.015f, 0.015f, 0.015f);
+	mat4 scale = mat4::scale(0.005f, 0.005f, 0.005f);
 
 	while (getline(in, line)) {
 		istringstream iss(line);

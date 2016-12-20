@@ -1,27 +1,21 @@
-#pragma once
-
-#include <math.h>
+#ifndef SINGLEPLAYERSTATE_H
+#define SINGLEPLAYERSTATE_H
 
 #include "IState.h"
-#include "StateManager.h"
-#include "Window.h"
 
 #include "LayerSky.h"
 #include "Layer3DStatic.h"
+#include "Layer3DDynamic.h"
+#include "Layer2D.h"
 
 #include "Environment.h"
-#include "Planet.h"
-#include "SkyBox.h"
-
-#include "ShaderProgram.h"
 #include "Camera.h"
-
-#include "Entity.h"
 
 class SinglePlayerState : public IState {
 private:
-	//LayerGUI* m_LayerGUI;
-	LayerSky* m_LayerSky;
+	Layer2D m_LayerGui;
+	Layer3DDynamic m_Layer3DDynamic;
+	LayerSky m_LayerSky;
 
 	int m_BlockCount;
 	int m_BlockSize;
@@ -31,8 +25,8 @@ private:
 	int m_PosZ;
 
 	Environment m_Environment;
-	Camera* m_MainCamera;
-	//std::shared_ptr<Camera> m_MainCameraPtr;
+	//Camera* m_MainCamera;
+	shared_ptr<Camera> m_MainCameraPtr;
 public:
 	SinglePlayerState();
 	~SinglePlayerState();
@@ -44,6 +38,9 @@ public:
 	void pause();
 private:
 	void init();
+	void load();
 
 	void updateTerrain();
 };
+
+#endif // !SINGLEPLAYERSTATE_H

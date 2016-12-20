@@ -14,7 +14,7 @@ class TextureCube : public Texture {
 private:
 	static string m_Dir;
 public:
-	static TextureCube* getTexture(string name);
+	static TextureCube* get(string name);
 
 
 private:

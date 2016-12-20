@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FPSMANAGER_H
+#define FPSMANAGER_H
 
 #include <chrono>
 #include <thread>
@@ -40,3 +41,5 @@ public:
 	void start(string name);
 	void stop(string name);
 };
+
+#endif // !FPSMANAGER_H

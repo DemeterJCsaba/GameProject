@@ -15,7 +15,7 @@ Font* Font::get(string name) {
 }
 
 Font::Font(string name) {
-	m_FontAtlas = Texture2D::getTexture(name + ".png");
+	m_FontAtlas = Texture2D::get(name + ".png");
 
 	ifstream in(m_Dir + name + ".fnt");
 	string line;

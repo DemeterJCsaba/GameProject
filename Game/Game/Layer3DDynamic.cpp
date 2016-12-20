@@ -7,11 +7,7 @@ Layer3DDynamic::Layer3DDynamic()
 
 Layer3DDynamic::~Layer3DDynamic()
 {
-	delete m_ShaderPtr.get();
-}
-
-void Layer3DDynamic::setShader(ShaderProgram* shader) {
-	m_ShaderPtr = shared_ptr<ShaderProgram>(shader);
+	
 }
 
 void Layer3DDynamic::addModel(string name, Movable* model) {

@@ -1,8 +1,7 @@
 #include "Layer3DStatic.h"
 
-Layer3DStatic::Layer3DStatic(ShaderProgram* shader):
-	m_Renderer(RenderEngine3D(false,135000)),
-	m_Shader(shader)
+Layer3DStatic::Layer3DStatic():
+	m_Renderer(RenderEngine3D(false,135000))
 {
 	m_Changed = false;
 }
@@ -37,10 +36,10 @@ void Layer3DStatic::removeModel(string name) {
 }
 
 
-void Layer3DStatic::render(mat4& viewMatrix, float time, vec3 sunDirection) {
+void Layer3DStatic::render() {
 	if (m_Changed) {
 		m_Renderer.begin();
-		m_Renderer.addTexture(new Texture2D("Resources\\Images\\SkyGradient.png"));
+		m_Renderer.addTexture(Texture2D::get("SkyGradient.png"));
 		for (pair<string, RawModel3D*> &e : m_Entities) {
 			m_Renderer.submit(e.second);
 		}
@@ -48,13 +47,7 @@ void Layer3DStatic::render(mat4& viewMatrix, float time, vec3 sunDirection) {
 		m_Changed = false;
 	}
 
-	m_Shader->enable();
-
-	m_Shader->setUniformMat4("vw_matrix", viewMatrix);
-	m_Shader->setUniform3f("sunPosition", sunDirection);
-	m_Shader->setUniform1f("time", time);
-	
+	if (m_ShaderPtr != nullptr) m_ShaderPtr->enable();
 	m_Renderer.flush();
-
-	m_Shader->disable();
+	if (m_ShaderPtr != nullptr) m_ShaderPtr->disable();
 }

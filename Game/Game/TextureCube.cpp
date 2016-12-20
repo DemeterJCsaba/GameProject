@@ -5,7 +5,7 @@
 
 string TextureCube::m_Dir = "Resources\\Images\\CubeTextures\\";
 
-TextureCube* TextureCube::getTexture(string name) {
+TextureCube* TextureCube::get(string name) {
 	if (m_Textures.find(name) == m_Textures.end()) {
 		m_Textures[name] = new TextureCube(m_Dir + name);
 	}

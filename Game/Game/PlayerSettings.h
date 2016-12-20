@@ -13,7 +13,7 @@ private:
 	vec3 m_Color;
 	vec3 m_Size;
 public:
-	PlayerSettings(string name, vec3 color, vec3 size) : m_Name(name), m_Color(color), m_Size(size) {}
+	PlayerSettings(string name, vec3 color, vec3 size);
 
 	const vec3& getColor() const { return m_Color; }
 	const vec3& getSize() const { return m_Size; }

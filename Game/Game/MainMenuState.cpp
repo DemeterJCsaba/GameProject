@@ -39,8 +39,8 @@ void MainMenuState::init() {
 
 // Loading objects
 void MainMenuState::load() {
-	m_LayerBG.addModel("Fade", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::getTexture("Fade.png")));
-	m_LayerBG.addModel("BackGround", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::getTexture("MainMenu_BG.png")));
+	m_LayerBG.addModel("Fade", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::get("Fade.png")));
+	m_LayerBG.addModel("BackGround", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::get("MainMenu_BG.png")));
 	
 	int ind = SettingsManager::Instance->getSelectedPlayerIndex();
 	if (ind != 0) {

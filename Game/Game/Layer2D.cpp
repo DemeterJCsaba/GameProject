@@ -10,10 +10,6 @@ Layer2D::~Layer2D() {
 	delete m_ShaderPtr.get();
 }
 
-void Layer2D::setShader(ShaderProgram* shader) {
-	m_ShaderPtr = shared_ptr<ShaderProgram>(shader);
-}
-
 void Layer2D::addModel(string name, RawModel2D* model) {
 	removeModel(name);
 	m_Models.push_back(make_pair(name, model));

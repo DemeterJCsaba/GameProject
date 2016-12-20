@@ -8,33 +8,38 @@ using namespace std;
 void main() {
 	//FreeConsole();
 	
-	SettingsManager settingsManager;
-	settingsManager.loadSettings();
+	try {
+		SettingsManager settingsManager;
+		settingsManager.loadSettings();
 
-	Window::CreateWindow(settingsManager.getWindowSettings());
-	Window* window = Window::GetInstance();
+		Window::CreateWindow(settingsManager.getWindowSettings());
+		Window* window = Window::GetInstance();
+		window->addEventListener(&StateManager::getInstance());
 
-	StateManager::getInstance().addState(new MainMenuState());
+		StateManager::getInstance().addState(new MainMenuState());
 
-	while (!window->isClosed()) {
-		FPSManager::getInstance().begin();
+		while (!window->isClosed()) {
+			FPSManager::getInstance().begin();
 
-		window->clear();
-		window->update();
+			window->clear();
+			window->update();
 
-		StateManager::getInstance().Update();
-		
-		StateManager::getInstance().getCurrentState()->update();
-		StateManager::getInstance().getCurrentState()->render();
+			StateManager::getInstance().update();
 
-		window->render();
+			StateManager::getInstance().getCurrentState()->update();
+			StateManager::getInstance().getCurrentState()->render();
 
-		FPSManager::getInstance().end();
+			window->render();
+
+			FPSManager::getInstance().end();
+		}
+
+		Texture::clearTextures();
+		Window::CloseWindow();
+
+		settingsManager.saveSettings();
 	}
-
-	StateManager::getInstance().closeAll();
-	Texture::clearTextures();
-	Window::CloseWindow();
-
-	settingsManager.saveSettings();
+	catch (exception& e) {
+		cout << "FAIL!: " << e.what() << endl;
+	}
 }

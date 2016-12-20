@@ -3,7 +3,7 @@
 
 string Texture2D::m_Dir = "Resources\\Images\\";
 
-Texture2D* Texture2D::getTexture(string name) {
+Texture2D* Texture2D::get(string name) {
 	if (m_Textures.find(name) == m_Textures.end()) {
 		m_Textures[name] = new Texture2D(m_Dir + name);
 	}

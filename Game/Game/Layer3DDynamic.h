@@ -2,26 +2,22 @@
 #define LAYER3DDYNAMIC_H
 
 #include <map>
-#include <memory>
 
+#include "Layer.h"
 #include "Movable.h"
 #include "ShaderProgram.h"
 #include "RenderEngine3D.h"
 
 using namespace std;
 
-class Layer3DDynamic {
+class Layer3DDynamic : public Layer {
 private:
 	RenderEngine3D m_Renderer;
-	shared_ptr<ShaderProgram> m_ShaderPtr;
 
 	map<string, Movable*> m_Models;
 public:
 	Layer3DDynamic();
 	~Layer3DDynamic();
-
-	void setShader(ShaderProgram* shader);
-	ShaderProgram* getShader() const { return m_ShaderPtr.get(); }
 
 	void addModel(string name, Movable* model);
 	Movable* getModel(string name);

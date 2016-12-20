@@ -2,36 +2,29 @@
 #define STATEMANAGER_H
 
 #include <vector>
-#include <list>
 
 #include "IState.h"
-#include "Event.h"
+#include "EventListener.h"
 
 using namespace std;
 
-class StateManager {
+class StateManager : public EventListener {
 private:
 	static StateManager s_Instance;
-	static list<Event*> m_Events;
 public:
 	static StateManager& getInstance();
-	static void addEvent(Event* event);
 
 private:
 	vector<IState*> m_Stack;
 	int m_Close;
 
 	StateManager();
-	// TODO: destructor
+	~StateManager();
 public:
 	IState* getCurrentState();
 
-	// This function 
-	// <param>state<param>
-	// This param is..
 	void addState(IState* state);
-
-	void Update();
+	void update();
 	void closeCurrentState(int count = 1); 
 	void closeAll();
 private:

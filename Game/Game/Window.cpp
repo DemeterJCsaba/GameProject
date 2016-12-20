@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "FPSManager.h"
-#include "StateManager.h"
 #include "KeyboardButtonEvent.h"
 #include "MouseButtonEvent.h"
 
@@ -149,6 +148,13 @@ void Window::setMouseVisibility(bool mod) {
 	m_MouseVisible = mod;
 }
 
+void Window::addEventListener(EventListener* eventListener) {
+	m_EventListeners.push_back(eventListener);
+}
+
+void Window::removeEventListener(EventListener* eventListener) {
+	m_EventListeners.remove(eventListener);
+}
 
 
 // Event Handlers
@@ -162,13 +168,17 @@ void window_resize(GLFWwindow *window, int width, int height) {
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
 	win->m_KeyboardButtons[key] = (action != GLFW_RELEASE);
-	StateManager::addEvent(new KeyboardButtonEvent(key, action));
+	for (EventListener* eventListener : win->m_EventListeners) {
+		eventListener->addEvent(new KeyboardButtonEvent(key, action));
+	}
 }
 
 void mouse_callback(GLFWwindow* window, int button, int action, int mods) {
 	Window *win = (Window*)glfwGetWindowUserPointer(window);
 	win->m_MouseButtons[button] = (action != GLFW_RELEASE);
-	StateManager::addEvent(new MouseButtonEvent(button, action));
+	for (EventListener* eventListener : win->m_EventListeners) {
+		eventListener->addEvent(new MouseButtonEvent(button, action));
+	}
 }
 
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos) {

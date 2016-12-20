@@ -5,6 +5,7 @@
 #include <GLFW\glfw3.h>
 
 #include "WindowSettings.h"
+#include "EventListener.h"
 
 using namespace std;
 
@@ -42,6 +43,8 @@ private:
 
 	bool m_Close;
 
+	list<EventListener*> m_EventListeners;
+
 	Window(unsigned int width, unsigned int height, string title,bool fullScreen = false);
 public:
 	~Window();
@@ -66,6 +69,9 @@ public:
 	double getMouseOffsetY() const { return m_MouseOffsetY; }
 
 	void setMouseVisibility(bool mod = true);
+
+	void addEventListener(EventListener* eventListener);
+	void removeEventListener(EventListener* eventListener);
 private:
 	bool init();
 

@@ -1,8 +1,7 @@
 #include "LayerSky.h"
 
-LayerSky::LayerSky(ShaderProgram* shader):
-	m_Renderer(RenderEngine3DTextured(true, 16)),
-	m_Shader(shader)
+LayerSky::LayerSky():
+	m_Renderer(RenderEngine3DTextured(true, 16))
 {
 	m_Changed = false;
 }
@@ -35,10 +34,10 @@ void LayerSky::removeModel(string name) {
 	m_Changed = true;
 }
 
-void LayerSky::render(mat4& viewMatrix,float time,vec3 sunDirection) {
+void LayerSky::render() {
 	if (m_Changed) {
 		m_Renderer.begin();
-		m_Renderer.addTexture(new Texture2D("Resources\\Images\\SkyGradient.png"));
+		m_Renderer.addTexture(Texture2D::get("SkyGradient.png"));
 		for(pair<string, RawModel3DTextured*> &e : m_Entities){
 			m_Renderer.submit(*e.second);
 		}
@@ -46,14 +45,7 @@ void LayerSky::render(mat4& viewMatrix,float time,vec3 sunDirection) {
 		m_Changed = false;
 	}
 
-	m_Shader->enable();
-
-	m_Shader->setUniformMat4("vw_matrix", viewMatrix);
-	m_Shader->setUniformMat4("rot_matrix", mat4::rotation(time, -1, 0, 0));
-	m_Shader->setUniform3f("sunPosition", sunDirection);
-	m_Shader->setUniform1f("time", time);
-
+	if (m_ShaderPtr != nullptr) m_ShaderPtr->enable();
 	m_Renderer.flush();
-
-	m_Shader->disable();
+	if (m_ShaderPtr != nullptr) m_ShaderPtr->disable();
 }

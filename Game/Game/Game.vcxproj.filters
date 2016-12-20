@@ -84,9 +84,6 @@
     <Filter Include="Source Files\Graphics\Font">
       <UniqueIdentifier>{41c1eb23-0d2a-4e5a-8f25-3e8a7fde74c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GUI\Menu">
-      <UniqueIdentifier>{b979e2e1-e032-43d0-b916-2a878ccf3911}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -227,11 +224,11 @@
     <ClCompile Include="MouseButtonEvent.cpp">
       <Filter>Source Files\Graphics\Window\Events</Filter>
     </ClCompile>
-    <ClCompile Include="GuiState.cpp">
-      <Filter>Source Files\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Game\Entities\3DElements</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSettings.cpp">
+      <Filter>Source Files\Settings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -391,9 +388,6 @@
     <ClInclude Include="MouseButtonEvent.h">
       <Filter>Source Files\Graphics\Window\Events</Filter>
     </ClInclude>
-    <ClInclude Include="GuiState.h">
-      <Filter>Source Files\GUI</Filter>
-    </ClInclude>
     <ClInclude Include="Slider.h">
       <Filter>Source Files\Game\Entities\GUIElements</Filter>
     </ClInclude>
@@ -402,6 +396,12 @@
     </ClInclude>
     <ClInclude Include="LivingEntity.h">
       <Filter>Source Files\Game\Entities\3DElements</Filter>
+    </ClInclude>
+    <ClInclude Include="EventListener.h">
+      <Filter>Source Files\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Source Files\Graphics\Layers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

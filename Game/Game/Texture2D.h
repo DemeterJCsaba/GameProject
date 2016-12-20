@@ -14,8 +14,7 @@ class Texture2D : public Texture{
 private:
 	static string m_Dir;
 public:
-	static Texture2D* getTexture(string name);
-
+	static Texture2D* get(string name);
 
 	Texture2D(const string filename);
 public:

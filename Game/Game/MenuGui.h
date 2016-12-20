@@ -40,6 +40,8 @@ private:
 	void stateSelectCharacterOut();
 	void back();
 	void newCharater();
+	void next();
+	void previous();
 
 	// Create character
 	void stateCreateCharacterIn();

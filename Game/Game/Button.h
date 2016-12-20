@@ -14,7 +14,7 @@ private:
 public:
 	Button(string text,vec2 position, vec2 size, void (T::*function)(),T* object) :
 		m_Text(text),
-		GUIImage(position, size, Texture2D::getTexture("Button.png")),
+		GUIImage(position, size, Texture2D::get("Button.png")),
 		m_Function(function),
 		m_Object(object)
 	{

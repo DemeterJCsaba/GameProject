@@ -14,11 +14,11 @@ private:
 	bool m_Focused;
 public:
 	Slider(vec2 position, vec2 size,float start,float end):
-		GUIImage(position, size, Texture2D::getTexture("Slider.png")),
+		GUIImage(position, size, Texture2D::get("Slider.png")),
 		m_Start(start),
 		m_End(end)
 	{
-		m_Models.push_back(new GUIImage(vec2(0.0f,0.0f),vec2(0.02f,size.y), Texture2D::getTexture("SliderDot.png")));
+		m_Models.push_back(new GUIImage(vec2(0.0f,0.0f),vec2(0.02f,size.y), Texture2D::get("SliderDot.png")));
 		m_Focused = false;
 		m_Value = m_Start;
 	}

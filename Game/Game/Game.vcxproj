@@ -123,16 +123,20 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ClientSide.cpp" />
     <ClCompile Include="Environment.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FullMsg.cpp" />
     <ClCompile Include="MenuGui.cpp" />
     <ClCompile Include="Layer2D.cpp" />
     <ClCompile Include="MouseButtonEvent.cpp" />
     <ClCompile Include="Movable.cpp" />
+    <ClCompile Include="Msg.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerSettings.cpp" />
     <ClCompile Include="RawModel2D.cpp" />
+    <ClCompile Include="ReadThread.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimerManager.cpp" />
@@ -168,27 +172,34 @@
     <ClCompile Include="vec4.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WindowSettings.cpp" />
+    <ClCompile Include="WriteThread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ClientSide.h" />
     <ClInclude Include="Delay.h" />
     <ClInclude Include="Environment.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventListener.h" />
     <ClInclude Include="Font.h" />
+    <ClInclude Include="FullMsg.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LivingEntity.h" />
+    <ClInclude Include="Lock.h" />
     <ClInclude Include="MenuGui.h" />
     <ClInclude Include="GUIManager.h" />
     <ClInclude Include="Interpolation.h" />
     <ClInclude Include="Layer2D.h" />
     <ClInclude Include="MouseButtonEvent.h" />
     <ClInclude Include="Movable.h" />
+    <ClInclude Include="Msg.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerSettings.h" />
+    <ClInclude Include="ReadThread.h" />
     <ClInclude Include="Slider.h" />
+    <ClInclude Include="SysThread.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="TimerManeger.h" />
     <ClInclude Include="KeyboardButtonEvent.h" />
@@ -227,6 +238,7 @@
     <ClInclude Include="vec4.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowSettings.h" />
+    <ClInclude Include="WriteThread.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="menu3D.frag" />

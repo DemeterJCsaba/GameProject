@@ -38,5 +38,5 @@ public:
 
 	void flush();
 private:
-	void submitModel(RawModel2D* model);
+	void uploadModel(RawModel2D* model);
 };

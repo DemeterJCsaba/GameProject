@@ -1,10 +1,10 @@
 #include "MainMenuState.h"
 
-#include "Interpolation.h"
-#include "Delay.h"
 #include "Text.h"
 #include "Player.h"
 #include "SettingsManager.h"
+#include "ShaderProgram.h"
+#include "SinglePlayerState.h"
 
 MainMenuState::MainMenuState():
 	m_Gui(&m_LayerGui,&m_Layer3DDynamic)
@@ -19,7 +19,6 @@ MainMenuState::~MainMenuState() {
 
 // Initializing shaders and renderers
 void MainMenuState::init() {
-	// GUI Layer
 	ShaderProgram* shader2d = new ShaderProgram("gui");
 	shader2d->enable();
 	GLint textures[32];
@@ -29,7 +28,6 @@ void MainMenuState::init() {
 	m_LayerBG.setShader(shader2d);
 	m_LayerGui.setShader(shader2d);
 
-	// 3D Layer
 	ShaderProgram* shader3d = new ShaderProgram("menu3D");
 	shader3d->enable();
 	shader3d->setUniformMat4("pr_matrix", mat4::perspective(50.0f, Window::GetInstance()->getWidth()*1.0f / Window::GetInstance()->getHeight(), 0.1f, 1000));
@@ -45,7 +43,7 @@ void MainMenuState::load() {
 	int ind = SettingsManager::Instance->getSelectedPlayerIndex();
 	if (ind != 0) {
 		PlayerSettings* playerSettigs = (*SettingsManager::Instance->getPlayerSettings())[ind-1];
-		Player* player = new Player(100.0f, vec3(3.0f, -0.5f, -7.0f), vec3(), playerSettigs->getSize());
+		Player* player = new Player(100.0f, vec3(3.0f, 1.5f, -7.0f), vec3(), playerSettigs->getSize());
 		player->setColor(playerSettigs->getColor());
 		m_Layer3DDynamic.addModel("Player",player);
 	}	
@@ -65,8 +63,9 @@ void MainMenuState::update() {
 
 	// Object update
 	Movable* player = m_Layer3DDynamic.getModel("Player");
-	if (player != nullptr)
+	if (player != nullptr) {
 		player->addRotate(vec3(0.0f, -0.03f, 0.0f));
+	}
 	m_Layer3DDynamic.udate();
 }
 
@@ -75,8 +74,6 @@ void MainMenuState::render() {
 	m_Layer3DDynamic.render();
 	m_LayerGui.render();
 }
-
-
 
 void MainMenuState::resume() {
 	Movable* player = m_Layer3DDynamic.getModel("Player");

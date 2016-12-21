@@ -23,7 +23,7 @@ MenuGui::MenuGui(Layer2D* layerGui, Layer3DDynamic* layer3D):
 
 void MenuGui::load() {
 	m_LayerGuiPtr->addModel("Fade", new GUIImage(vec2(-1.0f, -1.0f), vec2(2.0f, 2.0f), Texture2D::get("Fade.png")));
-	m_LayerGuiPtr->addModel("Text", new Text("The Game - v0.0 (pre alpha)",vec2(-0.9f, -0.9f),0.35f));
+	m_LayerGuiPtr->addModel("Text", new Text("Early Development Build 89 dec-2016",vec2(-0.9f, -0.9f),0.35f));
 	// State main
 	m_LayerGuiPtr->addModel("StartButton", new Button<MenuGui>("Start Game", vec2(-0.85f, 0.2f), vec2(0.35f, 0.15f), &MenuGui::startGameButtonExecute, this));
 	m_LayerGuiPtr->addModel("ExitButton", new Button<MenuGui>("Exit Game", vec2(-0.85f, -0.35f), vec2(0.35f, 0.15f), &MenuGui::exitGame, this));
@@ -35,7 +35,7 @@ void MenuGui::load() {
 	m_LayerGuiPtr->addModel("PreviuosCharacter", new Button<MenuGui>("Previous", vec2(-0.85f, -0.15f), vec2(0.35f, 0.15f), &MenuGui::previous, this));
 	// State create character
 	m_LayerGuiPtr->addModel("CreateCharacter", new Button<MenuGui>("Create Character", vec2(-0.85f, -0.75f), vec2(0.35f, 0.15f), &MenuGui::createCharacter, this));
-	m_LayerGuiPtr->addModel("SizeSlider", new Slider(vec2(-0.85f, -0.5f), vec2(0.4f, 0.1f), 1.0f, 3.0f));
+	m_LayerGuiPtr->addModel("SizeSlider", new Slider(vec2(-0.85f, -0.5f), vec2(0.4f, 0.1f), 2.5f, 4.0f));
 	m_LayerGuiPtr->addModel("ColorRSlider", new Slider(vec2(-0.85f, -0.35f), vec2(0.4f, 0.1f), 0.0f, 1.0f));
 	m_LayerGuiPtr->addModel("ColorGSlider", new Slider(vec2(-0.85f, -0.2f), vec2(0.4f, 0.1f), 0.0f, 1.0f));
 	m_LayerGuiPtr->addModel("ColorBSlider", new Slider(vec2(-0.85f,-0.05f), vec2(0.4f, 0.1f), 0.0f, 1.0f));
@@ -57,6 +57,9 @@ void MenuGui::load() {
 }
 
 void MenuGui::start() {
+	RawModel3D* player = m_Layer3DPtr->getModel("Player");
+	if(player!= nullptr)
+		player->setPosition(vec3(3.0f, -1.5f, -7.0f));
 	m_LayerGuiPtr->getModel("StartButton")->setPosition(vec2(-2.0f, 0.2f));
 	m_LayerGuiPtr->getModel("ExitButton")->setPosition(vec2(-2.0f, -0.35f));
 	m_LayerGuiPtr->getModel("SelectCharacter")->setPosition(vec2(1.5f, -0.7f));
@@ -112,7 +115,7 @@ void MenuGui::stateMainIn() {
 
 	RawModel3D* player = m_Layer3DPtr->getModel("Player");
 	if(player !=nullptr)
-		m_TimerManager.addTimer(new Interpolation<RawModel3D, vec3>(player, &RawModel3D::setPosition, player->getPosition(), vec3(3.0f, -0.5f, -7.0f), 40));
+		m_TimerManager.addTimer(new Interpolation<RawModel3D, vec3>(player, &RawModel3D::setPosition, player->getPosition(), vec3(3.0f, -1.5f, -7.0f), 40));
 
 	RawModel2D* startButton = m_LayerGuiPtr->getModel("StartButton");
 	m_TimerManager.addTimer(new Interpolation<RawModel2D, vec2>(startButton, &RawModel2D::setPosition, startButton->getPosition(), vec2(-0.85f, 0.2f), 40));
@@ -137,8 +140,10 @@ void MenuGui::stateMainOut() {
 
 // Functions
 void MenuGui::startGameButtonExecute() {
-	m_TimerManager.addTimer(new Interpolation<MenuGui, float>(this, &MenuGui::fade, 0.0f, 1.0f, 40));
-	m_TimerManager.addTimer(new Delay<MenuGui>(this, &MenuGui::startGame, 40));
+	if (m_Layer3DPtr->getModel("Player") != nullptr) {
+		m_TimerManager.addTimer(new Interpolation<MenuGui, float>(this, &MenuGui::fade, 0.0f, 1.0f, 40));
+		m_TimerManager.addTimer(new Delay<MenuGui>(this, &MenuGui::startGame, 40));
+	}
 }
 
 void MenuGui::startGame() {
@@ -168,7 +173,7 @@ void MenuGui::stateSelectCharacterIn() {
 
 	RawModel3D* player = m_Layer3DPtr->getModel("Player");
 	if (player != nullptr)
-		m_TimerManager.addTimer(new Interpolation<RawModel3D, vec3>(player, &RawModel3D::setPosition, player->getPosition(), vec3(0.0f, -0.5f, -5.5f), 40));
+		m_TimerManager.addTimer(new Interpolation<RawModel3D, vec3>(player, &RawModel3D::setPosition, player->getPosition(), vec3(0.0f, -1.5f, -5.5f), 40));
 
 	RawModel2D* backButton = m_LayerGuiPtr->getModel("Back");
 	m_TimerManager.addTimer(new Interpolation<RawModel2D, vec2>(backButton, &RawModel2D::setPosition, backButton->getPosition(), vec2(0.45f, -0.55f), 40));
@@ -204,7 +209,11 @@ void MenuGui::back() {
 		stateSelectCharacterIn();
 
 		Player* player = (Player*)m_Layer3DPtr->getModel("Player");
-		if (player != nullptr) {
+		if (SettingsManager::Instance->getPlayerSettings()->size() == 0) {
+			m_Layer3DPtr->removeModel("Player");
+			return;
+		}
+		if (player != nullptr && SettingsManager::Instance->getPlayerSettings()->size()!=0) {
 			PlayerSettings* ps = (*(SettingsManager::Instance->getPlayerSettings()))[SettingsManager::Instance->getSelectedPlayerIndex()-1];
 			player->setColor(ps->getColor());
 			player->setScale(ps->getSize());
@@ -223,7 +232,10 @@ void MenuGui::newCharater() {
 	((Slider*)m_LayerGuiPtr->getModel("ColorRSlider"))->setValue(0.0f);
 	((Slider*)m_LayerGuiPtr->getModel("ColorGSlider"))->setValue(0.0f);
 	((Slider*)m_LayerGuiPtr->getModel("ColorBSlider"))->setValue(0.0f);
-	//((Player*)m_Layer3DPtr->getModel("Player"))->setColor(vec3(0.0f,0.0f,1.0f));
+	RawModel3D* player = m_Layer3DPtr->getModel("Player");
+	if (player == nullptr) {
+		m_Layer3DPtr->addModel("Player",new Player(100.0f, vec3(0.0f, -1.5f, -5.5f), vec3(), vec3(1.0f)));
+	}
 }
 
 void MenuGui::next() {

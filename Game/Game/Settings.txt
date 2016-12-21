@@ -1,4 +1,4 @@
 Window_Width: 960
 Window_Height: 540
 Window_FullScreen: 0
-Players: 5 Teszt01 Teszt02 Teszt3 Teszt4 Teszt5
+Players: 3 Teszt1 Teszt2 Teszt3

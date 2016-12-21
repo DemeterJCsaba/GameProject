@@ -43,7 +43,7 @@ void SinglePlayerState::init() {
 	m_LayerSky.setShader(shaderSky);
 
 	// 3D static object Layer
-	ShaderProgram* shader3d = new ShaderProgram("tmp");
+	ShaderProgram* shader3d = new ShaderProgram("simple");
 	shader3d->enable();
 	shader3d->setUniformMat4("pr_matrix", perspectiveMatrix);
 	shader3d->setUniform1i("SkyGradient", 0);
@@ -65,24 +65,27 @@ void SinglePlayerState::load() {
 	m_LayerSky.addEntity("Sun", new Planet(Texture2D::get("sun.png"), 100.0f, vec3(), 5.0f));
 	m_LayerSky.addEntity("Moon", new Planet(Texture2D::get("moon.png"), 100.0f, vec3(180.0f, 0.0f, 0.0f), 4.0f));
 
+	m_MainCameraPtr = shared_ptr<Camera>(new Camera());
+	m_MainCameraPtr->setCurrentCamera();
+
 	int ind = SettingsManager::Instance->getSelectedPlayerIndex();
 	PlayerSettings* playerSettigs = (*SettingsManager::Instance->getPlayerSettings())[ind - 1];
-	Player* player = new Player(100.0f, vec3(3.0f, -0.5f, -7.0f), vec3(), playerSettigs->getSize());
+	Player* player = new Player(100.0f, vec3(10.0f, Terrain::getHeight(m_Environment.getSeed(),10.f,10.0f,5.0f), 10.0f), vec3(), playerSettigs->getSize());
 	player->setColor(playerSettigs->getColor());
 	m_Layer3DDynamic.addModel("Player", player);
+	m_MainCameraPtr->setEntity(player);
 
 	m_Environment.setSeed(12345);
-	m_PosX = 0;
-	m_PosZ = 0;
+	m_LastPos = vec2();
+	//m_PosX = 0;
+	//m_PosZ = 0;
 
-	for (int i = m_PosX; i < m_BlockCount; ++i) {
-		for (int j = m_PosZ; j < m_BlockCount; ++j) {
+	for (int i = m_LastPos.x; i < m_BlockCount; ++i) {
+		for (int j = m_LastPos.y; j < m_BlockCount; ++j) {
 			m_Layer3DStatic[i][j]->addEntity("Terrain", new Terrain(i - (m_BlockCount / 2), j - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
 		}
 	}
 
-	m_MainCameraPtr = shared_ptr<Camera>(new Camera());
-	m_MainCameraPtr->setCurrentCamera();
 }
 
 SinglePlayerState::~SinglePlayerState() {
@@ -97,6 +100,7 @@ SinglePlayerState::~SinglePlayerState() {
 
 void SinglePlayerState::resume() {
 	m_Environment.setTime(50.0f);
+	m_Environment.setTimeSpeed(0.1f);
 }
 
 void SinglePlayerState::pause() {
@@ -118,16 +122,18 @@ void SinglePlayerState::update() {
 	if (Window::GetInstance()->getKeyboarPressed(GLFW_KEY_X)) {
 		Window::GetInstance()->setMouseVisibility(true);
 	}
+
+	m_Layer3DDynamic.udate();
 }
 
 void SinglePlayerState::updateTerrain() {
-	vec2 pos = Camera::current->getVerPos();
+	vec3 pos = Camera::Current->getPosition();
 	int newX = pos.x / (m_BlockSize * m_SpriteSize) - (pos.x < 0 ? 1 : 0);
-	int newZ = pos.y / (m_BlockSize * m_SpriteSize) - (pos.y < 0 ? 1 : 0);
-	if (newX != m_PosX) {
-		if (newX > m_PosX) {  // +X
+	int newZ = pos.z / (m_BlockSize * m_SpriteSize) - (pos.z < 0 ? 1 : 0);
+	if (newX != m_LastPos.x) {
+		if (newX > m_LastPos.x) {  // +X
 			for (int i = 0; i < m_BlockCount; ++i) {
-				m_Layer3DStatic[0][i]->addEntity("Terrain", new Terrain((m_PosX+ m_BlockCount) - (m_BlockCount / 2), (m_PosZ+i) - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
+				m_Layer3DStatic[0][i]->addEntity("Terrain", new Terrain((m_LastPos.x + m_BlockCount) - (m_BlockCount / 2), (m_LastPos.y + i) - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
 			}
 			for (int i = 1; i < m_BlockCount; ++i) {
 				for (int j = 0; j < m_BlockCount; ++j) {
@@ -136,11 +142,11 @@ void SinglePlayerState::updateTerrain() {
 					m_Layer3DStatic[i][j] = tmp;
 				}
 			}
-			++m_PosX;
+			++m_LastPos.x;
 		}
 		else {				  // -X
 			for (int i = 0; i < m_BlockCount; ++i) {
-				m_Layer3DStatic[m_BlockCount-1][i]->addEntity("Terrain", new Terrain((m_PosX - 1) - (m_BlockCount / 2), (m_PosZ + i) - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
+				m_Layer3DStatic[m_BlockCount-1][i]->addEntity("Terrain", new Terrain((m_LastPos.x - 1) - (m_BlockCount / 2), (m_LastPos.y + i) - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
 			}
 			for (int i = m_BlockCount - 2; i >= 0 ; --i) {
 				for (int j = 0; j < m_BlockCount; ++j) {
@@ -149,12 +155,12 @@ void SinglePlayerState::updateTerrain() {
 					m_Layer3DStatic[i][j] = tmp;
 				}
 			}
-			--m_PosX;
+			--m_LastPos.x;
 		}
-	} else if (newZ != m_PosZ) {
-		if (newZ > m_PosZ) {  // +z
+	} else if (newZ != m_LastPos.y) {
+		if (newZ > m_LastPos.y) {  // +z
 			for (int i = 0; i < m_BlockCount; ++i) {
-				m_Layer3DStatic[i][0]->addEntity("Terrain", new Terrain((m_PosX + i) - (m_BlockCount / 2), (m_PosZ + m_BlockCount) - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
+				m_Layer3DStatic[i][0]->addEntity("Terrain", new Terrain((m_LastPos.x + i) - (m_BlockCount / 2), (m_LastPos.y + m_BlockCount) - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
 			}
 			for (int i = 0; i < m_BlockCount; ++i) {
 				for (int j = 1; j < m_BlockCount; ++j) {
@@ -163,11 +169,11 @@ void SinglePlayerState::updateTerrain() {
 					m_Layer3DStatic[i][j] = tmp;
 				}
 			}
-			++m_PosZ;
+			++m_LastPos.y;
 		}
 		else {				  // -z
 			for (int i = 0; i < m_BlockCount; ++i) {
-				m_Layer3DStatic[i][m_BlockCount - 1]->addEntity("Terrain", new Terrain((m_PosX + i) - (m_BlockCount / 2), (m_PosZ - 1) - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
+				m_Layer3DStatic[i][m_BlockCount - 1]->addEntity("Terrain", new Terrain((m_LastPos.x + i) - (m_BlockCount / 2), (m_LastPos.y - 1) - (m_BlockCount / 2), m_Environment.getSeed(), m_SpriteSize, m_BlockSize));
 			}
 			for (int i = 0; i < m_BlockCount; ++i) {
 				for (int j = m_BlockCount - 2; j >= 0 ; --j) {
@@ -176,7 +182,7 @@ void SinglePlayerState::updateTerrain() {
 					m_Layer3DStatic[i][j] = tmp;
 				}
 			}
-			--m_PosZ;
+			--m_LastPos.y;
 		}
 	} 
 }
@@ -184,9 +190,9 @@ void SinglePlayerState::updateTerrain() {
 void SinglePlayerState::render() {
 	mat4 roationMatrix = mat4::identity();
 	mat4 viewMatrix = mat4::identity();
-	if (Camera::current != nullptr) {
-		roationMatrix = Camera::current->getRotationMatrix();
-		viewMatrix = Camera::current->getMatrix();
+	if (Camera::Current != nullptr) {
+		roationMatrix = Camera::Current->getRotationMatrix();
+		viewMatrix = Camera::Current->getMatrix();
 	}
 
 	// Sky 

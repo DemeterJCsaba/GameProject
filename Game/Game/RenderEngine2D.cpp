@@ -47,7 +47,7 @@ void RenderEngine2D::end() {
 
 void RenderEngine2D::submit(RawModel2D* model) {
 	m_TransformationStack.push_back(m_TransformationStack[m_TransformationStack.size()-1] + model->getPosition());
-	submitModel(model);
+	uploadModel(model);
 	list<RawModel2D*>* list = model->getList();
 	for (RawModel2D* m : *list) {
 		submit(m);
@@ -55,7 +55,7 @@ void RenderEngine2D::submit(RawModel2D* model) {
 	m_TransformationStack.pop_back();
 }
 
-void RenderEngine2D::submitModel(RawModel2D* model) {
+void RenderEngine2D::uploadModel(RawModel2D* model) {
 	vector<vec2>& vertices = model->getVertices();
 	vector<vec2>& textures = model->getTextures();
 	vector<unsigned int>& indicesVertex = model->getIndicesVertex();

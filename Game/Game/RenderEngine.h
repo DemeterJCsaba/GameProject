@@ -7,7 +7,7 @@ private:
 	GLuint m_VAO;
 	GLuint m_VBO;
 	GLuint m_IBO;
-public:
+protected:
 	RenderEngine();
 
 	void bindVAO();
@@ -17,11 +17,11 @@ public:
 	void bindIBO();
 	void unbindIBO();
 
-	virtual void begin() = 0;
-	virtual void end() = 0;
-
 	void enableDepth();
 	void disableDepth();
+public:
+	virtual void begin() = 0;
+	virtual void end() = 0;
 
 	virtual void flush() = 0;
 };

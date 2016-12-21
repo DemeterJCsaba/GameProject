@@ -1,0 +1,3 @@
+Name: Teszt2
+Color: 1 1 1
+Size: 4 4 4

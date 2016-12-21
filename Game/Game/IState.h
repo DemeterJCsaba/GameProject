@@ -11,9 +11,7 @@ class IState {
 protected:
 	list<Event*> m_Events;
 public:
-	void addEvent(Event* event) {
-		m_Events.push_back(event);
-	}
+	void addEvent(Event* event) { m_Events.push_back(event); }
 
 public:
 	virtual ~IState() {}

@@ -12,7 +12,7 @@
 #include "Camera.h"
 
 class SinglePlayerState : public IState {
-private:
+protected:
 	Layer2D m_LayerGui;
 	Layer3DDynamic m_Layer3DDynamic;
 	LayerSky m_LayerSky;
@@ -36,7 +36,7 @@ public:
 
 	void resume();
 	void pause();
-private:
+protected:
 	void init();
 	void load();
 

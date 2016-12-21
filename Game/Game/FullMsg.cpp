@@ -24,7 +24,7 @@ std::list<std::string> FullMsg::getFullMsgs()
 
 	for (auto f : s_FullMsgs) {
 		if (f.second.chack()) {
-			lista.push_back(f.second.m_Msg);
+			lista.push_back(Utility::split(f.first,'/')[1] + ClientSide::BREAK_CHAR + f.second.m_Msg);
 			f.second.m_isBuildt = true;
 			s_FullMsgs.erase(f.first);
 		}
@@ -40,6 +40,7 @@ FullMsg::FullMsg(std::vector<std::string> parts) {
 }
 
 bool FullMsg::chack() {
+	m_Msg = "";
 	for (int i = 1; i <= m_MaxNumber; ++i) {
 		try {
 			Msg m = getI(i);

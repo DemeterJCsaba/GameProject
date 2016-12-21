@@ -48,10 +48,10 @@ void WriteThread::run() {//protokol: SC + id + BC + tipus + BC + x/y + BC + msg 
 					}
 				}
 
-				m_List.remove(m_List.front());
+				m_List.remove(m_List.front()); 
 			}
 		}else{
-			//TODO: sleep
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
 	}
 

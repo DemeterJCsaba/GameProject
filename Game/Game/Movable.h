@@ -4,7 +4,7 @@
 #include "RawModel3D.h"
 
 class Movable : public RawModel3D {
-private:
+protected:
 	vec3 m_Motion;
 	vec3 m_Rotate;
 public:

@@ -6,6 +6,8 @@
 #include"Lock.h"
 #include"ReadThread.h";
 #include"WriteThread.h"
+#include"MultiPlayerState.h"
+#include"StringRunnable.h"
 
 using namespace std;
 
@@ -37,8 +39,7 @@ string ClientSide::getIp()
 	return s_Ip;
 }
 
-ClientSide::ClientSide(char* ip, int port)
-{
+ClientSide::ClientSide(char* ip, int port, StringRunnable* n, StringRunnable* d, StringRunnable* u){
 	WSAData wsa;
 	SOCKET soc;
 	sockaddr_in adr;
@@ -66,7 +67,7 @@ ClientSide::ClientSide(char* ip, int port)
 	m_Soc = soc;
 	s_Ip = string(ip) + string(":") + std::to_string(port);
 
-	m_Read = new ReadThread(new SOCKET(soc));
+	m_Read = new ReadThread(new SOCKET(soc), n,d,u);
 	m_Write = new WriteThread(new SOCKET(soc));
 
 	m_Read->start();
@@ -82,6 +83,11 @@ ClientSide::~ClientSide()
 		closesocket(m_Soc);
 	}
 	WSACleanup();
+}
+
+void ClientSide::addMsg(string msg)
+{
+	m_Write->addToList(msg);
 }
 
 void ClientSide::disconnect()

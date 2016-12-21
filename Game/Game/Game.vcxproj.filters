@@ -87,6 +87,9 @@
     <Filter Include="Source Files\Client">
       <UniqueIdentifier>{8cc54c38-3fb4-46ac-a02d-109bc875c6a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Runnable">
+      <UniqueIdentifier>{b29bc6fa-004b-4c1c-82b4-412b2eff23e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -250,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="SysThread.cpp">
       <Filter>Source Files\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiPlayerState.cpp">
+      <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -444,6 +450,12 @@
     </ClInclude>
     <ClInclude Include="Lock.h">
       <Filter>Source Files\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiPlayerState.h">
+      <Filter>Source Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StringRunnable.h">
+      <Filter>Source Files\Runnable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

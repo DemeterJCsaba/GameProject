@@ -13,7 +13,7 @@ class Window {
 private:
 	static Window* Instance;
 public:
-	static void CreateWindow(WindowSettings* settings);
+	static void MyCreateWindow(WindowSettings* settings);
 	static void CloseWindow();
 	static Window* GetInstance() { return Instance; }
 

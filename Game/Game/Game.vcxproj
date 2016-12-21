@@ -133,6 +133,7 @@
     <ClCompile Include="MouseButtonEvent.cpp" />
     <ClCompile Include="Movable.cpp" />
     <ClCompile Include="Msg.cpp" />
+    <ClCompile Include="MultiPlayerState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerSettings.cpp" />
     <ClCompile Include="RawModel2D.cpp" />
@@ -196,9 +197,11 @@
     <ClInclude Include="MouseButtonEvent.h" />
     <ClInclude Include="Movable.h" />
     <ClInclude Include="Msg.h" />
+    <ClInclude Include="MultiPlayerState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerSettings.h" />
     <ClInclude Include="ReadThread.h" />
+    <ClInclude Include="StringRunnable.h" />
     <ClInclude Include="Slider.h" />
     <ClInclude Include="SysThread.h" />
     <ClInclude Include="Text.h" />

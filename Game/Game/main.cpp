@@ -1,8 +1,15 @@
+#undef UNICODE
+#define WIN32_LEAN_AND_MEAN
+#define _WINSOCKAPI_
+#include "winsock2.h"
+
 #include "SettingsManager.h"
 #include "Window.h"
 #include "FPSManager.h"
 #include "StateManager.h"
 #include "MainMenuState.h"
+
+#pragma comment (lib, "Ws2_32.lib")
 
 using namespace std;
 void main() {
@@ -12,7 +19,7 @@ void main() {
 		SettingsManager settingsManager;
 		settingsManager.loadSettings();
 
-		Window::CreateWindow(settingsManager.getWindowSettings());
+		Window::MyCreateWindow(settingsManager.getWindowSettings());
 		Window* window = Window::GetInstance();
 		window->addEventListener(&StateManager::getInstance());
 

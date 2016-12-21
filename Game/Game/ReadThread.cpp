@@ -8,10 +8,14 @@
 #include"ClientSide.h"
 #include"FullMsg.h"
 
-ReadThread::ReadThread(SOCKET* s):m_Soc(s){
+ReadThread::ReadThread(SOCKET * s, StringRunnable* n, StringRunnable* d, StringRunnable* u) :
+	m_Soc(s),
+	newPlayer(n),
+	deletePlayer(d),
+	updatePlayer(u)
+{
 	m_OldMsg = "";
 }
-
 
 ReadThread::~ReadThread()
 {
@@ -30,11 +34,11 @@ void ReadThread::run(void)
 			tempbuf[len] = '\0';
 			for (string msg : getReplays(string(tempbuf))) {
 				if (!preRender(msg)) {
-					//TODO: if wrong msg
+					printf("Wrong msg: %s\n",msg.c_str());
 				}
 			}
 			for (auto str: FullMsg::getFullMsgs()) {
-				//TODO:update players
+				updatePlayer->run(str);//ip + BC + data
 			}
 		}
 	}
@@ -75,10 +79,10 @@ bool ReadThread::preRender(std::string replay)
 		FullMsg::addMsg(parts);
 	}
 	else if (parts[1] == ClientSide::TYPE_DISCONNECT) {
-		//TODO: delete player
+		deletePlayer->run(Utility::split(parts[0],'/')[1]);//ip
 	}
 	else if (parts[1] == ClientSide::TYPE_LOGIN) {
-		//TODO: create new player
+		newPlayer->run(Utility::split(parts[0], '/')[1]);//ip
 	}
 	return false;
 }

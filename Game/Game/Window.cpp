@@ -9,7 +9,7 @@
 
 Window* Window::Instance = nullptr;
 
-void Window::CreateWindow(WindowSettings* settings) {
+void Window::MyCreateWindow(WindowSettings* settings) {
 	CloseWindow();
 	Instance = new Window(settings->getWidth(),
 						  settings->getHeight(),

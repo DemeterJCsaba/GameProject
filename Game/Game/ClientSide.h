@@ -3,11 +3,13 @@
 #include<mutex>
 
 #include "winsock2.h"
+#include"StringRunnable.h"
 
 using namespace std;
 
 class WriteThread;
 class ReadThread;
+class MultiPlayerState;
 
 class ClientSide
 {
@@ -38,7 +40,9 @@ public:
 
 	void disconnect();
 
-	ClientSide(char* ip, int port);
+	ClientSide(char* ip, int port, StringRunnable* n, StringRunnable* d, StringRunnable* u);
 	~ClientSide();
+
+	void addMsg(string msg);
 };
 

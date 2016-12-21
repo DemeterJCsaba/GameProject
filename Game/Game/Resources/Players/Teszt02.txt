@@ -1,3 +1,0 @@
-Name: Teszt02
-Color: 0 1 0
-Size: 1.5 1.5 1.5

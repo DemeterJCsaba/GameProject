@@ -21,11 +21,11 @@ private:
 	int m_BlockSize;
 	float m_SpriteSize;
 	Layer3DStatic*** m_Layer3DStatic;
-	int m_PosX;
-	int m_PosZ;
+	vec2 m_LastPos;
+	//int m_PosX;
+	//int m_PosZ;
 
 	Environment m_Environment;
-	//Camera* m_MainCamera;
 	shared_ptr<Camera> m_MainCameraPtr;
 public:
 	SinglePlayerState();

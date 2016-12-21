@@ -14,7 +14,7 @@ void main() {
 
 		Window::CreateWindow(settingsManager.getWindowSettings());
 		Window* window = Window::GetInstance();
-		window->addEventListener(&StateManager::getInstance());
+		window->subscribe(&StateManager::getInstance());
 
 		StateManager::getInstance().addState(new MainMenuState());
 
@@ -40,6 +40,6 @@ void main() {
 		settingsManager.saveSettings();
 	}
 	catch (exception& e) {
-		cout << "FAIL!: " << e.what() << endl;
+		cout << "Game loop exception!: " << e.what() << endl;
 	}
 }

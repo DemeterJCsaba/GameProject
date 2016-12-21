@@ -5,15 +5,8 @@
 
 #include "IState.h"
 #include "Layer2D.h"
-#include "MenuGui.h"
-#include "RenderEngine2D.h"
-#include "ShaderProgram.h"
-#include "Window.h"
-#include "StateManager.h"
-#include "SinglePlayerState.h"
-#include "GUIManager.h"
 #include "Layer3DDynamic.h"
-#include "TimerManeger.h"
+#include "MenuGui.h"
 
 using namespace std;
 

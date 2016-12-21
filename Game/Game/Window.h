@@ -70,8 +70,8 @@ public:
 
 	void setMouseVisibility(bool mod = true);
 
-	void addEventListener(EventListener* eventListener);
-	void removeEventListener(EventListener* eventListener);
+	void subscribe(EventListener* eventListener);
+	void unsubscribe(EventListener* eventListener);
 private:
 	bool init();
 

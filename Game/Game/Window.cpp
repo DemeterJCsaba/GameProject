@@ -148,11 +148,11 @@ void Window::setMouseVisibility(bool mod) {
 	m_MouseVisible = mod;
 }
 
-void Window::addEventListener(EventListener* eventListener) {
+void Window::subscribe(EventListener* eventListener) {
 	m_EventListeners.push_back(eventListener);
 }
 
-void Window::removeEventListener(EventListener* eventListener) {
+void Window::unsubscribe(EventListener* eventListener) {
 	m_EventListeners.remove(eventListener);
 }
 
